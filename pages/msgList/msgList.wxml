@@ -1,0 +1,24 @@
+<!--pages/msgList/msgList.wxml-->
+<view class="container">
+  <!--消息列表-->
+  <block wx:for="{{msgList}}" wx:for-index="idx">
+    <view class="list-item" bindtap="pullDown" id="{{idx}}">
+      <!--设备icon begin-->
+      <view class="lock-icon">{{item.lockIcon}}</view>
+      <!--设备icon end-->
+      <!--消息 begin-->
+      <view class="{{indexNum == idx ? '' : 'msg'}}" >
+        <!--消息概要-->
+        <view class="general">
+          <view class="title">{{idx}}.{{item.general}}</view>
+          <view class="time">{{item.general}}</view>
+        </view>
+        <!--消息详情-->
+        <view class="details">{{item.details}}</view>
+      </view>
+    </view>
+  </block>
+  <!--消息 end-->
+    
+  
+</view>

@@ -1,0 +1,41 @@
+<!--pages/step1/step1.wxml-->
+<view class="container">
+  <!--step 导航 begin-->
+  <view class="">
+    <ul class="steps">
+        <li class="start">
+          <ul>
+            <li class="line none"></li>
+            <li class="num current">1</li>
+            <li class="line current"></li>
+          </ul>
+          <view class="txt">锁具绑定</view>
+        </li>
+        <li class="mid">
+          <ul>
+            <li class="line"></li>
+            <li class="num">2</li>
+            <li class="line"></li>
+          </ul>
+          <view class="txt">扫描二维码</view>
+        </li>
+        <li class="mid">
+          <ul>
+            <li class="line"></li>
+            <li class="num">3</li>
+            <li class="line"></li>
+          </ul>
+          <view class="txt">连接wifi</view>
+        </li>
+        <li class="end">
+          <ul>
+            <li class="line"></li>
+            <li class="num">4</li>
+            <li class="line none"></li>
+          </ul>
+          <view class="txt">完成</view>
+        </li>
+      </ul>
+  </view>
+  <!--step 导航 end-->
+</view>

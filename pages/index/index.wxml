@@ -1,0 +1,40 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="lockInfo" bindtouchstart="touchStart" bindtouchend="touchEnd">
+    <image src="../../images/lock{{lockNum}}.jpg" class="backgroundImage"></image> 
+    <view class="dynamicInfo">
+      <!--顶部导航 begin-->
+    <view class="headerNav">
+      <!--锁列表 begin-->
+      <view class="lockList">
+        <block wx:for="{{lockInfoList}}">
+          <view class="{{index == lockNum ? 'active' : 'normal'}}">{{item.name}}</view>
+          <view class="messNode" wx:if="{{mess}}"></view>
+        </block>       
+      </view>
+      <!--锁列表 end-->
+      <!--添加锁 begin-->
+      <view class="addLock">+</view>
+      <!--添加锁 end-->
+    </view>
+    <!--顶部导航 end-->
+    
+    <!--锁详情 begin-->
+    <view class="test">
+      {{lockInfoList[lockNum].status}}
+    </view>
+    <!--锁详情 edn-->
+    </view> 
+    
+  </view>
+  <!--底部设备管理、用户管理 begin-->
+  <view class="manage">
+    <view class="lock" bindtap="toLockSet">
+      <i class="iconfont icon-shezhi"></i>
+    </view>
+    <view class="user">
+      <icon class="iconfont icon-yonghu"></icon>
+    </view>
+  </view>
+  <!--底部设备管理、用户管理 end-->
+</view>

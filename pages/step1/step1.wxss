@@ -1,0 +1,38 @@
+/* pages/step1/step1.wxss */
+.container{
+  padding: 100rpx 0;
+}
+.steps{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+ul{
+  height: 70rpx;
+  display: flex;
+  align-items: center;
+}
+.num{
+  width: 70rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  text-align: center;
+  background-color: #bbb;
+  border-radius: 50%;
+}
+.line{
+  width: 60rpx;
+  height: 4rpx;
+  background-color: #bbb;
+}
+.none{
+  height: 0;
+}
+.current{
+  background-color: #317ee7;
+}
+.txt{
+  text-align: center;
+  font-size: 32rpx;
+  margin-top: 20rpx;
+}

@@ -1,0 +1,62 @@
+/* pages/bindPhone/bindPhone.wxss */
+ @import "../lib/iconfont.wxss"; 
+page{
+   background-color: #bbb;
+}
+button::after{
+  border:none;
+}
+button{
+  background-color: transparent;
+}
+input{
+  outline:none;
+  border:none;
+  list-style: none;
+}
+ .container{
+    padding:50rpx 0; 
+    width:80%;
+    margin:auto;
+ }
+.logoImage{
+  width: 156rpx;
+  height: 156rpx;
+  margin: 0 40rpx 80rpx 40rpx;
+}
+.input-item{
+  display: flex;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  padding: 8px 15px;
+  margin-bottom: 5px;
+}
+.input-text{
+  padding-left: 15px;
+  margin: auto;
+}
+#btn{
+  margin: auto;
+  font-size: 32rpx;
+  border-left:1px solid #000; 
+  white-space: nowrap;
+  border-radius: 0;
+  padding: 0 8px;
+  background-color: #bbb;
+  overflow: visible;
+}
+.error-tips{
+  color: red;
+  font-size: 12px;
+  text-align: center;
+  margin: 12px auto;
+}
+.register{
+  /* width: 80%; */
+  border-radius: 20px;
+  margin-top:200rpx;
+  background-color: #317ee7 !important;
+  color: #fff !important;
+}
+
+

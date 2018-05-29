@@ -1,0 +1,34 @@
+/* pages/msgList/msgList.wxss */
+page{
+  background-color: #317ee7;
+}
+.container{
+  padding: 0;
+}
+.list-item{
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+  width: 100%; 
+  padding: 20rpx 0;
+  /*test*/
+  border: 1px solid red;
+  box-sizing: border-box; 
+}
+.lock-icon{
+  padding: 0 40rpx;
+}
+.msg{
+  overflow: hidden; 
+  white-space: nowrap;
+  /* text-overflow: ellipsis;  */
+}
+.general{
+  display: flex;
+  justify-content: space-between;
+  padding-right: 30rpx;
+}
+.details{
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

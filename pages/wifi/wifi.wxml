@@ -1,0 +1,20 @@
+<!--pages/wifi/wifi.wxml-->
+<view class="container">
+  <button bindtap="getWifiList">获取wifi列表</button>
+  <view>初始化wifi模块{{start}}</view>
+  <view>初始化wifi模块完成{{startEnd}}</view>
+  <view>请求获取wifi列表{{getWf}}</view>
+  <view>请求获取wifi列表完成{{getWfEnd}}</view>
+  <view>wifi列表</view>
+  <view class="wifiList">
+        <block wx:for="{{list}}">
+          <view class="list">
+          <view>{{item.SSID}}|</view>
+          <view>{{item.BSSID}}|</view>
+          <view>{{item.secure}}|</view>
+          <view>{{item.signalStrength}}|</view>
+          </view>
+        </block>       
+  </view>
+  <view>test{{test}}</view>
+</view>

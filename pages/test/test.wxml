@@ -1,0 +1,31 @@
+<!--pages/test/test.wxml-->
+<!-- <text>pages/test/test.wxml</text> -->
+<view class="page-body">
+  <view class="page-section">
+    <!-- <view class="weui-cells__title">密码输入的input</view> -->
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <input class="weui-input"  type="number" maxlength='11' placeholder="请输入手机号" bindinput="phoneNum" />
+        <button type="default" class="getCode" disabled="{{getVerify}}" bindtap="getCode">获取验证码</button>
+      </view>
+    </view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <input class="weui-input" password type="text" placeholder="请输入短信验证码" bindinput="codeNum" />
+      </view>
+    </view>
+    <button type="default" size="{{defaultSize}}" loading="{{loading}}" plain="{{plain}}"
+        disabled="{{registerDisabled}}" bindtap="handleRegister" hover-class="other-button-hover" class='btn'> 登录 </button>
+  </view>
+  <view>用户信息{{userInfo}}</view>
+  <view>wifi验证</view>
+  <view>{{netType}}</view>
+  <view>wifi连接成功{{wifi}}</view>
+  <view>wifi连接失败{{test}}</view>
+  <view>wifiList获取成功{{wifiListS}}</view>
+  <view>wifiList获取失败{{wifiListE}}</view>
+  <view>wifiList{{wifiList}}</view>
+  <view>{{isOk}}</view>
+  <view>wifi验证</view>
+  <button type="default" bindtap="test">test</button>
+</view>

@@ -1,0 +1,43 @@
+<!--index.wxml-->
+<view class="container">
+  <swiper indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for="{{lockNum}}">
+      <swiper-item>
+        <!-- <image src="{{item}}" class="slide-image" width="355" height="150"/> -->
+        <image src="../../images/lock{{item}}.jpg" class="backgroundImage"></image> 
+      </swiper-item>
+    </block>
+  </swiper>
+    
+    <!--具体锁相关信息 begin-->
+    <view class="dynamicInfo">
+      <!--锁详情 begin-->
+      <view class="test">
+        {{lockInfoList[lockNum].status}}
+      </view>
+      <!--锁详情 edn-->
+    </view> 
+    <!--具体锁相关信息 end-->
+    <view class="lockInfo">
+    <!--顶部导航 begin-->
+    <view class="headerNav">
+      <!--锁列表 begin-->
+      <view class="lockList">
+        <block wx:for="{{lockInfoList}}">
+          <view class="{{index == lockNum ? 'active' : 'normal'}}">{{item.name}}</view>
+          <view class="messNode" wx:if="{{mess}}"></view>
+        </block>       
+      </view>
+      <!--锁列表 end-->
+      <!--添加锁 begin-->
+      <view class="addLock">+</view>
+      <!--添加锁 end-->
+    </view>
+    <!--顶部导航 end-->
+  </view>
+  <!--底部设备管理、用户管理 begin-->
+  <view class="manage"></view>
+  <!--底部设备管理、用户管理 end-->
+</view>
+

@@ -1,0 +1,40 @@
+{
+  "pages": [
+    
+    "pages/wifi/wifi",
+    "pages/msgList/msgList",
+    "pages/step1/step1",
+    "pages/bindPhone/bindPhone",
+    "pages/test/test",   
+    "pages/index/index",
+    "pages/swiperTest/swiperTest",
+    "pages/swiper/swiper",
+    "pages/location/location",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#317ee7",
+    "navigationBarTitleText": "云巢",
+    "navigationBarTextStyle": "#bbb"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/test/test",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "text": "日志"
+      }
+    ],
+    "color": "#fff",
+    "backgroundColor": "#317ee7"
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true
+}

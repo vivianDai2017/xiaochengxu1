@@ -1,0 +1,6 @@
+<!--pages/location/location.wxml-->
+<text>pages/location/location.wxml</text>
+<view>latitude{{latitude}}</view>
+<view>longitude{{longitude}}</view>
+<view>speed{{speed}}</view>
+<view>accuracy{{accuracy}}</view>

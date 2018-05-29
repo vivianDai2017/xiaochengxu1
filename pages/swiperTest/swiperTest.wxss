@@ -1,0 +1,69 @@
+/* pages/swiperTest/swiperTest.wxss */
+.container{
+   background-color: #bbb;
+   padding: 0; 
+}
+.lockInfo{
+  width: 100%;
+  height: 1000rpx;
+  position: relative;
+  border: 1px solid red;
+  box-sizing: border-box;
+}
+.backgroundImage{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.dynamicInfo{
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.headerNav{
+  position: relative;
+  width: 100%;
+}
+.lockList{
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  height: 96rpx;
+  line-height: 96rpx;
+}
+.active{
+   font-weight: 900; 
+   font-size: 16px;
+}
+.normal{
+  font-weight: normal;
+  font-size: 12px;
+}
+.messNode{
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 50%;
+  background-color: red;
+}
+.addLock{
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.manage{
+  width: 100%;
+  height: 200rpx;
+  border: 1px solid #317ee7;
+  box-sizing: border-box;
+}
+
+.test{
+  font-size: 32px;
+  text-align: center;
+  padding: 100rpx;
+}
