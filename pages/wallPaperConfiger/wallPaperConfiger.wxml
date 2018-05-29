@@ -1,0 +1,10 @@
+<!--pages/wallPaperConfiger/wallPaperConfiger.wxml-->
+<view class="container">
+  
+  <image class="img" src="{{imgUrl}}"></image>
+
+  <view class="isChoice">
+    <view class="btn" bindtap="cancel">取消</view>
+    <view class="btn configer">确认</view>
+  </view>
+</view>

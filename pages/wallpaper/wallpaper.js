@@ -1,39 +1,28 @@
-// pages/step1/step1.js
+// pages/wallpaper/wallpaper.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    step: 1,
-    result: '',
-    scanType: '',
-    charSet: '',
+    imgList: [
+      '../../images/lock0.jpg',
+      '../../images/lock2.jpg',
+      '../../images/lock2.jpg',
+      '../../images/lock0.jpg',
+      '../../images/lock1.jpg',
+      '../../images/lock2.jpg',
+      '../../images/lock0.jpg',
+      '../../images/lock1.jpg',
+      '../../images/lock2.jpg',
+      '../../images/lock0.jpg',
+      '../../images/lock1.jpg',
+      '../../images/lock2.jpg',
+    ]
   },
 
-  // 开始扫描
-  startScan: function(){
-    console.log('开始扫描');
-    this.setData({step: 2});
-    // 开始扫码
-    wx.scanCode({
-      // 只允许从相机扫码
-      onlyFromCamera: true,
-      success: (res) => {
-        console.log(res);
-        this.setData({
-          result: res.result,
-          scanType: res.scanType,
-          charSet: res.charSet,
-          step: 3
-        });
+  // 下拉加载后面的壁纸，并插入当前壁纸列表数组中
 
-      },
-      fail: function(res){
-        console.log(res);
-      }
-    })
-  },
 
   /**
    * 生命周期函数--监听页面加载

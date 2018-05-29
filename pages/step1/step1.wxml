@@ -7,25 +7,25 @@
           <ul>
             <li class="line none"></li>
             <li class="num current">1</li>
-            <li class="line current"></li>
+            <li class="line {{step >= 2 ? 'current' : ''}}"></li>
           </ul>
-          <view class="txt">锁具绑定</view>
+          <view class="txt currentTxt">锁具绑定</view>
         </li>
         <li class="mid">
           <ul>
-            <li class="line"></li>
-            <li class="num">2</li>
-            <li class="line"></li>
+            <li class="line {{step >= 2 ? 'current' : ''}}"></li>
+            <li class="num {{step >= 2 ? 'current' : ''}}">2</li>
+            <li class="line {{step >= 3 ? 'current' : ''}}"></li>
           </ul>
-          <view class="txt">扫描二维码</view>
+          <view class="txt {{step >= 2 ? 'currentTxt' : ''}}">扫描二维码</view>
         </li>
         <li class="mid">
           <ul>
-            <li class="line"></li>
-            <li class="num">3</li>
+            <li class="line {{step >= 3 ? 'current' : ''}}"></li>
+            <li class="num {{step >= 3 ? 'current' : ''}}">3</li>
             <li class="line"></li>
           </ul>
-          <view class="txt">连接wifi</view>
+          <view class="txt {{step >= 3 ? 'currentTxt' : ''}}">连接wifi</view>
         </li>
         <li class="end">
           <ul>
@@ -38,4 +38,20 @@
       </ul>
   </view>
   <!--step 导航 end-->
+  <!--步骤提示 begin-->
+  <view class="content" wx:if="{{step == 1}}">
+    <view class="icon">
+    <i class="iconfont icon-msnui-bind-circle"></i>
+    </view>
+    <view class="step">第一步，请按下锁具的设置键，进入管理模式</view>
+    <view class="step">第二步，选择绑定云端账号，获取二维码</view>
+    <button class="btn" bindtap="startScan">开始扫描</button>
+  </view>
+  <view class="content" wx:if="{{step == 2}}">
+    <view>{{result}}</view>
+    <view>{{scanType}}</view>
+    <view>{{charSet}}</view>
+    <view>{{path}}</view>
+  </view>
+  <!--步骤提示 end-->
 </view>

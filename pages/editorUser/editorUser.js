@@ -1,38 +1,11 @@
-// pages/step1/step1.js
+// pages/editorUser/editorUser.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    step: 1,
-    result: '',
-    scanType: '',
-    charSet: '',
-  },
-
-  // 开始扫描
-  startScan: function(){
-    console.log('开始扫描');
-    this.setData({step: 2});
-    // 开始扫码
-    wx.scanCode({
-      // 只允许从相机扫码
-      onlyFromCamera: true,
-      success: (res) => {
-        console.log(res);
-        this.setData({
-          result: res.result,
-          scanType: res.scanType,
-          charSet: res.charSet,
-          step: 3
-        });
-
-      },
-      fail: function(res){
-        console.log(res);
-      }
-    })
+  
   },
 
   /**

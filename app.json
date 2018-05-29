@@ -1,9 +1,11 @@
 {
   "pages": [
-    
-    "pages/wifi/wifi",
-    "pages/msgList/msgList",
+    "pages/editorUser/editorUser",
+    "pages/wallpaper/wallpaper",
+    "pages/wallPaperConfiger/wallPaperConfiger",
     "pages/step1/step1",
+    "pages/msgList/msgList",
+    "pages/wifi/wifi",
     "pages/bindPhone/bindPhone",
     "pages/test/test",   
     "pages/index/index",
@@ -14,7 +16,7 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#317ee7",
+    "navigationBarBackgroundColor": "#00bfff",
     "navigationBarTitleText": "云巢",
     "navigationBarTextStyle": "#bbb"
   },

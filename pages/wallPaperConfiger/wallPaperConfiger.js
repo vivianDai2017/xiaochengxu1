@@ -1,37 +1,17 @@
-// pages/step1/step1.js
+// pages/wallPaperConfiger/wallPaperConfiger.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    step: 1,
-    result: '',
-    scanType: '',
-    charSet: '',
+    imgUrl: ''
   },
 
-  // 开始扫描
-  startScan: function(){
-    console.log('开始扫描');
-    this.setData({step: 2});
-    // 开始扫码
-    wx.scanCode({
-      // 只允许从相机扫码
-      onlyFromCamera: true,
-      success: (res) => {
-        console.log(res);
-        this.setData({
-          result: res.result,
-          scanType: res.scanType,
-          charSet: res.charSet,
-          step: 3
-        });
-
-      },
-      fail: function(res){
-        console.log(res);
-      }
+  // 取消返回壁纸列表页
+  cancel: function(){
+    wx.navigateBack({
+      delta: 1
     })
   },
 
@@ -39,7 +19,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    console.log(options.imgUrl);
+    this.setData({imgUrl: options.imgUrl})
   },
 
   /**

@@ -1,0 +1,22 @@
+/* pages/wallpaper/wallpaper.wxss */
+.container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  border-style: solid;
+  border-color: red;
+  border-width: 0 1.5rpx; 
+}
+.imgs{
+  width: 33.3%;
+  height: 480rpx;
+  box-sizing: border-box;
+  border-style: solid;
+  border-color: red;
+  border-width: 3rpx 1.5rpx; 
+  
+}
+.img{
+  width: 100%;
+}

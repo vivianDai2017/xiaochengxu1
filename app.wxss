@@ -1,10 +1,15 @@
 /**app.wxss**/
+page{
+  background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527574459954&di=b669c53f427dd4bd781e5c0193be24ae&imgtype=0&src=http%3A%2F%2Fp1.wmpic.me%2Farticle%2F2016%2F07%2F29%2F1469781945_LplPyMeA.jpg 
+  );
+}
 .container {
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 200rpx 0;
+  padding: 0;
   box-sizing: border-box;
+  color: #fff;
 } 

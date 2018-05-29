@@ -1,9 +1,9 @@
 /* pages/step1/step1.wxss */
-.container{
-  padding: 100rpx 0;
-}
+@import "../lib/iconfont.wxss";
+
 .steps{
   width: 100%;
+  height: 256rpx;
   display: flex;
   justify-content: space-between;
 }
@@ -29,10 +29,32 @@ ul{
   height: 0;
 }
 .current{
-  background-color: #317ee7;
+  background-color: #00bfff;
+}
+.currentTxt{
+  color: #00bfff;
 }
 .txt{
   text-align: center;
   font-size: 32rpx;
   margin-top: 20rpx;
+}
+.content{
+  text-align: center;
+}
+.icon{
+  margin-bottom: 100rpx;
+}
+.step{
+  font-size: 26rpx;
+  padding: 10rpx 0;
+  margin: 0 80rpx;
+  text-align: left;
+}
+.btn{
+  background-color: #00bfff;
+  color: #fff;
+  width: 60%;
+  margin-top: 200rpx;
+  border-radius: 20rpx;
 }
