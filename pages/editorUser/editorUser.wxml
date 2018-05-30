@@ -1,2 +1,24 @@
 <!--pages/editorUser/editorUser.wxml-->
-<text>pages/editorUser/editorUser.wxml</text>
+<view class="container">
+  <view class="content">
+    <view class="wallPaper">
+      <!--文字层-->
+      <view class="txt" bindtap="editorTxt">
+        <view class="name">宝贝</view>
+        <view class="welcome">请输入欢迎语</view>
+      </view>
+    </view>
+    <view class="tap">点击切换解锁壁纸</view>
+  </view>
+  <!--指纹-->
+  <view class="fingerPrint">
+    <view class="f"></view>
+    <view class="f"></view>
+    <view class="f"></view>
+    <view class="f"></view>
+  </view>
+  <!--弹出框-->
+  <modal class="modal" hidden="{{hiddenmodalput}}" title="请输入验证码" confirm-text="提交" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">  
+    <input type='text'placeholder="请输入内容" auto-focus/>  
+  </modal> 
+</view>

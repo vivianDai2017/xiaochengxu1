@@ -5,8 +5,25 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    hiddenmodalput: true,  
   },
+
+
+  editorTxt: function(){
+    console.log(1);
+    this.setData({
+      hiddenmodalput: !this.data.hiddenmodalput
+    })
+  },
+  // 取消弹框
+  cancel: function(){
+    this.setData({hiddenmodalput: true})
+  },
+  // 确认
+  confirm: function(){
+    this.setData({hiddenmodalput: true})
+  },
+
 
   /**
    * 生命周期函数--监听页面加载

@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    logoImage:'../../images/logo-temp.png'
+    logoImage:'../../images/logo-temp.png',
+    canGetCode: true
   },
 
   // 登录事件

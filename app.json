@@ -1,14 +1,16 @@
 {
   "pages": [
+    "pages/bindPhone/bindPhone",
+    "pages/temporaryPassword/temporaryPassword",
     "pages/editorUser/editorUser",
+    "pages/step1/step1",    
+    "pages/index/index",
     "pages/wallpaper/wallpaper",
     "pages/wallPaperConfiger/wallPaperConfiger",
-    "pages/step1/step1",
     "pages/msgList/msgList",
     "pages/wifi/wifi",
-    "pages/bindPhone/bindPhone",
+    
     "pages/test/test",   
-    "pages/index/index",
     "pages/swiperTest/swiperTest",
     "pages/swiper/swiper",
     "pages/location/location",
@@ -16,10 +18,11 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#00bfff",
+    "navigationBarBackgroundColor": "#000",
     "navigationBarTitleText": "云巢",
     "navigationBarTextStyle": "#bbb"
   },
+  
   "tabBar": {
     "list": [
       {

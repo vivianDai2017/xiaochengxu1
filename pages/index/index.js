@@ -22,7 +22,20 @@ Page({
 
   //事件处理函数
   onLoad: function () {
-    
+    wx.getSetting({
+      success(res) {
+        if (!res.authSetting['scope.userInfo']) {
+          wx.authorize({
+            scope: 'scope.userInfo',
+            success() {
+              // 用户已经同意小程序使用录音功能，后续调用 wx.startRecord 接口不会弹窗询问
+              // wx.startRecord();
+              console.log('同意授权');
+            }
+          })
+        }
+      }
+    })
   },
   // 滑动触摸开始事件
   touchStart: function(e){

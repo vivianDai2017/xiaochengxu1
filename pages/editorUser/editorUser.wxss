@@ -1,1 +1,50 @@
 /* pages/editorUser/editorUser.wxss */
+.content{
+   width: 100%; 
+   padding-top: 100rpx;
+}
+.wallPaper{
+  background-image: url(https://img5.imgtn.bdimg.com/it/u=67356540,1693273787&fm=27&gp=0.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  width: 70%; 
+  height: 800rpx;
+  margin: auto; 
+}
+.txt{
+  background-color: rgba(0,0,0,0.3);
+  width: 100%;
+  height: 200rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+}
+.name, .welcome{
+  height: 100rpx;
+  line-height: 100rpx;
+}
+.welcome{
+  font-size: 32rpx;
+}
+.tap{
+  width: 70%;
+  margin: auto;
+  text-align: center;
+  padding-top: 50rpx;
+}
+.fingerPrint{
+  display: flex;
+  justify-content: space-between;
+}
+.f{
+  width: 120rpx;
+  height: 120rpx;
+  border: 1px solid #000;
+  border-radius: 50%;
+  margin: 30rpx;
+}
+.modal{
+  color: #000;
+}

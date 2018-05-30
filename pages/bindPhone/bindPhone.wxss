@@ -35,15 +35,15 @@ input{
   padding-left: 15px;
   margin: auto;
 }
-#btn{
+.code{
   margin: auto;
   font-size: 32rpx;
-  border-left:1px solid #000; 
+  border-left:1px solid #fff; 
   white-space: nowrap;
   border-radius: 0;
   padding: 0 8px;
-  background-color: #bbb;
   overflow: visible;
+  background-color: transparent !important;
 }
 .error-tips{
   color: red;
@@ -53,10 +53,9 @@ input{
 }
 .register{
   /* width: 80%; */
-  border-radius: 20px;
+   border-radius: 40rpx; 
   margin-top:200rpx;
   background-color: #317ee7 !important;
-  color: #fff !important;
 }
 
 

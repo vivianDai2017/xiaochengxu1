@@ -1,6 +1,10 @@
 /* pages/step1/step1.wxss */
 @import "../lib/iconfont.wxss";
-
+.header{
+  padding-top: 40rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+}
 .steps{
   width: 100%;
   height: 256rpx;

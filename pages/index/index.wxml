@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view class="container">
   <view class="lockInfo" bindtouchstart="touchStart" bindtouchend="touchEnd">
-    <image src="../../images/lock{{lockNum}}.jpg" class="backgroundImage"></image> 
+    <!-- <image src="../../images/lock{{lockNum}}.jpg" class="backgroundImage"></image>  -->
     <view class="dynamicInfo">
       <!--顶部导航 begin-->
     <view class="headerNav">

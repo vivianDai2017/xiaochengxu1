@@ -9,7 +9,10 @@ page{
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 0;
+  padding:  0;
   box-sizing: border-box;
   color: #fff;
 } 
+.btn{
+  color: #fff !important;
+}
