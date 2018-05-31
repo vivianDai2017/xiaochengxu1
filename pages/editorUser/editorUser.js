@@ -6,6 +6,10 @@ Page({
    */
   data: {
     hiddenmodalput: true,  
+    name: "宝贝",
+    welcomeTxt: "请输入欢迎语",
+    nameTemp: '',
+    welcomeTxtTemp: ''
   },
 
 
@@ -15,13 +19,29 @@ Page({
       hiddenmodalput: !this.data.hiddenmodalput
     })
   },
+  nameInput: function(e){
+    this.setData({nameTemp: e.detail.value})
+  },
+  welcomeInput: function(e){
+    this.setData({welcomeTxtTemp: e.detail.value})
+  },
   // 取消弹框
   cancel: function(){
-    this.setData({hiddenmodalput: true})
+    this.setData({hiddenmodalput: true});
   },
   // 确认
-  confirm: function(){
-    this.setData({hiddenmodalput: true})
+  confirm: function(e){
+    var nameTemp = this.data.nameTemp;
+    var welcomeTxtTemp = this.data.welcomeTxtTemp;
+    if(!nameTemp){nameTemp = '宝贝'}
+    if(!welcomeTxtTemp){welcomeTxtTemp = '请输入欢迎语'}
+    this.setData({
+      hiddenmodalput: true,
+      name: nameTemp,
+      welcomeTxt: welcomeTxtTemp
+    });
+    
+   
   },
 
 

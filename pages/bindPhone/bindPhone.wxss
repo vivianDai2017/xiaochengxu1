@@ -1,5 +1,6 @@
 /* pages/bindPhone/bindPhone.wxss */
- @import "../lib/iconfont.wxss"; 
+@import "../lib/iconfont.wxss"; 
+
 page{
    background-color: #bbb;
 }

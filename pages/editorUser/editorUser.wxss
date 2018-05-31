@@ -47,4 +47,5 @@
 }
 .modal{
   color: #000;
+  border: 1px solid red !important;
 }

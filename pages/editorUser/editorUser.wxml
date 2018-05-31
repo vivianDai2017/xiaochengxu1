@@ -4,8 +4,8 @@
     <view class="wallPaper">
       <!--文字层-->
       <view class="txt" bindtap="editorTxt">
-        <view class="name">宝贝</view>
-        <view class="welcome">请输入欢迎语</view>
+        <input class="name" type="text" value="{{name}}" maxlength="6" ></input>
+        <input class="welcome" type="text" value="{{welcomeTxt}}" maxlength="14"></input>
       </view>
     </view>
     <view class="tap">点击切换解锁壁纸</view>
@@ -18,7 +18,8 @@
     <view class="f"></view>
   </view>
   <!--弹出框-->
-  <modal class="modal" hidden="{{hiddenmodalput}}" title="请输入验证码" confirm-text="提交" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">  
-    <input type='text'placeholder="请输入内容" auto-focus/>  
+  <modal class="modal" hidden="{{hiddenmodalput}}" title="请编辑称谓及欢迎语" confirm-text="提交" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">  
+    <input type="text" bindinput="nameInput" placeholder="请输入0-6位字符的称谓" maxlength="6" auto-focus/>  
+    <input type="text" bindinput="welcomeInput" placeholder="请输入0-14位的欢迎语" maxlength='14'></input>
   </modal> 
 </view>

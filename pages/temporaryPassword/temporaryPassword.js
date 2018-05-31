@@ -1,4 +1,21 @@
 // pages/temporaryPassword/temporaryPassword.js
+const date = new Date()
+const years = []
+const months = []
+const days = []
+
+for (let i = 1990; i <= date.getFullYear(); i++) {
+  years.push(i)
+}
+
+for (let i = 1; i <= 12; i++) {
+  months.push(i)
+}
+
+for (let i = 1; i <= 31; i++) {
+  days.push(i)
+}
+
 Page({
 
   /**
@@ -7,26 +24,22 @@ Page({
   data: {
     time: '',
     temPassword: '',
-    onlyOne: false
+    onlyOne: false,
+    show: false,
+    date: '2016-09-01',
+    time: '12',
+    multiArray: [['2017','2018','2019'],[1,2,3,4,5,6,7,8,9,10,11,12],[1,2,3,4,5,6,7,8,9,10],[0,1,2,3,4,5]],
+    multiIndex: [0, 0, 0, 1],
   },
 
-  createTemPassword: function(){
-    var pass = parseInt(Math.random() * 899999 + 100000);
-    this.setData({temPassword: pass})
-  },
-  isOnlyOne: function(){
-      this.setData({onlyOne: !this.data.onlyOne})
-  },
-  share: function(event){
-    console.log(event);
-    console.log(event.currentTarget.dataset.pass);
-  },
+  
+  
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var now = new Date().toLocaleDateString();
-    this.setData({time: now});
+    // this.setData({time: now});
     this.createTemPassword();
   },
 
@@ -59,6 +72,30 @@ Page({
   },
 
   /**
+   * 生成临时秘密
+   */
+  createTemPassword: function () {
+    var pass = parseInt(Math.random() * 899999 + 100000);
+    this.setData({ temPassword: pass })
+  },
+  /**
+   * 密码有效性
+   */
+  isOnlyOne: function () {
+    this.setData({ onlyOne: !this.data.onlyOne })
+  },
+  share: function (event) {
+    console.log(event);
+    console.log(event.currentTarget.dataset.pass);
+  },
+  /**
+   * 时间选择
+   */
+  choiceTime: function () {
+    this.setData({show: true})
+  },
+
+  /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
@@ -73,7 +110,7 @@ Page({
   },
 
   /**
-   * 用户点击右上角分享
+   * 用户点击(右上角)分享
    */
   onShareAppMessage: function (res) {
     console.log(11);
@@ -86,6 +123,7 @@ Page({
     return {
       title: '转发消息',
       path: '/pages/editorUser/editorUser',
+      imageUrl: '../../images/logo-temp.png',
       success: (res) => {
         console.log("转发成功", res);
       },

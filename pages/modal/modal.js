@@ -1,54 +1,46 @@
-// pages/swiper/swiper.js
+// pages/modal/modal.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
-    indicatorDots: true,
-    vertical: false,
-    autoplay: false,
-    circular: false,
-    interval: 2000,
-    duration: 500,
-    previousMargin: 0,
-    nextMargin: 0,
-    wifi:''
+    showModal: false,
   },
 
-  changeProperty: function (e) {
-    var propertyName = e.currentTarget.dataset.propertyName
-    var newData = {}
-    newData[propertyName] = e.detail.value
-    this.setData(newData)
-  },
-  changeIndicatorDots: function (e) {
+  /**
+     * 弹窗
+     */
+  showDialogBtn: function () {
     this.setData({
-      indicatorDots: !this.data.indicatorDots
+      showModal: true
     })
   },
-  changeAutoplay: function (e) {
-    this.setData({
-      autoplay: !this.data.autoplay
-    })
+  /**
+   * 弹出框蒙层截断touchmove事件
+   */
+  preventTouchMove: function () {
   },
-  intervalChange: function (e) {
+  /**
+   * 隐藏模态对话框
+   */
+  hideModal: function () {
     this.setData({
-      interval: e.detail.value
-    })
+      showModal: false
+    });
   },
-  durationChange: function (e) {
-    this.setData({
-      duration: e.detail.value
-    })
+  /**
+   * 对话框取消按钮点击事件
+   */
+  onCancel: function () {
+    this.hideModal();
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+  
   },
 
   /**

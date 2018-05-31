@@ -1,18 +1,17 @@
 {
   "pages": [
-    "pages/bindPhone/bindPhone",
     "pages/temporaryPassword/temporaryPassword",
     "pages/editorUser/editorUser",
+    "pages/modal/modal",
+    "pages/wallPaperConfiger/wallPaperConfiger",
+    "pages/bindPhone/bindPhone",
+    "pages/test/test",
     "pages/step1/step1",    
     "pages/index/index",
-    "pages/wallpaper/wallpaper",
-    "pages/wallPaperConfiger/wallPaperConfiger",
+    "pages/wallpaper/wallpaper", 
     "pages/msgList/msgList",
     "pages/wifi/wifi",
-    
-    "pages/test/test",   
     "pages/swiperTest/swiperTest",
-    "pages/swiper/swiper",
     "pages/location/location",
     "pages/logs/logs"
   ],
