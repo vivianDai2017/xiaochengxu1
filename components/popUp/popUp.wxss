@@ -1,0 +1,24 @@
+/* 这里的样式只应用于这个自定义组件 */
+page{
+  position: relative;
+}
+.inner {
+  width: 500rpx;
+  height: 300rpx;
+  border: 1px solid red;
+  border-radius: 40rpx;
+  background-color: #fff;
+  color: red;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.radio{
+  display: flex;
+}
+.button{
+  width:50%;
+  border: 1px solid #000;
+  text-align: center;
+}

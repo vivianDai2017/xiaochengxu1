@@ -1,0 +1,29 @@
+/* pages/unbingIndex/unbindIndex.wxss */
+.lockImg{
+  height: 621rpx;
+  margin-top: 143rpx;
+  margin-bottom: 129rpx;
+}
+.btn{
+  width: 400rpx;
+	height: 88rpx;
+  line-height: 88rpx;
+  font-size: 36rpx;
+  font-family: PingFang-SC-Regular;
+  color: #68d3ff;
+	border-radius: 44rpx;
+	border: solid 2rpx #68d3ff;
+}
+.btnAdd{
+  display: flex;
+  justify-content: center;
+}
+.add{
+  color: #6dd8ff;
+  font-size: 48rpx;
+  margin-right: 24rpx;
+}
+.addLock{
+  font-size: 36rpx;
+  color: #68d3ff;
+}

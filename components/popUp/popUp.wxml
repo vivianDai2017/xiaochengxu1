@@ -1,0 +1,17 @@
+<!-- 这是自定义组件的内部WXML结构 -->
+<view class="inner">
+  <!--主标题-->
+  <view class="title">{{innerText}}</view>
+  <!--副标题 if-->
+  <view class="subTitle">{{subText}}</view>
+  <!--输入框1 if-->
+  <input type="text" placeholder="{{inputTextOne}}" maxlength='6' bindinput="{{inputNameOne}}"></input>
+  <!--输入框2 if-->
+  <input type="text" placeholder="{{inputTextTwo}}" maxlength='14' bindinput="{{inputNameTwo}}"></input>
+  <!--取消、确认按钮-->
+  <view class="radio">
+    <view class="cancel button">取消</view>
+    <view class="confirm button" bindtap="{{confirmName}}">确认</view>
+  </view>
+</view>
+<slot></slot> 

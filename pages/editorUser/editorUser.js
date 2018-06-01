@@ -9,28 +9,40 @@ Page({
     name: "宝贝",
     welcomeTxt: "请输入欢迎语",
     nameTemp: '',
-    welcomeTxtTemp: ''
+    welcomeTxtTemp: '',
+    showPopUp: true
   },
 
-
+  /**
+   * 称谓欢迎语框tap事件
+   */
   editorTxt: function(){
-    console.log(1);
-    this.setData({
-      hiddenmodalput: !this.data.hiddenmodalput
-    })
+    this.setData({showPopUp: true});
   },
+  /**
+   * 监听称谓输入事件
+   */
   nameInput: function(e){
+    console.log('输入名称');
     this.setData({nameTemp: e.detail.value})
   },
+  /**
+   * 监听欢迎语输入事件
+   */
   welcomeInput: function(e){
     this.setData({welcomeTxtTemp: e.detail.value})
   },
-  // 取消弹框
+  /**
+   * 取消弹框
+   */
   cancel: function(){
-    this.setData({hiddenmodalput: true});
+    this.setData({ showPopUp: false });
   },
-  // 确认
+  /**
+   * 弹框确认
+   */
   confirm: function(e){
+    // console.log('确认事件触发');
     var nameTemp = this.data.nameTemp;
     var welcomeTxtTemp = this.data.welcomeTxtTemp;
     if(!nameTemp){nameTemp = '宝贝'}
@@ -38,7 +50,8 @@ Page({
     this.setData({
       hiddenmodalput: true,
       name: nameTemp,
-      welcomeTxt: welcomeTxtTemp
+      welcomeTxt: welcomeTxtTemp,
+      showPopUp: false
     });
     
    

@@ -1,12 +1,13 @@
 {
   "pages": [
-    "pages/temporaryPassword/temporaryPassword",
+    "pages/unbingIndex/unbindIndex",
+    "pages/step1/step1",
     "pages/editorUser/editorUser",
+    "pages/temporaryPassword/temporaryPassword",
     "pages/modal/modal",
     "pages/wallPaperConfiger/wallPaperConfiger",
     "pages/bindPhone/bindPhone",
-    "pages/test/test",
-    "pages/step1/step1",    
+    "pages/test/test",    
     "pages/index/index",
     "pages/wallpaper/wallpaper", 
     "pages/msgList/msgList",

@@ -41,11 +41,42 @@
 .f{
   width: 120rpx;
   height: 120rpx;
-  border: 1px solid #000;
+  border: 1px solid #68d3ff;
   border-radius: 50%;
   margin: 30rpx;
 }
 .modal{
   color: #000;
   border: 1px solid red !important;
+}
+/*弹出框样式*/
+page{
+  position: relative;
+}
+.popUp {
+  width: 500rpx;
+  height: 300rpx;
+  border: 1px solid red;
+  border-radius: 40rpx;
+  background-color: #fff;
+  /* color: red; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.radio{
+  display: flex;
+}
+.input{
+  text-align: left;
+  border: 1px solid #bbb;
+  margin-top: 20rpx;
+}
+.button{
+  width:50%;
+  border: 1px solid #000;
+  /* text-align: center; */
+  color: #68d3ff;
 }

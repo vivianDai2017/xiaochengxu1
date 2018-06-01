@@ -1,7 +1,8 @@
 /**app.wxss**/
 page{
-  background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527574459954&di=b669c53f427dd4bd781e5c0193be24ae&imgtype=0&src=http%3A%2F%2Fp1.wmpic.me%2Farticle%2F2016%2F07%2F29%2F1469781945_LplPyMeA.jpg 
-  );
+  /* background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527574459954&di=b669c53f427dd4bd781e5c0193be24ae&imgtype=0&src=http%3A%2F%2Fp1.wmpic.me%2Farticle%2F2016%2F07%2F29%2F1469781945_LplPyMeA.jpg 
+  ); */
+  background-color: #000;
 }
 .container {
   height: 100%;
@@ -11,10 +12,13 @@ page{
   justify-content: space-between;
   padding:  0;
   box-sizing: border-box;
-  color: #fff;
+  /* color: #fff; */
 } 
 .btn{
-  color: #fff !important;
+  color: #68d3ff !important;
+  background-color: transparent;
+  border: 1px solid #68d3ff;
+  border-radius: 40rpx;
 }
 button[disabled]{
   color: rgba(255,255,255,0.5) !important;

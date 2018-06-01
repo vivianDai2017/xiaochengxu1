@@ -1,64 +1,76 @@
 /* pages/step1/step1.wxss */
 @import "../lib/iconfont.wxss";
-.header{
+/* .header{
   padding-top: 40rpx;
   height: 80rpx;
   line-height: 80rpx;
+} */
+.font{
+  font-family: PingFang-SC-Bold;
 }
 .steps{
   width: 100%;
-  height: 256rpx;
+  /* height: 256rpx; */
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
-ul{
+.item{
   height: 70rpx;
   display: flex;
   align-items: center;
 }
 .num{
-  width: 70rpx;
-  height: 70rpx;
-  line-height: 70rpx;
+  width: 60rpx;
+  height: 60rpx;
+  line-height: 60rpx;
   text-align: center;
-  background-color: #bbb;
+  background-color: #a4a5a5;
   border-radius: 50%;
+  color: #fff;
 }
 .line{
-  width: 60rpx;
-  height: 4rpx;
+  /*宽度扩大了*/
+  width: 50rpx;
+  height: 2rpx;
   background-color: #bbb;
 }
 .none{
   height: 0;
 }
 .current{
-  background-color: #00bfff;
+  background-color: #68d3ff;
 }
 .currentTxt{
-  color: #00bfff;
+  color: #68d3ff;
 }
 .txt{
   text-align: center;
-  font-size: 32rpx;
+  font-size: 28rpx;
   margin-top: 20rpx;
+  color: #fff;
 }
 .content{
   text-align: center;
 }
 .icon{
-  margin-bottom: 100rpx;
+  margin-bottom: 160rpx;
+  margin-top: 195rpx;
 }
 .step{
-  font-size: 26rpx;
-  padding: 10rpx 0;
+  height: 30rpx;
+  line-height: 30rpx;
+  color: #d8d8d8;
+  font-size: 28rpx;
+  padding: 15rpx 0;
   margin: 0 80rpx;
   text-align: left;
 }
+.stepTxt{
+  margin-bottom: 160rpx;
+}
 .btn{
-  background-color: #00bfff;
-  color: #fff;
-  width: 60%;
-  margin-top: 200rpx;
-  border-radius: 20rpx;
+  width: 400rpx;
+	height: 88rpx;
+	border-radius: 44rpx;
+	border: solid 2rpx #4cc1eb;
 }

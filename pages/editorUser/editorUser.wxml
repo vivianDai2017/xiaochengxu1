@@ -4,8 +4,10 @@
     <view class="wallPaper">
       <!--文字层-->
       <view class="txt" bindtap="editorTxt">
-        <input class="name" type="text" value="{{name}}" maxlength="6" ></input>
-        <input class="welcome" type="text" value="{{welcomeTxt}}" maxlength="14"></input>
+        <!-- <input class="name" type="text" value="{{name}}" maxlength="6" ></input>
+        <input class="welcome" type="text" value="{{welcomeTxt}}" maxlength="14"></input> -->
+        <view class="name">{{name}}</view>
+        <view class="welcome">{{welcomeTxt}}</view>
       </view>
     </view>
     <view class="tap">点击切换解锁壁纸</view>
@@ -18,8 +20,22 @@
     <view class="f"></view>
   </view>
   <!--弹出框-->
-  <modal class="modal" hidden="{{hiddenmodalput}}" title="请编辑称谓及欢迎语" confirm-text="提交" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">  
+  <!-- <modal class="modal" hidden="{{hiddenmodalput}}" title="请编辑称谓及欢迎语" confirm-text="提交" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">  
     <input type="text" bindinput="nameInput" placeholder="请输入0-6位字符的称谓" maxlength="6" auto-focus/>  
     <input type="text" bindinput="welcomeInput" placeholder="请输入0-14位的欢迎语" maxlength='14'></input>
-  </modal> 
+  </modal>  -->
+  <!--自定义弹出框-->
+  <view class="popUp" wx:if="{{showPopUp}}">
+  <!--主标题-->
+  <view class="title">称谓及欢迎语</view>
+  <!--输入框1 if-->
+  <input type="text" placeholder="请输入0-6位称谓" maxlength='6' bindinput="nameInput" class="input"></input>
+  <!--输入框2 if-->
+  <input type="text" placeholder="请输入0-14位的欢迎语" maxlength='14' bindinput="welcomeInput" class="input"></input>
+  <!--取消、确认按钮-->
+  <view class="radio">
+    <view class="cancel button" bindtap="cancel">取消</view>
+    <view class="confirm button" bindtap="confirm">确认</view>
+  </view>
+</view>
 </view>

@@ -1,0 +1,9 @@
+<!--pages/unbingIndex/unbindIndex.wxml-->
+<view class="container">
+  <view  class="lockImg" ></view>
+  <button wx:if="{{!hasUserInfo && canIUse}}" class="btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">绑定微信</button>
+  <view wx:if="{{showBindLock}}" class="btn btnAdd" bingTap="{{addLock}}">
+    <view class="add">+</view>
+    <view class="addLock">添加设备</view>
+  </view>
+</view>

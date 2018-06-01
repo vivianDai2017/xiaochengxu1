@@ -5,36 +5,36 @@
   <view class="">
     <ul class="steps">
         <li class="start">
-          <ul>
+          <ul class="item">
             <li class="line none"></li>
             <li class="num current">1</li>
             <li class="line {{step >= 2 ? 'current' : ''}}"></li>
           </ul>
-          <view class="txt currentTxt">锁具绑定</view>
+          <view class="font txt currentTxt">锁具绑定</view>
         </li>
         <li class="mid">
-          <ul>
+          <ul class="item">
             <li class="line {{step >= 2 ? 'current' : ''}}"></li>
             <li class="num {{step >= 2 ? 'current' : ''}}">2</li>
             <li class="line {{step >= 3 ? 'current' : ''}}"></li>
           </ul>
-          <view class="txt {{step >= 2 ? 'currentTxt' : ''}}">扫描二维码</view>
+          <view class="font txt {{step >= 2 ? 'currentTxt' : ''}}">扫描二维码</view>
         </li>
         <li class="mid">
-          <ul>
+          <ul class="item">
             <li class="line {{step >= 3 ? 'current' : ''}}"></li>
             <li class="num {{step >= 3 ? 'current' : ''}}">3</li>
             <li class="line"></li>
           </ul>
-          <view class="txt {{step >= 3 ? 'currentTxt' : ''}}">连接wifi</view>
+          <view class="font txt {{step >= 3 ? 'currentTxt' : ''}}">连接wifi</view>
         </li>
         <li class="end">
-          <ul>
+          <ul class="item">
             <li class="line"></li>
             <li class="num">4</li>
             <li class="line none"></li>
           </ul>
-          <view class="txt">完成</view>
+          <view class="font txt">完成</view>
         </li>
       </ul>
   </view>
@@ -42,10 +42,12 @@
   <!--步骤提示 begin-->
   <view class="content" wx:if="{{step == 1}}">
     <view class="icon">
-    <i class="iconfont icon-msnui-bind-circle"></i>
+    <i class="iconfont icon-bangding1"></i>
     </view>
-    <view class="step">第一步，请按下锁具的设置键，进入管理模式</view>
-    <view class="step">第二步，选择绑定云端账号，获取二维码</view>
+    <view class="stepTxt">
+      <view class="font step">第一步，请按下锁具的设置键，进入管理模式</view>
+      <view class="font step">第二步，选择绑定云端账号，获取二维码</view>
+    </view>
     <button class="btn" bindtap="startScan">开始扫描</button>
   </view>
   <view class="content" wx:if="{{step == 2}}">
