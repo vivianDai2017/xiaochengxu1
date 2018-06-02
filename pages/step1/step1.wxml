@@ -40,6 +40,7 @@
   </view>
   <!--step 导航 end-->
   <!--步骤提示 begin-->
+  <!--锁具绑定-->
   <view class="content" wx:if="{{step == 1}}">
     <view class="icon">
     <i class="iconfont icon-bangding1"></i>
@@ -48,13 +49,78 @@
       <view class="font step">第一步，请按下锁具的设置键，进入管理模式</view>
       <view class="font step">第二步，选择绑定云端账号，获取二维码</view>
     </view>
-    <button class="btn" bindtap="startScan">开始扫描</button>
+    <view class="btn" bindtap="startScan">开始扫描</view>
   </view>
-  <view class="content" wx:if="{{step == 2}}">
-    <view>{{result}}</view>
+  <!--扫描二维码 等待-->
+  <view class="content" wx:if="{{step == 2 && waitLock}}">
+    <!-- <view>{{result}}</view>
     <view>{{scanType}}</view>
     <view>{{charSet}}</view>
-    <view>{{path}}</view>
+    <view>{{path}}</view> -->
+    <view class="loading icon">
+    </view>
+    <view class="wait">锁具信息等待获取中</view>
+  </view>
+  <!--  -->
+  <view class="content" wx:if="{{step == 3 && wifiBefore}}">
+    <view class="icon">
+    <i class="iconfont icon-WIFIwofi"></i>
+    </view>
+    <view class="stepTxt">
+      <view class="font wifiStep">锁具信息获取成功</view>
+      <view class="font wifiStep">请帮助设备连上网络</view>
+    </view>
+    <view class="btn" bindtap="getWifiList">开始联网</view>
+  </view>
+  <!--wifi列表-->
+  <view class="content wifiList" wx:if="{{step == 3 && wifiList }}">
+    <block wx:for="{{list}}">
+      <view class="list" bindtap="getPassPopUp" data-wifi-name="{{item.SSID}}">
+        <view class="l">
+          <view>{{item.SSID}}|</view>
+          <!-- <view>{{item.BSSID}}|</view> -->
+        </view>
+        <view class='r'>
+          <view>{{item.secure == true ? '安全' : '危险'}}|</view>
+          <view>{{item.signalStrength}}|</view>
+        </view>
+      </view>
+    </block>       
+  </view>
+  <!--密码输入弹出框-->
+  <view class="popUp" wx:if="{{showPopUp}}">
+    <!--主标题-->
+    <view class="title">提示</view>
+    <!--副标题-->
+    <view class="title subTitle">输入密码</view>
+    <view>{{test}}</view>
+    <view>test1</view>
+    <!--输入框1 if-->
+    <input type="text" placeholder="请输入密码" bindinput="wifiPassInput" class="input"></input>
+    <!--取消、确认按钮-->
+    <view class="radio">
+      <view class="cancel button" bindtap="cancel">取消</view>
+      <view class="confirm button" bindtap="confirm">确认</view>
+    </view>
+  </view>
+  <!--等待锁联网中-->
+  <view class="content" wx:if="{{step == 3 && waitNet}}">
+    <view class="loading icon2"></view>
+    <view class="welcome">欢迎使用云巢智能锁</view>
+    <view class="detail">正在努力联网中</view>
+    <view class="detail">大约需要1-3分钟</view>
+    <view class="detail">请不要操作手机其他动作</view>
+  </view>
+  <!--设备已联网页面-->
+  <view class="content" wx:if="{{step == 4 && connectSucc}}">
+    <view class="icon">
+    <i class="iconfont icon-WIFIwofi"></i>
+    </view>
+    <view class="stepTxt">
+      <view class="font wifiStep">锁具信息获取成功</view>
+      <view class="font wifiStep">请帮助设备连上网络</view>
+    </view>
+    <view class="btn" bindtap="getWifiList">开始联网</view>
   </view>
   <!--步骤提示 end-->
 </view>

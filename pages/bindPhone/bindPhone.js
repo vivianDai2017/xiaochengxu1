@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    logoImage:'../../images/logo-temp.png',
+    logoImage:'../../images/logo.png',
     getVerify: true,
     registerDisabled: true,
     phone: '',
@@ -50,12 +50,16 @@ Page({
     var code = this.data.code;
     console.log(phone);
     console.log(code);
-    if (/^1[34578]\d{9}$/.test(phone) && /^\d{4}$/.test(code))
+    if (/^1[34578]\d{9}$/.test(phone) && /^\d{4}$/.test(code)){
       console.log('验证通过');
-    else
+      this.setData({ errTips: '' });
+      wx.navigateTo({ url: '../step1/step1' });
+    }else{
       console.log('不通过');
-      this.setData({errTips: '手机号或验证码格式有误,请确认'})
-    return;
+      this.setData({ errTips: '手机号或验证码格式有误,请确认' });
+      return;
+    }
+      
   },
   /**
    * 生命周期函数--监听页面加载

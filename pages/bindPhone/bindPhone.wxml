@@ -14,10 +14,10 @@
     <view class="input-item">
       <i class="iconfont icon-25phone"></i>
       <input type="number" class="input-text" maxlength="4" placeholder='请输入验证码' bindinput="codeNum"></input>
-      <button type="default" class="code btn" disabled="{{getVerify}}" bindtap="getCode">获取验证码</button>
+      <view class="code {{getVerify ? 'disabled' : ''}}" bindtap="getCode">获取验证码</view>
     </view>
     <view class="error-tips">{{errTips}}</view>
-    <button type="default" bindtap="handleRegister" class="register btn" disabled="{{registerDisabled}}">登录</button>
+    <view  bindtap="handleRegister" class="register btn {{registerDisabled ? 'disabled' : ''}}">登录</view>
   </view>
   <!--register end  -->
 </view>

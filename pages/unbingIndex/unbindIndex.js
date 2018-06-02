@@ -10,7 +10,7 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    showBindLock: true
+    showBindLock: false
   },
 
   /**
@@ -20,7 +20,8 @@ Page({
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
-        hasUserInfo: true
+        hasUserInfo: true,
+        // showBindLock: true
       })
     } else if (this.data.canIUse) {
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
@@ -78,7 +79,8 @@ Page({
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,
-      hasUserInfo: true
+      hasUserInfo: true,
+      showBindLock: true
     });
     // wx.navigateTo({
     //   url: '../logs/logs'
@@ -86,8 +88,13 @@ Page({
   },
 
   /**
-   * 添加设备跳转
+   * 点击添加设备跳转
    */
+  addLock: function(){
+    wx.navigateTo({
+      url: '../bindPhone/bindPhone'
+    })
+  },
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
