@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    step: 3,
+    step: 1,
     result: '',
     scanType: '',
     charSet: '',
@@ -21,8 +21,9 @@ Page({
     showPopUp: false,
     passWord: '',
     wifiName: '',
-    waitNet: true,
-    connectSucc: false
+    waitNet: false,
+    connectSucc: false,
+    connectFail: false
   },
 
   /**
@@ -37,7 +38,7 @@ Page({
       onlyFromCamera: true,
       success: (res) => {
         console.log(res);
-        this.setData({ wait: true });
+        this.setData({ waitLock: true });
         // this.setData({
         //   result: res.result,
         //   scanType: res.scanType,
@@ -55,13 +56,18 @@ Page({
             success: (res) => {
               console.log('接口调用成功');
               this.setData({ waitWifi: false });
-              this.setData({ step: 3 })
+              this.setData({ step: 3 });
+              this.setData({ waitLock: false });
+              this.setData({ wifiBefore: true });
             },
             fail: (res) => {
               console.log('接口调用失败');
               this.setData({ waitWifi: false });
-              console.log('接口调用失败结束');;
+              
               this.setData({ step: 3 });
+              this.setData({ waitLock: false });
+              this.setData({ wifiBefore: true });
+              console.log('接口调用失败结束');
             }
           })
         },3000);
@@ -78,55 +84,79 @@ Page({
    */
   getWifiList: function(){
     // 初始化wifi模块
-    wx.startWifi({
-      success: (res) => {
-        console.log(res.errMsg);
-        this.setData({ start: res.errMsg });
-      },
-      fail: (res) => {
-        console.log(res.errMsg);
-        // this.setData({ start: res.errMsg });
-      },
-      complete: res => {
-        console.log(res.errMsg);
-        // this.setData({ startEnd: res.errMsg });
-      }
-    });
+    /**
+     * 开发调试暂注释
+     */
+    // wx.startWifi({
+    //   success: (res) => {
+    //     console.log(res.errMsg);
+    //     this.setData({ start: res.errMsg });
+    //   },
+    //   fail: (res) => {
+    //     console.log(res.errMsg);
+    //     // this.setData({ start: res.errMsg });
+    //   },
+    //   complete: res => {
+    //     console.log(res.errMsg);
+    //     // this.setData({ startEnd: res.errMsg });
+    //   }
+    // });
     // 请求获取wifi列表
-    wx.getWifiList({
-      success: res => {
-        console.log(res.errMsg);
-        // this.setData({ getWf: res.errMsg });
-      },
-      fail: res => {
-        console.log(res.errMsg);
-        // this.setData({ getWf: res.errMsg });
-      },
-      complete: res => {
-        console.log(res.errMsg);
-        // this.setData({ getWfEnd: res.errMsg });
-      }
-    });
+     /**
+     * 开发调试暂注释
+     */
+    // wx.getWifiList({
+    //   success: res => {
+    //     console.log(res.errMsg);
+    //     // this.setData({ getWf: res.errMsg });
+    //   },
+    //   fail: res => {
+    //     console.log(res.errMsg);
+    //     // this.setData({ getWf: res.errMsg });
+    //   },
+    //   complete: res => {
+    //     console.log(res.errMsg);
+    //     // this.setData({ getWfEnd: res.errMsg });
+    //   }
+    // });
     // 监听获取wifi列表事件
-    wx.onGetWifiList((res) => {
-      // this.setData({ test: 1 });
-      this.setData({ list: res.wifiList });
-      this.setData({ wifiList: true, wifiBefore: false });
-      // setWifiList是ios特有接口
-      if (res.wifiList.length) {
-        wx.setWifiList({
-          wifiList: [{
-            SSID: res.wifiList[0].SSID,
-            BSSID: res.wifiList[0].BSSID,
-            password: '123456'
-          }]
-        })
-      } else {
-        wx.setWifiList({
-          wifiList: []
-        })
-      }
-    })
+    /**
+     * 开发调试暂注释
+     */
+    // wx.onGetWifiList((res) => {
+    //   // this.setData({ test: 1 });
+    //   this.setData({ list: res.wifiList });
+    //   this.setData({ wifiList: true, wifiBefore: false });
+    //   // setWifiList是ios特有接口
+    //   if (res.wifiList.length) {
+    //     wx.setWifiList({
+    //       wifiList: [{
+    //         SSID: res.wifiList[0].SSID,
+    //         BSSID: res.wifiList[0].BSSID,
+    //         password: '123456'
+    //       }]
+    //     })
+    //   } else {
+    //     wx.setWifiList({
+    //       wifiList: []
+    //     })
+    //   }
+    // });
+    /**
+     * 开发调试用(设备联网成功)
+     */
+    this.setData({
+      step: 4,
+      wifiBefore: false,
+      connectSucc: true
+    });
+    /**
+     * 开发调试用(设备联网失败)
+     */
+    // this.setData({
+    //   wifiBefore: false,
+    //   connectFail: true
+    // });
   },
   /**
    * 选择wifi点击输入密码
@@ -138,13 +168,6 @@ Page({
     this.setData({ wifiName: e.currentTarget.dataset.wifiName });
   },
   /**
-   * 输入wifi密码弹框取消事件
-   */
-  cancel: function(){
-    console.log('取消按钮');
-    this.setData({ showPopUp: false });
-  },
-  /**
    * 监听密码框输入
    */
   wifiPassInput: function(e){
@@ -152,6 +175,13 @@ Page({
     // var pass = e.detail.value;
     // console.log(pass);
     this.setData({passWord: e.detail.value})
+  },
+  /**
+   * 输入wifi密码弹框取消事件
+   */
+  cancel: function () {
+    console.log('取消按钮');
+    this.setData({ showPopUp: false });
   },
   /**
    * 输入wifi密码弹框确认事件---将wif名（wifiName）和密码（passWord）传给后台
@@ -171,6 +201,7 @@ Page({
         // 跳至第四步，联网成功（connectSucc）页面显示
         this.setData({
           step: 4,
+          waitNet: false,
           connectSucc: true
         });
 
@@ -178,14 +209,42 @@ Page({
       fail: function(){
         console.log('接口调用失败');
         /**
-         * 跳至第四步，联网成功（connectSucc）页面显示
+         * 跳至第四步，联网失败（connectFail）页面显示，仍停留在第三步
          * 开发调试用
          */
         this.setData({
+          /**
+           * 开发调试用
+           */
           step: 4,
+          waitNet: false,
           connectSucc: true
         });
+        /**
+         * 实际应用
+         */
+        // this.setData({
+        //   waitNet: false,
+        //   connectFail: true
+        // });
       },
+    })
+  },
+  /**
+   * 设备联网失败返回wifi列表（toWifiList）
+   */
+  toWifiList: function(){
+    this.setData({
+      step: 3,
+      wifiList: true
+    })
+  },
+  /**
+   * 设备联网成功，跳转至已绑定锁具列表页
+   */
+  toLockList: function(){
+    wx.navigateTo({
+      url: '../index/index',
     })
   },
   /**

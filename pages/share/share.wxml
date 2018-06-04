@@ -1,0 +1,9 @@
+<!--pages/share/share.wxml-->
+<view class="container">
+  <view class="share">
+    <view class="center medium shareName">由{{nickName}}分享的临时密码</view>
+    <view class="center medium one">{{effectTime}}</view>
+    <view class="center medium ">{{tempPassword}}</view>
+  </view>
+</view>
+

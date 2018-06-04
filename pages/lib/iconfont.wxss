@@ -21,9 +21,9 @@
 
 .icon-zhiwen:before { content: "\e683"; }
 
-.icon-WIFIwofi:before { content: "\e60d"; font-size: 144rpx}
+.icon-WIFIwofi:before { content: "\e60d"; font-size: 144rpx }
 
-.icon-shezhi:before { content: "\e6dd"; }
+.icon-shezhi:before { content: "\e6dd"; font-size: 93rpx; color: #68d3ff }
 
-.icon-shuaxin:before { content: "\e64a"; }
+.icon-shuaxin:before { content: "\e64a"; color: #68d3ff; font-size: 36rpx }
 

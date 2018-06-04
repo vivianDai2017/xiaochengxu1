@@ -20,8 +20,20 @@
     <!--顶部导航 end-->
     
     <!--锁详情 begin-->
-    <view class="test">
-      {{lockInfoList[lockNum].status}}
+    <view class="date">
+      已守护 {{lockInfoList[lockNum].date}}天
+    </view>
+    <view class="detail">
+      <view class="onOff">{{lockInfoList[lockNum].onOff}}</view>
+      <view class="energy warn">(电量{{lockInfoList[lockNum].energy}})</view>
+    </view>
+    <view class="mess">
+      <block wx:for="{{lockInfoList[lockNum].messList}}">
+        <view class="messItem">
+          <view>{{item.mess}}</view>
+          <view>{{item.time}}</view>
+        </view>
+      </block>
     </view>
     <!--锁详情 edn-->
     </view> 
@@ -29,11 +41,11 @@
   </view>
   <!--底部设备管理、用户管理 begin-->
   <view class="manage">
-    <view class="lock" bindtap="toLockSet">
+    <view class="lock" bindtap="toLockSet" data-lock-name="{{lockNum}}">
       <i class="iconfont icon-shezhi"></i>
     </view>
     <view class="user">
-      <icon class="iconfont icon-yonghu"></icon>
+      <icon class="iconfont icon-shezhi"></icon>
     </view>
   </view>
   <!--底部设备管理、用户管理 end-->

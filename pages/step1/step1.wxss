@@ -180,3 +180,11 @@ page{
   color: #fff;
   margin-top: 30rpx;
 }
+.lockConnc{
+  font-size: 36rpx;
+  font-family: PingFang-SC-Medium;
+  color: #d8d8d8;
+}
+.more{
+  color: #fffefe;
+}

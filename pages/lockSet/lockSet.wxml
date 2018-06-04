@@ -1,0 +1,38 @@
+<!--pages/lockSet/lockSet.wxml-->
+<view class="container">
+  <view class="lockName">
+    <view class="name">{{lockName}}</view>
+    <view bindtap="modifyName">
+      <i class="iconfont icon-shuaxin"></i>
+    </view>
+    
+  </view>
+  <view class="lockDetail">
+    <view class="img">这是锁的图片</view>
+    <view class="list">
+      <ul>
+        <li class="item">{{lockType}}</li>
+        <li class="item">{{lockVer}}</li>
+        <li class="item">{{lockOnOff}}</li>
+        <li class="item">{{lockEnergy}}</li>
+        <li class="item">{{lockDate}}</li>
+      </ul>
+    </view>
+  </view>
+  <view class="btn pass regular temp" bindtap="passwordTemp">临时密码({{tempPassStatus}})</view>
+  <view class="btn pass regular" bindtap="password">开锁密码({{openPassStatus}})</view>
+</view>
+<!--弹框-->
+<view class="popUp" wx:if="{{showPopUp}}">
+    <!--主标题-->
+    <view class="title">修改名称</view>
+    <!--副标题-->
+    <view class="title subTitle">请输入设备名称</view>
+    <!--输入框1 if-->
+    <input type="text" placeholder="请输入设备名称" bindinput="wifiPassInput" class="input"></input>
+    <!--取消、确认按钮-->
+    <view class="radio">
+      <view class="cancel button" bindtap="cancel">取消</view>
+      <view class="confirm button" bindtap="confirm">确认</view>
+    </view>
+</view>

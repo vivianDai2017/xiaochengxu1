@@ -1,0 +1,43 @@
+/* pages/lockSet/lockSet.wxss */
+@import "../lib/iconfont.wxss";
+.lockName{
+  margin-top: 60rpx;
+  display: flex;
+  /* line-height: 36rpx; */
+}
+.name{
+  font-size: 36rpx;
+  font-family: PingFang-SC-Bold;
+  color: #d8d8d8;
+}
+.lockDetail{
+  display: flex;
+}
+.img{
+  width: 445rpx;
+}
+.item{
+  display: block;
+  font-size: 30rpx;
+  font-family: PingFang-SC-Regular;
+  color: #d8d8d8;
+  margin-bottom: 48rpx;
+}
+.temp{
+  margin: 173rpx 0 60rpx 0;
+}
+.pass{
+  border-color: #fafbfb;
+}
+/*弹出框样式-本页增加部分 begin*/
+.title{
+  font-family: PingFang-SC-Bold;
+  color: rgba(51,51,51,0.8);
+}
+.radio{
+  border-top: 1rpx solid #d2d2d2;
+  margin-top: 0;
+  height: 86rpx;
+  line-height: 86rpx;
+}
+/*弹出框样式-本页增加部分 end*/

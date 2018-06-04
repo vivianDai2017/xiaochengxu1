@@ -6,12 +6,39 @@ Page({
   data: {
     lockList: ['Alex的锁1','Alex的锁2','Alex的锁3'], //删除
     lockInfoList: [
-      { name: 'Alex的锁1',status: '锁1已锁定' },
-      { name: 'Alex的锁2', status: '已开启' },
-      { name: 'Alex的锁3', status: '休眠中' }
+      { 
+        name: 'Alex的锁1', 
+        onOff: '已锁定', 
+        energy: '10%', 
+        date: 32, 
+        messList: [
+          { mess: '云巢智能锁1号用普通密码开锁', time: '3小时前' },
+          { mess: '云巢智能锁1号用普通密码开锁', time: '3小时前' }
+        ] 
+      },
+      { 
+        name: 'Alex的锁2', 
+        onOff: '已开启', 
+        energy: '20%', 
+        date: 64,
+        messList: [
+          { mess: '云巢智能锁2号用普通密码开锁', time: '3小时前' },
+          { mess: '云巢智能锁2号用普通密码开锁', time: '3小时前' }
+        ] 
+      },
+      { 
+        name: 'Alex的锁3', 
+        onOff: '休眠中', 
+        energy: '59%', 
+        date: 168,
+        messList: [
+          { mess: '云巢智能锁3号用普通密码开锁', time: '3小时前' },
+          { mess: '云巢智能锁3号用普通密码开锁', time: '3小时前' }
+        ] 
+      }
     ],
     isOpen: false,
-    lockNum: 0,
+    lockNum: 1,
     mess:['智能锁开启1'],
     touchDot: 0, //触摸时的原点
     time: 0,
@@ -86,10 +113,11 @@ Page({
     // time = 0;
   },
   // 跳转时设备管理界面
-  toLockSet: function(){
+  toLockSet: function(e){
     console.log('去设备管理界面');
+    console.log(e.currentTarget.dataset.lockName);
     wx.navigateTo({
-      url: "../step1/step1"
+      url: '../lockSet/lockSet?lockNum=' + e.currentTarget.dataset.lockName
     })
   }
 })

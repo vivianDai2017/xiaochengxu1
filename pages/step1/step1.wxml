@@ -117,10 +117,21 @@
     <i class="iconfont icon-WIFIwofi"></i>
     </view>
     <view class="stepTxt">
-      <view class="font wifiStep">锁具信息获取成功</view>
-      <view class="font wifiStep">请帮助设备连上网络</view>
+      <view class="font lockConnc">设备已联网</view>
+      <view class="font detail more">你可以使用云巢更多功能</view>
     </view>
-    <view class="btn" bindtap="getWifiList">开始联网</view>
+    <view class="btn" bindtap="toLockList">确认</view>
+  </view>
+  <!--设备联网失败页面-->
+  <view class="content" wx:if="{{step == 3 && connectFail}}">
+    <view class="icon">
+    <i class="iconfont icon-WIFIwofi"></i>
+    </view>
+    <view class="stepTxt">
+      <view class="font lockConnc">设备联网中出现失败</view>
+      <view class="font detail more">请确认wifi稳定且密码正确</view>
+    </view>
+    <view class="btn" bindtap="toWifiList">确认</view>
   </view>
   <!--步骤提示 end-->
 </view>

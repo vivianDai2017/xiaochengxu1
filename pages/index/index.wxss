@@ -1,23 +1,22 @@
 /**index.wxss**/
  @import "../lib/iconfont.wxss";
 .container{
-   /* background-color: #bbb; */
-   padding: 0; 
+   color: #fff; 
 }
 .lockInfo{
   width: 100%;
-  height: 900rpx;
+  height: 964rpx; 
   position: relative;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   box-sizing: border-box;
 }
-.backgroundImage{
+/* .backgroundImage{
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-}
+} */
 .dynamicInfo{
   width: 100%;
   position: absolute;
@@ -25,29 +24,35 @@
   left: 0;
 }
 .headerNav{
+  margin-top: 65rpx;
   position: relative;
   width: 100%;
+  /* height: 30rpx; */
 }
 .lockList{
   display: flex;
   justify-content: center;
   margin: auto;
-  height: 96rpx;
-  line-height: 96rpx;
+  height: 60rpx;
+  line-height: 60rpx;
 }
 .active{
-   font-weight: 900; 
-   font-size: 16px;
+   /* font-weight: 900;  */
+   font-size: 36rpx;
+   font-family: PingFang-SC-Bold;
+   color: #68d3ff;
 }
 .normal{
-  font-weight: normal;
-  font-size: 12px;
+  font-size: 28rpx;
+  font-family: PingFang-SC-Medium;
+  /* color: #fff; */
 }
 .messNode{
-  width: 20rpx;
-  height: 20rpx;
+  width: 12rpx;
+  height: 12rpx;
   border-radius: 50%;
-  background-color: red;
+  background-color: #e43a3a;
+  margin-right: 30rpx;
 }
 .addLock{
   display: inline-block;
@@ -56,6 +61,30 @@
   top: 50%;
   transform: translateY(-50%);
 }
+.date{
+  font-size: 30rpx;
+  font-family: PingFang-SC-Bold;
+  text-align: center;
+  margin-top: 78rpx;
+}
+.detail{
+  display: flex;
+  justify-content: center;
+  margin-top: 550rpx;
+  font-size: 30rpx;
+  font-family: PingFang-SC-Bold;
+}
+.warn{
+  color: #fb2121;
+}
+.messItem{
+  display: flex;
+  justify-content: space-around;
+  font-size: 30rpx;
+  font-family: PingFang-SC-Regular;
+  /* font-weight: normal; */
+  margin-top: 27rpx;
+}
 .manage{
   width: 90%;
   height: 200rpx;
@@ -63,18 +92,15 @@
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
-  margin-top: 40rpx;
+  margin-top: 48rpx;
   padding: 40rpx;
 }
 .lock, .user{
   width: 50%;
   text-align: center;
+  height: 93rpx;
+  line-height: 93rpx;
 }
 .lock{
   border-right: 1px solid #bbb;
-}
-.test{
-  font-size: 32px;
-  text-align: center;
-  padding: 100rpx;
 }

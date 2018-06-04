@@ -1,0 +1,20 @@
+/* pages/share/share.wxss */
+.share{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 300rpx;
+  background-color: rgba(255,253,253,0.1);
+  border-radius: 2rpx;
+}
+.center{
+  text-align: center;
+  color: #fff;
+}
+.shareName{
+  margin-top: 79rpx;
+}
+.one{
+  margin: 17rpx 0 23rpx 0;
+}

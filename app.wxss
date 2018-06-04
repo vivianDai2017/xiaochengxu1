@@ -16,7 +16,7 @@ page{
   box-sizing: border-box;
   /*  */
   font-family: PingFang-SC-Regular;
-  /* color: #fff; */
+   color: #fff;  /*取消？*/
 } 
 /* button[disabled]{
   color: #fff !important;
@@ -33,4 +33,62 @@ page{
   text-align: center;
   margin: auto;
 }
-
+/*字体 PingFang-SC-Regulat  */
+.regular{
+  font-size: 30rpx;
+  font-family: PingFang-SC-Regular;
+  color: #fff;
+  /* font-weight: normal; */
+  /* font-stretch: normal; */
+}
+.medium{
+  font-size: 36rpx;
+  font-family: PingFang-SC-Medium;
+  color: #68d3ff;
+}
+/*弹出框样式 begin*/
+.popUp {
+  width: 534rpx;
+  height: 302rpx;
+  /* border: 1px solid red; */
+  border-radius: 40rpx;
+  background-color: #fff;
+  /* color: red; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.title{
+  font-size: 36rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(51,51,51,0.8);
+  margin-top: 16rpx;
+}
+.subTitle{
+  font-size: 26rpx;
+  color: #595959;
+  margin-top: 11rpx;
+}
+.radio{
+  display: flex;
+  margin-top: 31rpx;
+  height: 56rpx;
+  line-height: 56rpx;
+}
+.input{
+  text-align: left;
+  border: 1px solid #d2d2d2;
+  margin: 22rpx;
+  height: 54rpx;
+  line-height: 54rpx;
+  font-size: 30rpx;
+}
+.button{
+  width:50%;
+  /* border: 1px solid #000; */
+  /* text-align: center; */
+  color: #68d3ff;
+}
+/*弹出框样式 end*/
