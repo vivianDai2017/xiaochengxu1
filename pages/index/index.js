@@ -38,7 +38,7 @@ Page({
       }
     ],
     isOpen: false,
-    lockNum: 1,
+    deviceId: 1,
     mess:['智能锁开启1'],
     touchDot: 0, //触摸时的原点
     time: 0,
@@ -79,7 +79,6 @@ Page({
   //  滑动触摸事件结束
   touchEnd: function(e){
     var touchMove = e.changedTouches[0].pageX;
-    // console.log('滑动结束');
     // console.log(touchMove);
     // console.log(this.data.touchDot);
     // console.log(this.data.time);
@@ -90,12 +89,11 @@ Page({
       //执行切换页面的方法
       // console.log("向左滑动");
       // console.log(this.data.lockNum);
-      var num = this.data.lockNum;
+      var num = this.data.deviceId;
       if(num < 2){
         num++;
-        this.setData({ lockNum: num });
-      }
-      
+        this.setData({ deviceId: num });
+      }  
     }
     // 向右滑动   
     if (touchMove - this.data.touchDot >= 40 && this.data.time < 10 ) {
@@ -103,21 +101,44 @@ Page({
       //执行切换页面的方法
       // console.log("向右滑动");
       // console.log(this.data.lockNum);
-      var num = this.data.lockNum;
+      var num = this.data.deviceId;
       if (num > 0) {
         num--;
-        this.setData({ lockNum: num });
+        this.setData({ deviceId: num });
       }
     }
     // clearInterval(interval); // 清除setInterval
     // time = 0;
   },
-  // 跳转时设备管理界面
+  /**
+   * 跳转至设备管理界面
+   */
   toLockSet: function(e){
-    console.log('去设备管理界面');
-    console.log(e.currentTarget.dataset.lockName);
+    // console.log('去设备管理界面');
+    // console.log(e.currentTarget.dataset.lockName);
     wx.navigateTo({
-      url: '../lockSet/lockSet?lockNum=' + e.currentTarget.dataset.lockName
+      url: '../lockSet/lockSet?deviceId=' + e.currentTarget.dataset.deviceId
     })
-  }
+  },
+  /**
+   * 跳转至用户管理界面
+   */
+  toLockUsers: function(e){
+    console.log('去用户管理界面');
+    console.log(e.currentTarget.dataset);
+    wx.navigateTo({
+      url: '../lockUsers/lockUsers?deviceId=' + e.currentTarget.dataset.deviceId
+    })
+  },
+
+  /**
+ * 点击消息列进入消息详情页
+ */
+details: function(){
+  wx.navigateTo({
+    url: '../msgList/msgList'
+  })
+}
 })
+
+

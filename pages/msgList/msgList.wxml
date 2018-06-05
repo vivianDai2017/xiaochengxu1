@@ -4,21 +4,27 @@
   <block wx:for="{{msgList}}" wx:for-index="idx">
     <view class="list-item" bindtap="pullDown" id="{{idx}}">
       <!--设备icon begin-->
-      <view class="lock-icon">{{item.lockIcon}}</view>
+      <view class="msgType">
+        <view class="icon {{item.warn == 0 ? 'warn' : ''}}"> 
+          <i class="iconfont {{item.lockIcon}}"></i>
+        </view>
+        <view class="{{!item.isReady && !allReady ? 'msgNode' : 'msgNo'}}"></view>
+      </view>
       <!--设备icon end-->
       <!--消息 begin-->
-      <view class="{{indexNum == idx ? '' : 'msg'}}" >
+      <view class="msg" >
         <!--消息概要-->
         <view class="general">
-          <view class="title">{{idx}}.{{item.general}}</view>
-          <view class="time">{{item.general}}</view>
+          <view class="bold {{item.warn == 0 ? 'warn' : ''}}">{{idx}}.{{item.general}}</view>
+          <view class="bold time {{item.warn == 0 ? 'warn' : ''}}">{{item.general}}</view>
         </view>
         <!--消息详情-->
-        <view class="details">{{item.details}}</view>
+        <view class="details medium {{item.warn == 0 ? 'warn' : ''}}">{{item.details}}</view>
       </view>
     </view>
+    <view class="detailsAll regular" wx:if="{{indexNum == idx && show}}">{{item.details}}</view>
   </block>
   <!--消息 end-->
-    
-  
+  <!--设置全部已读-->
+  <view class="btn" bindtap="allReady">全部已读</view>
 </view>

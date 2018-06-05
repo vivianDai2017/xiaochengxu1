@@ -1,4 +1,8 @@
 /* pages/share/share.wxss */
+.btn{
+  background-color: transparent;
+  margin-top: 887rpx;
+}
 .share{
   position: fixed;
   bottom: 0;

@@ -15,7 +15,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-xie:before { content: "\e71f"; }
+.icon-xie:before { content: "\e71f"; font-size: 48rpx; }
 
 .icon-bangding1:before { content: "\e650"; color: #00bfff; font-size: 142rpx }
 

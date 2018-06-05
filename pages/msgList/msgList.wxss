@@ -1,34 +1,106 @@
 /* pages/msgList/msgList.wxss */
-page{
-  background-color: #317ee7;
-}
-.container{
-  padding: 0;
-}
+@import "../lib/iconfont.wxss";
 .list-item{
   display: flex;
   align-items: center;
-  justify-content: space-between; 
+  justify-content: center; 
   width: 100%; 
   padding: 20rpx 0;
   /*test*/
-  border: 1px solid red;
-  box-sizing: border-box; 
+  /* border: 1px solid red; */
+  /* box-sizing: border-box;  */
+  color: #e43a3a;
 }
-.lock-icon{
-  padding: 0 40rpx;
+.icon{
+  width: 80rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 50%;
+  border: 2rpx solid #fff;
+  text-align: center;
+}
+.icon-shezhi:before{
+  font-size: 64rpx;
+  color: #fff;
+}
+.msgType{
+  padding: 0 22rpx;
+  display: flex;
+  justify-content: center;
+  /* color: red; */
+}
+.msgNode{
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 50%;
+  background-color: #e43a3a
+}
+.msgNo{
+  width: 20rpx;
+  height: 20rpx;
 }
 .msg{
   overflow: hidden; 
   white-space: nowrap;
   /* text-overflow: ellipsis;  */
+  width: 500rpx;
+  /* color: red; */
 }
 .general{
   display: flex;
   justify-content: space-between;
   padding-right: 30rpx;
 }
+.time{
+  font-size: 28rpx;
+}
 .details{
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.medium{
+  color: #fcfcfc;
+  font-size: 28rpx;
+}
+.warn{
+  color: #e43a3a;
+  border-color: #e43a3a;
+}
+/*消息详情框样式 begin*/
+.detailsAll{
+  position: relative;
+  width: 604rpx;
+  /* height: 203rpx; */
+  padding: 49rpx 15rpx 33rpx 27rpx;
+  border: 2rpx solid #717171;
+  border-radius: 10rpx;
+  font-size: 26rpx;
+  line-height: 48rpx;
+}
+.detailsAll:before{
+  position: absolute;
+  top: -16px;
+  right: 40rpx;
+  border-style: solid;
+  border-width: 16rpx;
+  border-color: transparent transparent #000 transparent;
+  display: block;
+  content:'';
+  z-index: 12;
+}
+.detailsAll:after{
+  position: absolute;
+  top: -18px;
+  right: 40rpx;
+  border-style: solid;
+  border-width: 18rpx;
+  border-color: transparent transparent #bbb transparent;
+  display: block;
+  content:'';
+  z-index:10
+}
+/*消息详情框样式 end*/
+.btn{
+  position: fixed;
+  bottom: 75rpx;
 }

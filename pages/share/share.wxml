@@ -1,5 +1,8 @@
 <!--pages/share/share.wxml-->
-<view class="container">
+<!--未绑定微信时显示-->
+<button wx:if="{{!hasUserInfo && canIUse}}" class="btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">绑定微信获取临时密码</button>
+<!--已绑定微信时显示-->
+<view class="container" wx:if="{{hasUserInfo}}">
   <view class="share">
     <view class="center medium shareName">由{{nickName}}分享的临时密码</view>
     <view class="center medium one">{{effectTime}}</view>

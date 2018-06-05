@@ -1,0 +1,33 @@
+<!--pages/lockUsers/lockUsers.wxml-->
+<view class="container">
+  <!--用户列表 begin-->
+  <block wx:for="{{usersList}}">
+    <view class="wrap">
+    <view class="usersList {{touchName == item.name && moveL ? 'move' : ''}} {{touchName == item.name && moveR && moveL ? 'moveBack' : ''}}" bindtouchstart="touchStart" bindtouchend="touchEnd" data-name="{{item.name}}">
+      <view class="l">
+        <view class="wallwapperId"></view>
+        <view class="name medium">{{item.name}}</view>
+      </view>
+      <view class="r">
+        <view><i class="iconfont icon-zhiwen"></i></view>
+        <view class="fingerNum medium">x{{item.fingerNum}}</view>
+        <view class="delete">删除</view>
+      </view>
+    </view>
+    </view>
+  </block>
+  <!--用户列表 end-->
+  <button class="btn add medium {{disabled ? 'disabled' : ''}}" disabled="{{disabled}}" bindtap="test">添加新成员</button>
+</view>
+<!--弹框-->
+<view class="popUp" wx:if="{{showPopUp}}">
+    <!--主标题-->
+    <view class="title">删除用户</view>
+    <!--副标题-->
+    <view class="subTitle">是否删除该用户</view>
+    <!--取消、确认按钮-->
+    <view class="radio">
+      <view class="cancel button" bindtap="cancel">取消</view>
+      <view class="confirm button" bindtap="confirm">确认</view>
+    </view>
+</view>

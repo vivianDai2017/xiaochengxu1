@@ -1,22 +1,24 @@
 {
   "pages": [
+    "pages/lockUsers/lockUsers",
+    "pages/index/index",
+    
     "pages/temporaryPassword/temporaryPassword",
-    "pages/unbingIndex/unbindIndex",
+    
+    "pages/msgList/msgList",
     "pages/share/share",
     
-    
+    "pages/unbingIndex/unbindIndex",
     "pages/lockSet/lockSet",
     "pages/password/password",
-    "pages/index/index",
+    
     "pages/step1/step1",
     "pages/bindPhone/bindPhone",
-   
     "pages/editorUser/editorUser",
     "pages/modal/modal",
     "pages/wallPaperConfiger/wallPaperConfiger",
     "pages/test/test",    
     "pages/wallpaper/wallpaper", 
-    "pages/msgList/msgList",
     "pages/wifi/wifi",
     "pages/swiperTest/swiperTest",
     "pages/location/location",

@@ -1,0 +1,97 @@
+/* pages/lockUsers/lockUsers.wxss */
+@import "../lib/iconfont.wxss";
+.wrap{
+  width: 750rpx;
+  height: 110rpx;
+  position: relative;
+  top: 0;
+  left: 0;
+  border-bottom: 2rpx solid rgba(114,114,114,0.6);
+}
+.usersList{
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  width: 897rpx;
+}
+.move{
+  animation: move .5s linear;
+  left: -147rpx;
+}
+@keyframes move{
+  from{left: 0}
+  to{left: -147rpx}
+}
+.moveBack{
+  animation: moveBack .5s linear;
+  left: 0;
+}
+@keyframes moveBack{
+  from{left: -147rpx}
+  to{left: 0}
+}
+.l, .r{
+  display: flex;
+  justify-content: center;
+  line-height: 110rpx;
+}
+.l{
+  margin-left: 45rpx;
+}
+.wallwapperId{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  border: 2rpx solid #68b3ff;
+  margin: 15rpx 0;
+}
+.name{
+  margin-left: 53rpx;
+  color: #d8d8d8;
+}
+.icon-zhiwen:before{
+  color: #e5e5e5;
+  font-size: 40rpx;
+  margin-right: 15rpx;
+}
+.fingerNum{
+  margin-right: 45rpx;
+  color: #d8d8d8;
+}
+.delete{
+  width: 147rpx;
+  height: 110rpx;
+  background-color: #e43a3a;
+  color: #fff;
+  font-size: 30rpx;
+  text-align: center;
+  margin-bottom: 0rpx;
+}
+.add{
+  position: fixed;
+  margin-top: 1026rpx;
+  background-color: transparent;
+  border-color: #03abe8;
+  color: #03abe8;
+}
+.disabled{
+  opacity: 0.2 !important;
+  color: #03abe8 !important;
+  background-color: transparent !important; 
+}
+/*弹出框样式修改 begin*/
+.popUp{
+  width: 480rpx;
+  height: 251rpx;
+}
+.title{
+  margin-top: 51rpx;
+}
+.radio{
+   margin-top: 0; 
+  height: 86rpx;
+  line-height: 86rpx;
+}
+/*弹出框样式修改 end*/
