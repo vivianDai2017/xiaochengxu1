@@ -5,26 +5,82 @@ Page({
    * 页面的初始数据
    */
   data: {
+    choiceList: [
+      {
+        'name': '老公',
+        'src': '../../images/label.png'
+      },
+      {
+        'name': '孩子他爸',
+        'src': '../../images/label-long.png'
+      },
+      {
+        'name': '爸爸',
+        'src': '../../images/label.png'
+      },
+      {
+        'name': '孩子他妈',
+        'src': '../../images/label-long.png'
+      },
+      {
+        'name': '老婆',
+        'src': '../../images/label.png'
+      },
+      {
+        'name': '妈妈',
+        'src': '../../images/label.png'
+      },
+      {
+        'name': '宝贝',
+        'src': '../../images/label-bg.png'
+      },
+      {
+        'name': '儿子',
+        'src': '../../images/label.png'
+      },
+      {
+        'name': '女儿',
+        'src': '../../images/label.png'
+      },
+      {
+        'name': '先生',
+        'src': '../../images/label.png'
+      },
+      {
+        'name': '女士',
+        'src': '../../images/label.png'
+      },
+      {
+        'name': '你好',
+        'src': '../../images/label.png'
+      }
+    ],
+    index: 6,    // 称呼默认选择 宝贝 ，下标6
+    name: '宝贝',   // 称呼选择名称（新添加成员的称呼）
+    tempName: '',   // 新添加成员称呼-自定义监听称呼
     usersList:[
         {
-          'wallwapperId': 1,
+          'wallwapperUrl': '',
           'name': '默认称呼',
           'fingerNum': 3
         },
         {
-          'wallwapperId': 1,
+          'wallwapperUrl': '',
           'name': '妈妈',
           'fingerNum': 2
         }
-      ],
+    ],
     touchDot: 0, //触摸时的原点
     time: 0,
     interval: '',
-    touchName: '',
+    touchName: '',   // 当前滑动操作的用户名称
     moveL: false,
     moveR: false,
     disabled: false,
-    showPopUp: true
+    showPopUp: false,    // 确认删除弹框
+    showNamePopUp: false,  //称呼选择、编辑弹框
+    popUpTitle: '为用户选择称呼',
+    showChoice: true
   },
 
   /**
@@ -111,14 +167,138 @@ Page({
     clearInterval(this.data.interval); // 清除setInterval
     this.setData({time: 0});
   },
-  test: function(){
-    console.log('按钮可用');
+  /**
+   * 添加新成员
+   */
+  addNewUser: function(){
+    this.setData({ showNamePopUp: true });
+  },
+  /**
+   * 删除用户确认事件
+   */
+  deleteConfirm: function(){
+    // console.log('确认删除吗');
+    this.setData({ showPopUp: true });
+  },
+  /**
+   * 删除用户弹框取消事件：弹框隐藏
+   */
+  cancel: function(){
+    this.setData({ showPopUp: false });
+  },
+  /**
+   * 删除用户弹框确认事件：
+   *  1.携带用户名称（name--touchName）,通知后台删除该用户信息
+   *  2.弹框隐藏
+   */
+  confirm: function(){
+    console.log(this.data.touchName);
+    wx.request({
+      url: '',
+      data: '',
+      header: {},
+      method: 'GET',
+      dataType: 'json',
+      responseType: 'text',
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    });
+    this.setData({ showPopUp: false});
+  },
+  /**
+   * 用户称呼选择事件
+   */
+  choice: function(e){
+    console.log(e);
+    var tapIndex = e.currentTarget.dataset.index;
+    if(tapIndex == 6 && this.data.index == 6){
+      return;
+    }else{
+      // 1.将之前选中的称呼的样式改为正常
+      var before = 'choiceList[' + this.data.index + '].src';
+      // 1.1先判断之前选中的称呼是否为多字长标签（下标index =1 || 3）
+      if (this.data.index == 1 || this.data.index == 3){
+        this.setData({ 
+          [before]: '../../images/label-long.png',
+          // 2.更改this.data.index  = tapIndex
+          index: tapIndex
+        });
+      }else{
+        this.setData({
+          [before]: '../../images/label.png',
+          // 2.更改this.data.index  = tapIndex
+          index: tapIndex
+        });
+      }
+      // 3.更改当前选中的称呼为选中样式
+      var later = 'choiceList[' + this.data.index + '].src';
+      // 3.1先判断选中的称呼是否为多字长标签（下标index = 1 || 3）
+      if(this.data.index == 1 || this.data.index == 3){
+        // console.log('长标签');
+        this.setData({ [later]: '../../images/label-long-bg.png' });
+      }else{
+        // console.log('短标签');
+        this.setData({ [later]: '../../images/label-bg.png' });
+      }
+      // 4.将更改通过数据this.data.name同步到视图
+      this.setData({ name: e.currentTarget.dataset.name })
+    }
+  },
+  /**
+   * tap键盘图片实现称呼自定义
+   */
+  toCustom: function(){
+    console.log('开始自定义');
+    // 1.更改弹框标题，清除输入框内容，称呼标签隐藏
+    this.setData({ 
+      popUpTitle: '编辑称呼',
+      name: '',
+      showChoice: false
+    });
+  },
+  /**
+   * 监听input框输入，获取自定义名称
+   */
+  getCustomName: function(e){
+    // console.log(e.detail.value);
+    // console.log(e.detail.cursor);
+    this.setData({ tempData: e.detail.value });
+  },
+  /**
+   * tap用户列表去用户编辑页面
+   */
+  toUserEditor: function(){
+    wx.navigateTo({
+      // 携带壁纸地址
+      url: '../',
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-    
+  onReady: function (e) {
+   /* var a = 0.6
+    // canvas绘图
+    var ctx = wx.createCanvasContext("firstCanvas", this);
+    // 画外框
+    ctx.beginPath();
+    ctx.moveTo(0, 62*a);
+    ctx.lineTo(23*a, 34*a);
+    ctx.lineTo(134*a, 34*a);
+    ctx.lineTo(134*a, 90*a);
+    ctx.lineTo(23*a, 90*a);
+    ctx.closePath();
+    ctx.stroke();
+    // 画圆圈
+    ctx.beginPath();
+    ctx.arc(23*a, 62*a, 6*a, 0, 2*Math.PI);
+    ctx.stroke();
+    // 画文字
+    ctx.setFontSize(32*a);
+    ctx.setTextBaseline('top');
+    ctx.fillText('爸爸', 48*a, 40*a);
+    ctx.draw();*/
   },
 
   /**

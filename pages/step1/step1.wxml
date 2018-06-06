@@ -93,8 +93,6 @@
     <view class="title">提示</view>
     <!--副标题-->
     <view class="title subTitle">输入密码</view>
-    <view>{{test}}</view>
-    <view>test1</view>
     <!--输入框1 if-->
     <input type="text" placeholder="请输入密码" bindinput="wifiPassInput" class="input"></input>
     <!--取消、确认按钮-->

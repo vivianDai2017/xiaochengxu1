@@ -1,24 +1,20 @@
 {
   "pages": [
+    "pages/editorUser/editorUser",
+    "pages/wallpaper/wallpaper",
     "pages/lockUsers/lockUsers",
     "pages/index/index",
-    
     "pages/temporaryPassword/temporaryPassword",
-    
     "pages/msgList/msgList",
     "pages/share/share",
-    
     "pages/unbingIndex/unbindIndex",
     "pages/lockSet/lockSet",
     "pages/password/password",
-    
     "pages/step1/step1",
     "pages/bindPhone/bindPhone",
-    "pages/editorUser/editorUser",
     "pages/modal/modal",
     "pages/wallPaperConfiger/wallPaperConfiger",
     "pages/test/test",    
-    "pages/wallpaper/wallpaper", 
     "pages/wifi/wifi",
     "pages/swiperTest/swiperTest",
     "pages/location/location",

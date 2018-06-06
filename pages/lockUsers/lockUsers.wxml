@@ -4,30 +4,54 @@
   <block wx:for="{{usersList}}">
     <view class="wrap">
     <view class="usersList {{touchName == item.name && moveL ? 'move' : ''}} {{touchName == item.name && moveR && moveL ? 'moveBack' : ''}}" bindtouchstart="touchStart" bindtouchend="touchEnd" data-name="{{item.name}}">
-      <view class="l">
-        <view class="wallwapperId"></view>
-        <view class="name medium">{{item.name}}</view>
+      <view class="l" bindtap="toUserEditor">
+        <view class="ll">
+          <view class="wallwapperId"></view>
+          <view class="name medium">{{item.name}}</view>
+        </view>
+        <view class="lr">
+          <view><i class="iconfont icon-zhiwen"></i></view>
+          <view class="fingerNum medium">x{{item.fingerNum}}</view>
+        </view>
       </view>
       <view class="r">
-        <view><i class="iconfont icon-zhiwen"></i></view>
-        <view class="fingerNum medium">x{{item.fingerNum}}</view>
-        <view class="delete">删除</view>
+        <view class="delete" bindtap="deleteConfirm">删除</view>
       </view>
     </view>
     </view>
   </block>
   <!--用户列表 end-->
-  <button class="btn add medium {{disabled ? 'disabled' : ''}}" disabled="{{disabled}}" bindtap="test">添加新成员</button>
+  <button class="btn add medium {{disabled ? 'disabled' : ''}}" disabled="{{disabled}}" bindtap="addNewUser">添加新成员</button>
 </view>
-<!--弹框-->
+<!--删除用户确认弹框 begin-->
 <view class="popUp" wx:if="{{showPopUp}}">
     <!--主标题-->
     <view class="title">删除用户</view>
     <!--副标题-->
-    <view class="subTitle">是否删除该用户</view>
+    <view class="subTitle medium">是否删除该用户</view>
     <!--取消、确认按钮-->
     <view class="radio">
-      <view class="cancel button" bindtap="cancel">取消</view>
-      <view class="confirm button" bindtap="confirm">确认</view>
+      <view class="cancel button medium" bindtap="cancel">取消</view>
+      <view class="confirm button medium" bindtap="confirm">确认</view>
     </view>
 </view>
+<!--删除用户确认弹框 end-->
+<!--用户选择称呼弹框 begin-->
+<view class="choice" wx:if="{{showNamePopUp}}">
+  <view class="medium nameChoice">{{popUpTitle}}</view>
+  <view class="choicedName">
+    <i class="iconfont icon-shezhi" bindtap="toCustom" wx:if="{{showChoice}}"></i>
+    <image src="../../images/label.png" wx:if="{{!showChoice}}" class="toLabel"></image>
+    <input class="input" value="{{name}}" maxlength='6' bindinput="getCustomName"></input>
+  </view>
+  <view class="nickName" wx:if="{{showChoice}}">
+    <!-- for -->
+    <view class="item" wx:for="{{choiceList}}" data-index="{{index}}" data-name="{{item.name}}" bindtap="choice">
+      <image src="{{item.src}}" class="label {{index == 1 || index == 3  ? 'long' : ''}}"></image>
+      <view class="txt medium">{{item.name}}</view>
+    </view>
+    
+  </view>
+  <!-- <canvas style="width: 750rpx; height: 580rpx" canvas-id="firstCanvas"></canvas> -->
+</view>
+<!--用户选择称呼弹框 end-->

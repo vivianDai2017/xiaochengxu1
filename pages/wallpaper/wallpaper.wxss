@@ -4,17 +4,18 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-  border-style: solid;
-  border-color: red;
-  border-width: 0 1.5rpx; 
+  /* border-style: solid; */
+  /* border-color: red; */
+  /* border-width: 0 1.5rpx;  */
+  background-color: #fff;
 }
 .imgs{
-  width: 33.3%;
-  height: 480rpx;
+  width: 249rpx;
+  height: 359rpx;
   box-sizing: border-box;
-  border-style: solid;
-  border-color: red;
-  border-width: 3rpx 1.5rpx; 
+  /* border-style: solid; */
+  /* border-color: red; */
+  /* border-width: 3rpx 1.5rpx;  */
   
 }
 .img{

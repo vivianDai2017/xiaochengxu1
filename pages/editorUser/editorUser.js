@@ -10,9 +10,23 @@ Page({
     welcomeTxt: "请输入欢迎语",
     nameTemp: '',
     welcomeTxtTemp: '',
-    showPopUp: true
+    showPopUp: false,
+    imgUrl: '',
+    showCallPopUp: false,
+    showDeletePopUp: false,
+    oneAdd: true,
+    twoAdd: false,
+    threeAdd: false
   },
 
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    console.log(options.url);
+    this.setData({ imgUrl: options.url });
+    console.log(this.data.imgUrl);
+  },
   /**
    * 称谓欢迎语框tap事件
    */
@@ -36,8 +50,34 @@ Page({
    * 取消弹框
    */
   cancel: function(){
-    this.setData({ showPopUp: false });
+    this.setData({ 
+      showPopUp: false ,
+      showCallPopUp: false
+    });
   },
+  /**
+   * 设置报警指纹
+   */
+  setCallFinger: function(){
+    // 向后台发送消息，开始设置报警指纹
+    console.log('设置报警指纹');
+    
+  },
+  /**
+   * 指纹删除与添加事件
+   */
+  delete: function(){
+    console.log('delete');
+  },
+  add: function () {
+    console.log('add');
+  },
+  /**
+   * 报警指纹
+   */
+  call:function(){
+    this.setData({ showCallPopUp: true })
+  }
   /**
    * 弹框确认
    */
@@ -52,18 +92,20 @@ Page({
       name: nameTemp,
       welcomeTxt: welcomeTxtTemp,
       showPopUp: false
-    });
-    
-   
+    }); 
   },
-
-
   /**
-   * 生命周期函数--监听页面加载
+   * 点击切换壁纸
    */
-  onLoad: function (options) {
-  
+  change: function(){
+    console.log('点击切换壁纸');
+    //返回壁纸列表页
+    wx.navigateBack({
+      delta: 2
+    })
   },
+
+  
 
   /**
    * 生命周期函数--监听页面初次渲染完成

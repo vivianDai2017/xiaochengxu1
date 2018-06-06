@@ -4,7 +4,7 @@
   <image class="img" src="{{imgUrl}}"></image>
 
   <view class="isChoice">
-    <view class="btn" bindtap="cancel">取消</view>
-    <view class="btn configer">确认</view>
+    <view class="cancel bold" bindtap="cancel">单击取消预览</view>
+    <view class="btn bold" bindtap="confirm">确认</view>
   </view>
 </view>

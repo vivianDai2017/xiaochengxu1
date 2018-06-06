@@ -1,83 +1,91 @@
 /* pages/editorUser/editorUser.wxss */
 .content{
-   width: 100%; 
-   padding-top: 100rpx;
+   width: 443rpx;
+   height: 789rpx; 
+   margin-top: 60rpx;
+   position: relative;
 }
 .wallPaper{
-  background-image: url(https://img5.imgtn.bdimg.com/it/u=67356540,1693273787&fm=27&gp=0.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-  width: 70%; 
-  height: 800rpx;
-  margin: auto; 
+  /* background-image: url(https://img5.imgtn.bdimg.com/it/u=67356540,1693273787&fm=27&gp=0.jpg); */
+  /* background-repeat: no-repeat; */
+  /* background-size: cover; */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 443rpx; 
+  height: 789rpx;
 }
 .txt{
   background-color: rgba(0,0,0,0.3);
   width: 100%;
-  height: 200rpx;
+  height: 180rpx;
   position: absolute;
   top: 0;
   left: 0;
   text-align: center;
 }
-.name, .welcome{
-  height: 100rpx;
-  line-height: 100rpx;
+.name{
+  font-size: 40rpx;
+  color:#fffefe;
+  margin-top: 38rpx;
 }
 .welcome{
   font-size: 32rpx;
+  margin-top: 25rpx;
+  color: #fffefe;
 }
 .tap{
-  width: 70%;
-  margin: auto;
-  text-align: center;
-  padding-top: 50rpx;
+  font-size: 32rpx;
+  color: #d8d8d8;
+  margin-top: 37rpx;
+
 }
 .fingerPrint{
+  width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  margin-top: 73rpx;
 }
 .f{
   width: 120rpx;
   height: 120rpx;
-  border: 1px solid #68d3ff;
+  border: 2rpx solid #d8d8d8;
   border-radius: 50%;
-  margin: 30rpx;
 }
 .modal{
   color: #000;
   border: 1px solid red !important;
 }
-/*弹出框样式 begin*/
-page{
-  position: relative;
+/*称谓及欢迎语弹出框样式修改 begin*/
+.popUp{
+  height: 363rpx;
 }
-.popUp {
-  width: 500rpx;
-  height: 300rpx;
-  border: 1px solid red;
-  border-radius: 40rpx;
-  background-color: #fff;
-  /* color: red; */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
-.radio{
-  display: flex;
+.title{
+  margin: 36rpx 0;
 }
 .input{
-  text-align: left;
-  border: 1px solid #bbb;
-  margin-top: 20rpx;
+  margin: 20rpx 22rpx;
+  color: #999;
+}
+.radio{
+  margin: 0;
+  height: 86rpx;
+  line-height: 86rpx;
+  border-top: 2rpx solid #d8d8d8;
 }
 .button{
-  width:50%;
-  border: 1px solid #000;
-  /* text-align: center; */
-  color: #68d3ff;
+  color: #00aae8;
 }
-/*弹出框样式 end*/
+/*称谓及欢迎语弹出框样式修改 end*/
+/*报警指纹提示弹出框 begin*/
+.callTitle{
+  margin: 21rpx 0;
+}
+.call{
+  height: 275rpx;
+}
+.subTitle{
+  width: 425rpx;
+  margin: 21rpx auto;
+}
+/*报警指纹提示弹出框 end*/

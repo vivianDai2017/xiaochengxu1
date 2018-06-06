@@ -32,13 +32,19 @@
   from{left: -147rpx}
   to{left: 0}
 }
-.l, .r{
+.l{
+  display: flex;
+  justify-content: space-between;
+  line-height: 110rpx;
+  padding-left: 45rpx;
+  width: 750rpx;
+}
+.ll, .lr{
   display: flex;
   justify-content: center;
-  line-height: 110rpx;
 }
-.l{
-  margin-left: 45rpx;
+.rl{
+  display: flex;
 }
 .wallwapperId{
   width: 80rpx;
@@ -77,21 +83,111 @@
   color: #03abe8;
 }
 .disabled{
-  opacity: 0.2 !important;
-  color: #03abe8 !important;
+  color: #d8d8d8 !important;
   background-color: transparent !important; 
+  border-color: #d8d8d8;
 }
-/*弹出框样式修改 begin*/
+/*确认删除弹出框样式修改 begin*/
 .popUp{
   width: 480rpx;
   height: 251rpx;
 }
 .title{
-  margin-top: 51rpx;
+  margin: 31rpx 0 21rpx 0;
+  color: rgba(51, 51, 51, 0.8); 
+}
+.subTitle{
+  color: #999; 
+  margin-bottom: 32rpx;
 }
 .radio{
-   margin-top: 0; 
+  margin-top: 0; 
+  margin-bottom: 0;
   height: 86rpx;
   line-height: 86rpx;
 }
-/*弹出框样式修改 end*/
+.cancel{
+  color: #00aae8;
+}
+.confirm{
+  color: #555;
+}
+/*确认删除弹出框样式修改 end*/
+/*选择用户称呼弹框样式 begin*/
+.choice{
+  width: 750rpx;
+  height: 580rpx;
+  background-color: #fff;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+}
+.nameChoice{
+  font-size: 32rpx;
+  color: #727272;
+  text-align: center;
+  height: 82rpx;
+  line-height: 82rpx;
+}
+.choicedName{
+  height: 82rpx;
+  border-top: 2rpx solid #d2d2d2;
+  border-bottom: 2rpx solid #d2d2d2;
+  padding: 15rpx 30rpx;
+  box-sizing: border-box;
+  display: flex;
+}
+.icon-shezhi:before{
+  font-size: 66rpx;
+  color: #727272;
+  line-height: 50rpx;
+}
+.toLabel{
+  width: 73rpx;
+  height: 45rpx;
+  margin-top: 4rpx;
+}
+.input{
+  width: 607rpx;
+  height: 55rpx;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  margin-left: 21rpx;
+  border-radius: 10rpx;
+  border: 1rxp solid #d2d2d2;
+}
+.nickName{
+  display: flex;
+  flex-wrap: wrap;
+}
+.item{
+  width: 250rpx;
+  height: 55rpx;
+  padding-left: 54rpx;
+  margin-top: 35rpx;
+  box-sizing: border-box;
+  /* border: 2rpx solid #000; */
+  position: relative;
+}
+.label{
+  width: 134rpx;
+  height: 55rpx;
+  float: left;
+  position: absolute;
+  left: 54rpx;
+  top: 0;
+}
+.long{
+  width: 189rpx;
+}
+.txt{
+  position: absolute;
+  top: 0;
+  left: 102rpx;
+  font-size: 32rpx;
+  color: #727272;
+  height: 54rpx;
+  line-height: 54rpx;
+}
+/*选择用户称呼弹框样式 end*/

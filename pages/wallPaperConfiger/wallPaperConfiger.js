@@ -8,13 +8,7 @@ Page({
     imgUrl: ''
   },
 
-  // 取消返回壁纸列表页
-  cancel: function(){
-    wx.navigateBack({
-      delta: 1
-    })
-  },
-
+  
   /**
    * 生命周期函数--监听页面加载
    */
@@ -22,7 +16,22 @@ Page({
     console.log(options.imgUrl);
     this.setData({imgUrl: options.imgUrl})
   },
-
+  /**
+   * 取消返回壁纸列表页事件
+   */
+  cancel: function () {
+    wx.navigateBack({
+      delta: 1
+    })
+  },
+  /**
+   * 确认跳转至用户编辑页面（传递壁纸地址）
+   */
+  confirm: function () {
+    wx.navigateTo({
+      url: '../editorUser/editorUser?url=' + this.data.imgUrl
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
