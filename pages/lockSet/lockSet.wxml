@@ -8,7 +8,11 @@
     
   </view>
   <view class="lockDetail">
-    <view class="img">这是锁的图片</view>
+     <!-- <view class="img">  -->
+      <!-- 这是锁的图片 -->
+      <image src="../../images/284-592.png" class="img"></image>
+     <!-- </view>  -->
+    <!-- <image src="../../images/284-592.png"></image> -->
     <view class="list">
       <ul>
         <li class="item">{{lockType}}</li>

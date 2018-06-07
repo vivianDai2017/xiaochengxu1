@@ -1,0 +1,5 @@
+<!--pages/loading/loading.wxml-->
+<view class="container">
+  <image src="../../images/logo.png" class="img"></image>
+  <view class="welcome bold">欢迎使用云巢</view>
+</view>

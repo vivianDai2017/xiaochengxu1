@@ -52,14 +52,19 @@ Page({
   cancel: function(){
     this.setData({ 
       showPopUp: false ,
-      showCallPopUp: false
+      showCallPopUp: false,
+      showDeletePopUp: false
     });
   },
   /**
    * 设置报警指纹
    */
-  setCallFinger: function(){
-    // 向后台发送消息，开始设置报警指纹
+  addCallFinger: function(){
+    // 1.进入添加指纹提示页
+    wx.navigateTo({
+      url: '../addFinger/addFinger',
+    })
+    // 2.向后台发送消息，开始设置报警指纹
     console.log('设置报警指纹');
     
   },
@@ -68,18 +73,25 @@ Page({
    */
   delete: function(){
     console.log('delete');
+    this.setData({ showDeletePopUp: true });
   },
   add: function () {
     console.log('add');
+  },
+  /**
+   * 删除指纹弹框确认事件
+   */
+  deleteFinger: function(){
+    console.log('确认删除指纹');
   },
   /**
    * 报警指纹
    */
   call:function(){
     this.setData({ showCallPopUp: true })
-  }
+  },
   /**
-   * 弹框确认
+   * 称谓及欢迎语弹框确认
    */
   confirm: function(e){
     // console.log('确认事件触发');

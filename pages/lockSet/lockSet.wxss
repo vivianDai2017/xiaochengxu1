@@ -11,10 +11,18 @@
   color: #d8d8d8;
 }
 .lockDetail{
+  width: 100%;
   display: flex;
+  justify-content: space-around;
+  margin-top: 48rpx;
 }
 .img{
-  width: 445rpx;
+  width: 247rpx;
+  height: 512rpx;
+  /* margin-left: 160rpx; */
+}
+.list{
+  margin-top: 72rpx;
 }
 .item{
   display: block;

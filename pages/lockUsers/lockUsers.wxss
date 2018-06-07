@@ -69,11 +69,13 @@
 .delete{
   width: 147rpx;
   height: 110rpx;
+  line-height: 110rpx;
   background-color: #e43a3a;
   color: #fff;
   font-size: 30rpx;
   text-align: center;
   margin-bottom: 0rpx;
+  font-family: PingFang-SC-Medium;
 }
 .add{
   position: fixed;

@@ -47,22 +47,15 @@ Page({
     
   },
 
-  //事件处理函数
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
   onLoad: function () {
-    // wx.getSetting({
-    //   success(res) {
-    //     if (!res.authSetting['scope.userInfo']) {
-    //       wx.authorize({
-    //         scope: 'scope.userInfo',
-    //         success() {
-    //           // 用户已经同意小程序使用录音功能，后续调用 wx.startRecord 接口不会弹窗询问
-    //           // wx.startRecord();
-    //           console.log('同意授权');
-    //         }
-    //       })
-    //     }
-    //   }
-    // })
+    // 请求用户设备信息  列表
+    wx.request({
+      url: '',
+    })
   },
   // 滑动触摸开始事件
   touchStart: function(e){

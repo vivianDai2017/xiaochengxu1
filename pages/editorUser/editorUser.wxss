@@ -77,7 +77,7 @@
   color: #00aae8;
 }
 /*称谓及欢迎语弹出框样式修改 end*/
-/*报警指纹提示弹出框 begin*/
+/*报警指纹提示弹出框样式修改 begin*/
 .callTitle{
   margin: 21rpx 0;
 }
@@ -88,4 +88,15 @@
   width: 425rpx;
   margin: 21rpx auto;
 }
-/*报警指纹提示弹出框 end*/
+/*报警指纹提示弹出框样式修改 end*/
+/*删除指纹弹出框样式修改 begin*/
+.delete{
+  height: 251rpx;
+}
+.delCancel{
+  color: #00aae8; 
+}
+.delConfirm{
+  color: #555;
+}
+/*删除指纹弹出框样式修改 end*/

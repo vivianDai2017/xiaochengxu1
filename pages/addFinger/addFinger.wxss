@@ -1,0 +1,6 @@
+/* pages/addFinger/addFinger.wxss */
+.guide{
+  color: #fff;
+  margin-top: 617rpx;
+  text-align: center;
+}

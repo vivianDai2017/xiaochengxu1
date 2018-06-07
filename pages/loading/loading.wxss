@@ -1,0 +1,11 @@
+/* pages/loading/loading.wxss */
+.img{
+  width: 205rpx;
+  height: 183rpx;
+  margin-top: 457rpx;
+  margin-bottom: 100rpx;
+}
+.welcome{
+  font-size: 40rpx;
+  color: #68b3ff;
+}

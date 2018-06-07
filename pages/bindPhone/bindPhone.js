@@ -30,6 +30,22 @@ Page({
    */
   getCode: function(){
     console.log('获取验证码');
+    wx.request({
+      url: 'http://baidu.com',
+      method: 'POST',
+      data: { phone: '15862548940'},
+      header: { 'content-type': 'application/json' },
+      success: function(res){
+        console.log('成功');
+        console.log(res);
+      },
+      fail: function(res){
+        console.log('失败');
+        console.log(res);
+      }
+
+
+    })
   },
   /**
    * 监听验证码输入,4位时inputVerify:true
@@ -53,9 +69,26 @@ Page({
     if (/^1[34578]\d{9}$/.test(phone) && /^\d{4}$/.test(code)){
       console.log('验证通过');
       this.setData({ errTips: '' });
+      // 将手机号和验证码发送给服务器，验证无误后跳转至step1
+      wx.request({
+        url: '',
+        header: {
+          'content-type': 'application/json', // 默认值
+          'token': '',
+          'apptype': ''
+        },
+        data: {
+          phone: 'phone',
+          verityCode: 'code',
+          account: ''
+        },
+        complete: function(res){
+          console.log(res);
+        }
+      })
       wx.navigateTo({ url: '../step1/step1' });
     }else{
-      console.log('不通过');
+      // console.log('不通过');
       this.setData({ errTips: '手机号或验证码格式有误,请确认' });
       return;
     }

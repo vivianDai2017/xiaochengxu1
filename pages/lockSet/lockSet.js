@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    lockNum: 0,
+    devicesid: 0,
     lockName: 'Alex的锁3',
     lockNameTemp: '',
     lockType: 'CNYT-1',
@@ -23,17 +23,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      // console.log(options.lockNum);
+      // console.log(options.devicesid);
       /**
        * 开发调试，暂注释
        */
-      // this.setData({lockNum: options.lockNum});
+      // this.setData({devicesid: options.devicesid});
       /**
        * 获取锁编号，向服务器请求锁数据
        */
       wx.request({
-        url: '',
-        // data: {lockNum},
+        url: 'https://yapi.nesticloud.com:3888/mock/29/v1/devices/:devicesid',
+        // data: {devicesid},
         success: function(data){},
         fail: function(){
           console.log('接口调用失败');
@@ -93,7 +93,7 @@ Page({
     this.setData({ showPopUp: false });
   },
   /**
-   * 修改名称弹框确认事件---将设备名称（lockName）和设备编号（lockNum）？传给后台
+   * 修改名称弹框确认事件---将设备名称（lockName）和设备编号（devicesid）？传给后台
    */
   confirm: function () {
     // 弹出框(showPopUp)隐藏，页面更新为修改后的设备名称
@@ -128,7 +128,7 @@ Page({
    */
   passwordTemp: function(){
     console.log('去临时密码设置页面');
-    // 跳转(带参数锁编号lockNum)至临时密码页面
+    // 跳转(带参数锁编号devicesid)至临时密码页面
     wx.navigateTo({
       url: '../temporaryPassword/temporaryPassword',
     })

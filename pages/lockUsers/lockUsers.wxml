@@ -44,6 +44,7 @@
     <image src="../../images/label.png" wx:if="{{!showChoice}}" class="toLabel"></image>
     <input class="input" value="{{name}}" maxlength='6' bindinput="getCustomName"></input>
   </view>
+  <!--称呼选择-->
   <view class="nickName" wx:if="{{showChoice}}">
     <!-- for -->
     <view class="item" wx:for="{{choiceList}}" data-index="{{index}}" data-name="{{item.name}}" bindtap="choice">
