@@ -150,7 +150,7 @@ Page({
     console.log(e);
     var touchMove = e.changedTouches[0].pageX;
     // 向左滑动   
-    if (touchMove - this.data.touchDot <= -400 && this.data.time < 10) {
+    if (touchMove - this.data.touchDot <= -40 && this.data.time < 10) {
       //执行切换页面的方法
       // 删除按钮显示在屏幕中
       this.setData({ 
@@ -158,7 +158,7 @@ Page({
       });
     }
     // 向右滑动   
-    if (touchMove - this.data.touchDot >= 400 && this.data.time < 10 && this.data.moveL) {
+    if (touchMove - this.data.touchDot >= 40 && this.data.time < 10 && this.data.moveL) {
       //执行切换页面的方法
       this.setData({ 
         moveR: true
@@ -273,7 +273,7 @@ Page({
     console.log('');
     wx.navigateTo({
       // 携带壁纸地址
-      url: '../',
+      url: '../editorUser/editorUser',
     })
   },
   /**

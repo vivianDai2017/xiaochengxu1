@@ -1,22 +1,18 @@
 {
   "pages": [
-    
+    "pages/index/index",
+    "pages/msgList/msgList",
+    "pages/lockUsers/lockUsers",
     "pages/bindPhone/bindPhone",
-    
-   "pages/lockUsers/lockUsers",
     "pages/lockSet/lockSet",
     "pages/loading/loading",
-    
     "pages/unbindIndex/unbindIndex",
     "pages/addFinger/addFinger",
     "pages/editorUser/editorUser",
     "pages/wallpaper/wallpaper",
-   
-    "pages/index/index",
     "pages/temporaryPassword/temporaryPassword",
-    "pages/msgList/msgList",
-    "pages/share/share",
     
+    "pages/share/share",
     "pages/password/password",
     "pages/step1/step1",
     "pages/modal/modal",

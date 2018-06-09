@@ -16,7 +16,7 @@ page{
   box-sizing: border-box;
   /*  */
   font-family: PingFang-SC-Regular;
-   color: #fff;  /*取消？*/
+  color: #fff;  /*取消？*/
 } 
 /* button[disabled]{
   color: #fff !important;
