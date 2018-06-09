@@ -28,8 +28,19 @@ Page({
    * 确认跳转至用户编辑页面（传递壁纸地址）
    */
   confirm: function () {
-    wx.navigateTo({
-      url: '../editorUser/editorUser?url=' + this.data.imgUrl
+    var pages = getCurrentPages();
+    var currPage = pages[pages.length - 1];   //当前页面
+    var prevPage = pages[pages.length - 3];  //上上一个页面
+    console.log(currPage);
+    console.log(prevPage);
+    prevPage.setData({ imgUrl: this.data.imgUrl});
+    console.log(this.data.imgUrl);
+    console.log(prevPage);
+    // wx.navigateTo({
+    //   url: '../editorUser/editorUser?url=' + this.data.imgUrl
+    // })
+    wx.navigateBack({
+      delta: 2
     })
   },
   /**

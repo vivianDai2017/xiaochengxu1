@@ -4,7 +4,7 @@
   <block wx:for="{{usersList}}">
     <view class="wrap">
     <view class="usersList {{touchName == item.name && moveL ? 'move' : ''}} {{touchName == item.name && moveR && moveL ? 'moveBack' : ''}}" bindtouchstart="touchStart" bindtouchend="touchEnd" data-name="{{item.name}}">
-      <view class="l" bindtap="toUserEditor">
+      <view class="l" bindtap="toUserEditor" data-index="{{index}}">
         <view class="ll">
           <view class="wallwapperId"></view>
           <view class="name medium">{{item.name}}</view>

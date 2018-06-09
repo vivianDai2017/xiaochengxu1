@@ -139,9 +139,7 @@ Page({
         }else{
           this.setData({ deviceIndex: num });
         }
-        
       }  
-      console.log(this.data.deviceIndex);
     }
     // 向右滑动   
     if (touchMove - this.data.touchDot >= 40 && this.data.time < 10 ) {
@@ -154,8 +152,7 @@ Page({
         num--;
         if (num > len - 3) {
           this.setData({
-            deviceIndex: num
-            
+            deviceIndex: num  
           })
         } else {
           this.setData({ 
@@ -164,7 +161,6 @@ Page({
           });
         }
       }
-      console.log(this.data.deviceIndex);
     }
     // clearInterval(interval); // 清除setInterval
     // time = 0;
@@ -185,6 +181,7 @@ Page({
   toLockUsers: function(e){
     console.log('去用户管理界面');
     console.log(e.currentTarget.dataset);
+    // 将锁id传给下一页
     wx.navigateTo({
       url: '../lockUsers/lockUsers?deviceId=' + e.currentTarget.dataset.deviceId
     })

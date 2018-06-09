@@ -63,7 +63,7 @@
       <i class="iconfont icon-shezhi"></i>
     </view>
     <view class="user" bindtap="toLockUsers" data-device-id="{{deviceId}}">
-      <icon class="iconfont icon-shezhi"></icon>
+      <icon class="iconfont icon-zhiwen"></icon>
     </view>
   </view>
   <!--底部设备管理、用户管理 end-->

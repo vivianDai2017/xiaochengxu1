@@ -6,9 +6,9 @@ Page({
    */
   data: {
     imgList: [
-      '../../images/lock0.jpg',
-      '../../images/lock2.jpg',
-      '../../images/lock2.jpg',
+      '../../images/10.png',
+      '../../images/41.png',
+      '../../images/48.png',
       '../../images/lock0.jpg',
       '../../images/lock1.jpg',
       '../../images/lock2.jpg',
@@ -28,7 +28,24 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    // 获取壁纸列表
+    wx.request({
+      url: '',
+      method: 'GET',
+      header: {
+        apptype: 1001,
+        token: ''
+      },
+      data: {
+        offset: 0,
+        limit: 20
+      },
+      complete: res => {
+        console.log(res);
+        // console.log(res.data.wallwappers)
+        // this.setData({ imgList: res.data.wallwappers})
+      }
+    })
   },
 
   /**

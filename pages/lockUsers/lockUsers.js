@@ -60,12 +60,12 @@ Page({
     tempName: '',   // 新添加成员称呼-自定义监听称呼
     usersList:[
         {
-          'wallwapperUrl': '',
+          'wallwapperUrl': '../../images/lock2.jpg',
           'name': '默认称呼',
           'fingerNum': 3
         },
         {
-          'wallwapperUrl': '',
+          'wallwapperUrl': '../../images/lock2.jpg',
           'name': '妈妈',
           'fingerNum': 2
         }
@@ -80,7 +80,8 @@ Page({
     showPopUp: false,    // 确认删除弹框
     showNamePopUp: false,  //称呼选择、编辑弹框
     popUpTitle: '为用户选择称呼',
-    showChoice: true
+    showChoice: true,
+    isLockUsers: true   //当前页面是否为锁用户列表页
   },
 
   /**
@@ -88,25 +89,24 @@ Page({
    */
   onLoad: function (options) {
     // 根据设备id获取设备用户信息
-    // console.log(options);
-    console.log(this.data.usersList.length);
     var deviceId = options.deviceId;
-    // console.log(deviceId);
     wx.request({
       url: '',
-      method: 'PATCH',
-      header: {},
-      data: {
-        deviceId
+      method: 'GET',
+      header: {
+        apptype: 1001,
+        token: ''
       },
-      success: function(res){
-        console.log(res.data);
+      data: {
+        deviceid: deviceId
+      },
+      success: res => {
+        // console.log(res.data.devices);
         // 1.将请求回来的数据放到data中的usersList中，通过this.setData({})
         // 2.判断用户数，达到24时，添加新成员按钮失效
         if (this.data.usersList.length >= 24) {
           // 按钮失效
           this.setData({ disabled: true })
-          console.log(1);
         }
       },
       fail: (res) => {
@@ -243,7 +243,11 @@ Page({
         this.setData({ [later]: '../../images/label-bg.png' });
       }
       // 4.将更改通过数据this.data.name同步到视图
-      this.setData({ name: e.currentTarget.dataset.name })
+      this.setData({ name: e.currentTarget.dataset.name });
+      // 5.跳转至用户编辑页面
+      wx.navigateTo({
+        url: '../editorUser/editorUser?name=' + this.data.name,
+      })
     }
   },
   /**
@@ -269,11 +273,15 @@ Page({
   /**
    * tap用户列表去用户编辑页面
    */
-  toUserEditor: function(){
-    console.log('');
+  toUserEditor: function(e){
+    // 数组下标
+    console.log(e.currentTarget.dataset.index);
+    var index = e.currentTarget.dataset.index;
     wx.navigateTo({
       // 携带壁纸地址
-      url: '../editorUser/editorUser',
+      // url: '../editorUser/editorUser?url=' + this.data.usersList[index].wallwapperUrl
+      // 携带锁用户id（lockusersId）/下标
+      url: '../editorUser/editorUser?index=' + e.currentTarget.dataset.index
     })
   },
   /**

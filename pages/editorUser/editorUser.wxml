@@ -2,7 +2,7 @@
 <view class="container">
   <view class="content">
      <!-- <image class="wallPaper" src="{{imgUrl}}" bindtap="change"></image>  -->
-     <image class="wallPaper" src="../../images/lock2.jpg" bindtap="change"></image> 
+     <image class="wallPaper" src="{{imgUrl}}" bindtap="change"></image> 
       <!--文字层-->
     <view class="txt" bindtap="editorTxt">
       <view class="medium name">{{name}}</view>
@@ -12,10 +12,18 @@
   <view class="medium tap">点击切换解锁壁纸</view>
   <!--指纹-->
   <view class="fingerPrint">
-    <view class="f" bindtap="{{oneAdd ? 'delete' : 'add'}}" data-status="oneAdd"></view>
-    <view class="f" bindtap="{{twoAdd ? 'delete' : 'add'}}" data-status="twoAdd"></view>
-    <view class="f" bindtap="{{threeAdd ? 'delete' : 'add'}}" data-status="threeAdd"></view>
-    <view class="f" bindtap="call"></view>
+    <view class="f" bindtap="{{oneAdd ? 'delete' : 'add'}}" data-status="oneAdd">
+      <i class="iconfont icon-zhiwen"></i>
+    </view>
+    <view class="f" bindtap="{{twoAdd ? 'delete' : 'add'}}" data-status="twoAdd">
+      <image class="img" src="../../images/add-0.png"></image>
+    </view>
+    <view class="f" bindtap="{{threeAdd ? 'delete' : 'add'}}" data-status="threeAdd">
+      <image class="img" src="../../images/add-0.png"></image>
+    </view>
+    <view class="f" bindtap="call">
+      <image class="img" src="../../images/call.png"></image>
+    </view>
   </view>
   <!--编辑称谓及欢迎语弹出框 begin-->
   <view class="popUp" wx:if="{{showPopUp}}">

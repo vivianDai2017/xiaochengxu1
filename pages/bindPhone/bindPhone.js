@@ -86,7 +86,7 @@ Page({
           console.log(res);
         }
       })
-      wx.navigateTo({ url: '../step1/step1' });
+      wx.navigateTo({ url: '../steps/steps' });
     }else{
       // console.log('不通过');
       this.setData({ errTips: '手机号或验证码格式有误,请确认' });

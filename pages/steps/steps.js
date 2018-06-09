@@ -5,24 +5,19 @@ Page({
    * 页面的初始数据
    */
   data: {
-    step: 1,
+    step: 4,
     result: '',
     scanType: '',
     charSet: '',
     waitLock: false,
-    // start: '',
-    // startEnd: '',
-    // getWf: '',
-    // getWfEnd: '',
     list: '',
-    // test: 2,
     wifiBefore: false,  //改true
     wifiList: false,
     showPopUp: false,
     passWord: '',
     wifiName: '',
     waitNet: false,
-    connectSucc: false,
+    connectSucc: true,
     connectFail: false
   },
 
@@ -87,69 +82,76 @@ Page({
     /**
      * 开发调试暂注释
      */
-    // wx.startWifi({
-    //   success: (res) => {
-    //     console.log(res.errMsg);
-    //     this.setData({ start: res.errMsg });
-    //   },
-    //   fail: (res) => {
-    //     console.log(res.errMsg);
-    //     // this.setData({ start: res.errMsg });
-    //   },
-    //   complete: res => {
-    //     console.log(res.errMsg);
-    //     // this.setData({ startEnd: res.errMsg });
-    //   }
-    // });
+    wx.startWifi({
+      // success: (res) => {
+      //   // console.log(res.errMsg);
+      //   this.setData({ start: res.errMsg });
+      // },
+      // fail: (res) => {
+      //   console.log(res.errMsg);
+      //   // this.setData({ start: res.errMsg });
+      // },
+      complete: res => {
+        console.log(res.errMsg);
+        // this.setData({ startEnd: res.errMsg });
+      }
+    });
     // 请求获取wifi列表
      /**
      * 开发调试暂注释
      */
-    // wx.getWifiList({
-    //   success: res => {
-    //     console.log(res.errMsg);
-    //     // this.setData({ getWf: res.errMsg });
-    //   },
-    //   fail: res => {
-    //     console.log(res.errMsg);
-    //     // this.setData({ getWf: res.errMsg });
-    //   },
-    //   complete: res => {
-    //     console.log(res.errMsg);
-    //     // this.setData({ getWfEnd: res.errMsg });
-    //   }
-    // });
+    wx.getWifiList({
+      // success: res => {
+      //   console.log(res.errMsg);
+      //   // this.setData({ getWf: res.errMsg });
+      // },
+      // fail: res => {
+      //   console.log(res.errMsg);
+      //   // this.setData({ getWf: res.errMsg });
+      // },
+      complete: res => {
+        console.log(res.errMsg);
+        // this.setData({ getWfEnd: res.errMsg });
+      }
+    });
     // 监听获取wifi列表事件
     /**
      * 开发调试暂注释
      */
-    // wx.onGetWifiList((res) => {
-    //   // this.setData({ test: 1 });
-    //   this.setData({ list: res.wifiList });
-    //   this.setData({ wifiList: true, wifiBefore: false });
-    //   // setWifiList是ios特有接口
-    //   if (res.wifiList.length) {
-    //     wx.setWifiList({
-    //       wifiList: [{
-    //         SSID: res.wifiList[0].SSID,
-    //         BSSID: res.wifiList[0].BSSID,
-    //         password: '123456'
-    //       }]
-    //     })
-    //   } else {
-    //     wx.setWifiList({
-    //       wifiList: []
-    //     })
-    //   }
-    // });
+    wx.onGetWifiList((res) => {
+      // this.setData({ test: 1 });
+      this.setData({ 
+        list: res.wifiList,
+        wifiList: true, 
+        wifiBefore: false
+      });
+      console.log('开始测试');
+      console.log(res.wifiList);
+      console.log(res.wifiList[0].signalStrength);
+      console.log( typeof res.wifiList[0].signalStrength);
+      // setWifiList是ios特有接口
+      // if (res.wifiList.length) {
+      //   wx.setWifiList({
+      //     wifiList: [{
+      //       SSID: res.wifiList[0].SSID,
+      //       BSSID: res.wifiList[0].BSSID,
+      //       password: '123456'
+      //     }]
+      //   })
+      // } else {
+      //   wx.setWifiList({
+      //     wifiList: []
+      //   })
+      // }
+    });
     /**
      * 开发调试用(设备联网成功)
      */
-    this.setData({
-      step: 4,
-      wifiBefore: false,
-      connectSucc: true
-    });
+    // this.setData({
+    //   step: 4,
+    //   wifiBefore: false,
+    //   connectSucc: true
+    // });
     /**
      * 开发调试用(设备联网失败)
      */

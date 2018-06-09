@@ -6,12 +6,12 @@ Page({
    */
   data: {
     hiddenmodalput: true,  
-    name: "宝贝",
-    welcomeTxt: "请输入欢迎语",
+    name: "宝贝",           //默认称呼
+    welcomeTxt: "请输入欢迎语",   //默认欢迎语
+    imgUrl: 'http://192.168.1.178/v1/image/51.jpg',      //默认壁纸url
     nameTemp: '',
     welcomeTxtTemp: '',
     showPopUp: false,
-    imgUrl: '',
     showCallPopUp: false,
     showDeletePopUp: false,
     oneAdd: true,
@@ -23,10 +23,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options.url);
-    this.setData({ imgUrl: options.url });
     console.log(this.data.imgUrl);
+    if(!options.index){
+      // 若无所用户id/下标index(还未添加，或者添加中)
+      var name = options.name;
+      this.setData({ name: options.name });
+    }else{
+      // 1.获取锁用户id,对应锁的id
+      // 2.
+      // console.log(options);
+      this.setData({ imgUrl: options.url });
+      console.log(this.data.imgUrl);
+    }
+    
   },
+ 
   /**
    * 称谓欢迎语框tap事件
    */
@@ -38,6 +49,7 @@ Page({
    */
   nameInput: function(e){
     console.log('输入名称');
+    console.log(e.detail.value);
     this.setData({nameTemp: e.detail.value})
   },
   /**
@@ -97,7 +109,10 @@ Page({
     // console.log('确认事件触发');
     var nameTemp = this.data.nameTemp;
     var welcomeTxtTemp = this.data.welcomeTxtTemp;
-    if(!nameTemp){nameTemp = '宝贝'}
+    console.log(this.data.name);
+    if(!nameTemp && this.data.name == '宝贝'){
+      nameTemp = '宝贝'
+    }else{ nameTemp = this.data.name}
     if(!welcomeTxtTemp){welcomeTxtTemp = '请输入欢迎语'}
     this.setData({
       hiddenmodalput: true,
@@ -111,10 +126,33 @@ Page({
    */
   change: function(){
     console.log('点击切换壁纸');
-    //返回壁纸列表页
-    wx.navigateBack({
-      delta: 2
+    wx.navigateTo({
+      url: '../wallpaper/wallpaper',
     })
+
+
+    /*
+    //返回壁纸列表页(2种情况：1.从锁用户界面跳转过来，2.从壁纸列表页经确认页跳转过来)
+    var pages = getCurrentPages();
+    console.log('查看页面栈');
+    console.log(pages);
+    var prevPage = pages[pages.length-2];
+    console.log(prevPage);
+    if(prevPage.data.isLockUsers){
+      // 从锁用户界面跳转过来
+      wx.navigateTo({
+        url: '../wallpaper/wallpaper',
+      })
+      console.log('从锁用户界面过来');
+    }else{
+      // 从壁纸列表页经确认页跳转过来
+      wx.navigateBack({
+        delta: 2
+      })
+      console.log('从壁纸列表页面过来');
+    }
+    */
+    
   },
 
   
@@ -130,7 +168,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+
   },
 
   /**

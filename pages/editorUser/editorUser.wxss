@@ -1,4 +1,5 @@
 /* pages/editorUser/editorUser.wxss */
+@import "../lib/iconfont.wxss";
 .content{
    width: 443rpx;
    height: 789rpx; 
@@ -51,11 +52,21 @@
   height: 120rpx;
   border: 2rpx solid #d8d8d8;
   border-radius: 50%;
+  text-align: center;
+  line-height: 120rpx;
 }
-.modal{
+.icon-zhiwen:before{
+  font-size: 80rpx;
+}
+.img{
+  width: 40rpx;
+  height: 40rpx;
+  margin: auto;
+}
+/* .modal{
   color: #000;
   border: 1px solid red !important;
-}
+} */
 /*称谓及欢迎语弹出框样式修改 begin*/
 .popUp{
   height: 363rpx;
