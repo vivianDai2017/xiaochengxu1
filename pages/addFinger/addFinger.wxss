@@ -1,6 +1,13 @@
 /* pages/addFinger/addFinger.wxss */
+@import "../lib/iconfont.wxss";
+.icon{
+  margin-top: 309rpx;
+}
+.icon-zhiwen{
+  font-size: 148rpx;
+}
 .guide{
   color: #fff;
-  margin-top: 617rpx;
+  margin-top: 145rpx;
   text-align: center;
 }

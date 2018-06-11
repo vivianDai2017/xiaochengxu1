@@ -1,42 +1,47 @@
 // pages/lockSet/lockSet.js
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    devicesid: 0,
     lockName: 'Alex的锁3',
-    lockNameTemp: '',
+    deviceNameTemp: '',
     lockType: 'CNYT-1',
     lockVer: 'Ver1.2',
     lockOnOff: '已锁定',
     lockEnergy: '80%',
     lockDate: '236天',
-    tempPassStatus: '未开启',
-    openPassStatus: '未开启',
-    showPopUp: false
-
+    enable: 0,     //临时密码是否启用（1为启用0为未启用）
+    isStart: 0,    //普通密码是否启用（1为启用0为未启用）
+    showPopUp: false,
+    deviceId: null     //设备id
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      // console.log(options.devicesid);
-      /**
-       * 开发调试，暂注释
-       */
-      // this.setData({devicesid: options.devicesid});
+      // console.log(options.deviceId);
+      this.setData({devicesid: options.deviceId});
       /**
        * 获取锁编号，向服务器请求锁数据
        */
       wx.request({
         url: 'https://yapi.nesticloud.com:3888/mock/29/v1/devices/:devicesid',
-        // data: {devicesid},
+        method: 'GET',
+        header: {
+          'token': app.globalData.userData.token,
+          'apptype': 1001
+        },
+        data: {
+          devicesid:options.deviceId
+        },
         success: function(data){},
-        fail: function(){
+        fail: function(res){
           console.log('接口调用失败');
+          console.log(res.errMsg)
         }
       })
   },
@@ -80,10 +85,10 @@ Page({
   /**
    * 监听用户名输入
    */
-  wifiPassInput: function (e) {
+  deviceNameInput: function (e) {
     console.log(e.detail.value);
-    this.setData({ lockNameTemp: e.detail.value });
-    console.log(this.data.lockName);
+    this.setData({ deviceNameTemp: e.detail.value });
+    console.log(this.data.deviceName);
   },
   /**
    * 修改名称弹框取消事件
@@ -99,7 +104,7 @@ Page({
     // 弹出框(showPopUp)隐藏，页面更新为修改后的设备名称
     this.setData({
       showPopUp: false,
-      lockName: this.data.lockNameTemp
+      lockName: this.data.deviceNameTemp
     });
     var lockName = this.data.lockName;
     wx.request({
@@ -120,7 +125,7 @@ Page({
   password: function(){
     console.log('去开锁密码页');
     wx.navigateTo({
-      url: '../password/password?num=' + this.data.lockNum,
+      url: '../password/password?deviceId=' + this.data.deviceId,
     })
   },
   /**

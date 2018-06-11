@@ -40,14 +40,15 @@
 <view class="choice" wx:if="{{showNamePopUp}}">
   <view class="medium nameChoice">{{popUpTitle}}</view>
   <view class="choicedName">
-    <i class="iconfont icon-shezhi" bindtap="toCustom" wx:if="{{showChoice}}"></i>
-    <image src="../../images/label.png" wx:if="{{!showChoice}}" class="toLabel"></image>
-    <input class="input" value="{{name}}" maxlength='6' bindinput="getCustomName"></input>
+    <i class="iconfont icon-keyboard_icon" bindtap="toCustom" wx:if="{{showChoice}}"></i>
+    <image src="../../images/label.png" wx:if="{{!showChoice}}" bindtap="toChoice" class="toLabel"></image>
+    <input class="input {{!showChoice ? 'inputCon' : '' }}" value="{{name}}" maxlength='6' bindinput="getCustomName"></input>
+    <view class="con" wx:if="{{!showChoice}}" bindtap="inputName">确认</view>
   </view>
   <!--称呼选择-->
   <view class="nickName" wx:if="{{showChoice}}">
     <!-- for -->
-    <view class="item" wx:for="{{choiceList}}" data-index="{{index}}" data-name="{{item.name}}" bindtap="choice">
+    <view class="item" wx:for="{{choiceList}}" data-index="{{index}}" data-name="{{item.name}}" bindtap="choiceName">
       <image src="{{item.src}}" class="label {{index == 1 || index == 3  ? 'long' : ''}}"></image>
       <view class="txt medium">{{item.name}}</view>
     </view>

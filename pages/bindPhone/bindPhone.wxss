@@ -21,23 +21,24 @@ input{
 .input-item{
   width: 540rpx;
   height: 84rpx;
+  line-height: 84rpx;
   display: flex;
   border: 2rpx solid #fff;
   border-radius: 40px;
-  /* padding: 8px 15px; */
   margin-bottom: 30rpx;
   font-size: 28rpx;
-  /* font-family: PingFang-SC-Regular; */
-  color: #fff;
+  color: #d8d8d8;
+  padding-left: 30rpx;
 }
 .input-text{
   padding-left: 15px;
-  margin: auto;
+  height: 84rpx;
+  line-height: 84rpx;
   font-family: PingFang-SC-Regular;  
 }
 .code{
   margin: auto;
-  height: 48rpx;
+  /* height: 48rpx; */
    /* font-size: 28rpx;  */
   /* border: none; */
   border-left:5rpx solid #fff; 

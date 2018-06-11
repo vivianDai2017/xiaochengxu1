@@ -1,0 +1,8 @@
+<!--pages/addSucc/addSucc.wxml-->
+<view container>
+  <view class="succ">
+    <image src="../../images/add-succ.png" class="img"></image>
+  </view>
+  <view class="txt medium">录入成功</view>
+  <view class="btn">确定</view>
+</view>

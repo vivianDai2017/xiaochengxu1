@@ -11,6 +11,10 @@ App({
       success: res => {
         // console.log(res);  
         if(res.code){
+          console.log(res.code);
+          /**
+           * 测试用
+           */
           // 获取openId
           // wx.request({
           //   // 正式环境前端是不可以向 https://api.weixin.qq.com 发起请求的。
@@ -25,7 +29,8 @@ App({
           //   method: 'GET',
           //   header: { 'content-type': 'application/json' },
           //   success: function(res){
-          //     console.log(res);
+          //     console.log(res.data.openid);
+          //     this.globalData.wechatid = res.data.openid;
           //   }
           // })
 
@@ -52,39 +57,47 @@ App({
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
       }
     })
-    // 获取用户信息
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          // wx.navigateTo({
-          //   url: '../index/index',
-          // })
-          wx.getUserInfo({
-            success: res => {
-              // 可以将 res 发送给后台解码出 unionId
-              this.globalData.userInfo = res.userInfo;
-              this.globalData.testInfo = res;
-              console.log(res.userInfo.nickName);
+    // 获取用户信息  delete
+    // wx.getSetting({
+    //   success: res => {
+    //     if (res.authSetting['scope.userInfo']) {
+    //       // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+    //       console.log('已授权');
+    //       wx.navigateTo({
+    //         url: 'pages/index/index',
+    //       });
+    //       console.log(112);
+    //       // 发送消息到后台
+    //       // wx.request({
 
-              // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-              // 所以此处加入 callback 以防止这种情况
-              if (this.userInfoReadyCallback) {
-                this.userInfoReadyCallback(res)
-              }
-            }
-          })
-        }else{
-        //   wx.navigateTo({
-        //     url: '../unbindIndex/unbindIndex'
-        //   })
-        }
-      }
-    })
+    //       // })
+    //       wx.getUserInfo({
+    //         success: res => {
+    //           // 可以将 res 发送给后台解码出 unionId
+    //           this.globalData.userInfo = res.userInfo;
+    //           this.globalData.testInfo = res;
+    //           console.log(res.userInfo.nickName);
+
+    //           // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+    //           // 所以此处加入 callback 以防止这种情况
+    //           if (this.userInfoReadyCallback) {
+    //             this.userInfoReadyCallback(res)
+    //           }
+    //         }
+    //       })
+    //     }else{
+    //       // wx.navigateTo({
+    //       //   url: 'pages/unbindIndex/unbindIndex',
+    //       // })
+    //     }
+    // //  }
+   // })
   },
   globalData: {
     userInfo: null,
-    userid: 1,
+    wechatid: null,
+    token: null,
+    userData: null,
     testInfo:'',
     // 锁的临时密码和开锁密码开启状态
     devicePassList: {

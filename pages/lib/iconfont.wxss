@@ -18,11 +18,11 @@
 
 .icon-biaoqian1:before { content: "\e615"; }
 
-.icon-xie:before { content: "\e71f"; font-size: 48rpx; }
+.icon-xie:before { content: "\e71f"; font-size: 54rpx; color: #68d3ff }
 
 .icon-youjian:before { content: "\e60b"; }
 
-.icon-suo:before { content: "\e616"; }
+.icon-suo:before { content: "\e616"; font-size: 50rpx; }
 
 .icon-jinggao:before { content: "\e608"; }
 
@@ -34,7 +34,7 @@
 
 .icon-jiesuo:before { content: "\e709"; }
 
-.icon-shouji:before { content: "\e602"; }
+.icon-shouji:before { content: "\e602"; font-size: 50rpx }
 
 .icon-shezhi:before { content: "\e6dd"; font-size: 93rpx; color: #68d3ff }
 

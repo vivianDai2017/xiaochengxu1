@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    step: 4,
+    step: 1,
     result: '',
     scanType: '',
     charSet: '',
@@ -17,7 +17,7 @@ Page({
     passWord: '',
     wifiName: '',
     waitNet: false,
-    connectSucc: true,
+    connectSucc: false,
     connectFail: false
   },
 
@@ -247,6 +247,9 @@ Page({
   toLockList: function(){
     wx.navigateTo({
       url: '../index/index',
+    });
+    this.setData({
+      step: 1,
     })
   },
   /**

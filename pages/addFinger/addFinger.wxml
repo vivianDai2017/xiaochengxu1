@@ -1,6 +1,8 @@
 <!--pages/addFinger/addFinger.wxml-->
 <view class="container">
-  <view class="icon"></view>
+  <view class="icon">
+    <i class="iconfont icon-zhiwen"></i>
+  </view>
   <view class="guide medium">
     <view>按下锁具上的设置键</view>
     <view>在锁具上录入指纹</view>

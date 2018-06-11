@@ -76,15 +76,16 @@ Page({
 
   getUserInfo: function (e) {
     console.log(e);
+    if(e.detail.userInfo){
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true,
       showBindLock: true
     });
-    // wx.navigateTo({
-    //   url: '../logs/logs'
-    // })
+    // 向服务器发送用户微信昵称和openid
+    
+    }
   },
 
   /**

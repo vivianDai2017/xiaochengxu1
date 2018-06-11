@@ -8,11 +8,11 @@
   <!--register begin  -->
   <view class="registerInfo">
     <view class="input-item">
-      <i class="iconfont icon-25phone"></i>
+      <i class="iconfont icon-shouji"></i>
       <input type="number" class="input-text" maxlength="11" placeholder='请输入手机号' bindinput="phoneNum"></input>
     </view>
     <view class="input-item">
-      <i class="iconfont icon-25phone"></i>
+      <i class="iconfont icon-suo"></i>
       <input type="number" class="input-text" maxlength="4" placeholder='请输入验证码' bindinput="codeNum"></input>
       <view class="code {{getVerify ? 'disabled' : ''}}" bindtap="getCode">获取验证码</view>
     </view>

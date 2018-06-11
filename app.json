@@ -1,20 +1,25 @@
 {
   "pages": [
-    "pages/editorUser/editorUser",
-    "pages/steps/steps",
     "pages/index/index",
-    "pages/msgList/msgList",
-    "pages/lockUsers/lockUsers",
-    "pages/bindPhone/bindPhone",
-    "pages/lockSet/lockSet",
     "pages/loading/loading",
-    "pages/unbindIndex/unbindIndex",
-    "pages/addFinger/addFinger",
     
-    "pages/wallpaper/wallpaper",
     "pages/temporaryPassword/temporaryPassword",
-    "pages/share/share",
+   
+    
+    "pages/lockUsers/lockUsers",
+    "pages/editorUser/editorUser",
+    "pages/unbindIndex/unbindIndex",
+    "pages/addSucc/addSucc",
+    "pages/addFinger/addFinger",
     "pages/password/password",
+    "pages/lockSet/lockSet",
+   
+    "pages/bindPhone/bindPhone",
+    "pages/steps/steps",
+    
+    "pages/msgList/msgList",
+    "pages/wallpaper/wallpaper",
+    "pages/share/share",
     "pages/modal/modal",
     "pages/wallPaperConfiger/wallPaperConfiger",
     "pages/test/test",    

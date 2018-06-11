@@ -12,7 +12,7 @@
   <view class="medium tap">点击切换解锁壁纸</view>
   <!--指纹-->
   <view class="fingerPrint">
-    <view class="f" bindtap="{{oneAdd ? 'delete' : 'add'}}" data-status="oneAdd">
+    <view class="f finger" bindtap="{{oneAdd ? 'delete' : 'add'}}" data-status="oneAdd">
       <i class="iconfont icon-zhiwen"></i>
     </view>
     <view class="f" bindtap="{{twoAdd ? 'delete' : 'add'}}" data-status="twoAdd">

@@ -154,14 +154,20 @@ Page({
     if (res.from === 'button') {
       // 来自页面内转发按钮
       console.log(res.target);
+      console.log('页面内');
+      
     } else {
       console.log('no button');
     }
     // 判断密码是单次有效还是时间段有效
-    if(this.data.onlyOne){
+    if (this.data.onlyOne) {
       // 单次有效
       var pathUrl = '/pages/share/share?temp=' + this.data.shortPassword
-    }else{
+    } else {
+      var startTime = this.data.timeArray[0][this.data.startTimeIndex[0]] + '/' + this.data.timeArray[2][this.data.startTimeIndex[2]]+  '/' + this.data.timeArray[4][this.data.startTimeIndex[4]] + ' ' + this.data.timeArray[6][this.data.startTimeIndex[6]] + '/00/00';
+      console.log('112');
+      console.log(this.data.timeArray[0][this.data.startTimeIndex[0]]);
+      console.log(startTime);
       var pathUrl = '/pages/share/share?temp=' + this.data.shortPassword + '&&starTime=' + this.data.startTime + '&&endTim=' + this.data.endTime
     }
     // 通过object.getTime()获取时间差值

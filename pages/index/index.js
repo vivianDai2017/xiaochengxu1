@@ -7,33 +7,36 @@ Page({
     lockInfoList: [
       { 
         deviceName: '1家Alex的锁2', 
-        onOff: '已锁定', 
+        nowstatus: '已锁定', 
         electric: '10%', 
         protectTime: 32, 
         messages: [
           { openmessage: '云巢智能锁1号用普通密码开锁', opentime: '3小时前', messagetype: '' },
           { openmessage: '云巢智能锁1号用普通密码开锁', opentime: '3小时前', messagetype: '' }
-        ] 
+        ] ,
+        id: 30
       },
       { 
         deviceName: '2Alex的锁2', 
-        onOff: '已开启', 
+        nowstatus: '已开启', 
         electric: '20%', 
         protectTime: 64,
         messages: [
           { openmessage: '云巢智能锁2号用普通密码开锁', opentime: '3小时前', messagetype: '' },
           { openmessage: '云巢智能锁2号用普通密码开锁', opentime: '3小时前', messagetype: '' }
-        ] 
+        ] ,
+        id: 32
       },
       { 
         deviceName: '3Alex的锁3', 
-        onOff: '休眠中', 
+        nowstatus: '休眠中', 
         electric: '59%', 
         protectTime: 168,
         messages: [
           { openmessage: '云巢智能锁3号用普通密码开锁', opentime: '3小时前', messagetype: '' },
           { openmessage: '云巢智能锁3号用普通密码开锁', opentime: '3小时前', messagetype: '' }
-        ] 
+        ] ,
+        id: 33
       },
       {
         deviceName: '4家Alex的锁2',
@@ -43,7 +46,8 @@ Page({
         messages: [
           { openmessage: '云巢智能锁4号用普通密码开锁', opentime: '4小时前', messagetype: '' },
           { openmessage: '云巢智能锁4号用普通密码开锁', opentime: '4小时前', messagetype: '' }
-        ]
+        ],
+        id: 34
       },
       {
         deviceName: '5家',
@@ -53,12 +57,14 @@ Page({
         messages: [
           { openmessage: '云巢智能锁5号用普通密码开锁', opentime: '5小时前', messagetype: '' },
           { openmessage: '云巢智能锁5号用普通密码开锁', opentime: '5小时前', messagetype: '' }
-        ]
+        ],
+        id: 36
       }
     ],
     nickName: '',
     isOpen: false,
     deviceIndex: 0,
+    id: null,    //设备id
     changeNum: 0,
     mess:['智能锁开启1'],
     touchDot: 0, //触摸时的原点
@@ -75,7 +81,7 @@ Page({
   onLoad: function () {
     // 解决 getUserInfo 与 Page.onLoad 异步请求问题
     if(app.globalData.userInfo){
-      console.log(app.globalData);
+      // console.log(app.globalData);
       this.setData({ nickName: app.globalData.userInfo.nickName})
     }else{
       app.userInfoReadyCallback = nickName => {
@@ -84,23 +90,31 @@ Page({
         }
       }
     }
-    
+    console.log(app.globalData.userData.token);
+    console.log(app.globalData.userData.user.account);
     // 请求用户设备信息  列表
     // wx.request({
-    //   url: 'https://yapi.nesticloud.com:3888/mock/29/v1/devices',
+    //   url: 'http://6844ea95.ngrok.io/v1/devices/',
+    //   method: 'GET',
     //   header: {
-    //     'token': '',
+    //     'token': app.globalData.userData.token,
     //     'apptype': 1001
+    //     // 'Content-Type': 'application/x-www-form-urlencoded'
     //   },
     //   data: {
     //     offset: 0,
     //     limit: 100,
-    //     userid: app.globalData.userid
+    //     account: app.globalData.userData.user.account
     //   },
     //   success: res => {
-    //     console.log(res.data.data.devices);
+    //     console.log('列表信息请求成功');
+    //     console.log(res);
     //     // lockInfoList换成从服务器请求回来的数据
-    //     this.setData({ lockInfoList: res.data.data.devices })
+        //  this.setData({ 
+        //    lockInfoList: res.data.data.devices ,
+        //    id: res.data.data.devices[0].id
+        //  })
+
     //   }
     // });
 
@@ -131,14 +145,13 @@ Page({
       var num = this.data.deviceIndex;
       if(num < len){
         num++;
+        this.setData({ deviceIndex: num });
         if( num < len-2){
-          this.setData({
-            deviceIndex: num,
-            changeNum: num
-          })
-        }else{
-          this.setData({ deviceIndex: num });
+          this.setData({ changeNum: num })
         }
+        this.setData({
+          id: this.data.lockInfoList[this.data.deviceIndex].id
+        })
       }  
     }
     // 向右滑动   
@@ -150,29 +163,36 @@ Page({
       var num = this.data.deviceIndex;
       if (num > 0) {
         num--;
-        if (num > len - 3) {
-          this.setData({
-            deviceIndex: num  
-          })
-        } else {
-          this.setData({ 
-            deviceIndex: num,
-            changeNum: num            
-          });
-        }
+        this.setData({ deviceIndex: num });
+        if (num <= len - 3) {
+          this.setData({ changeNum: num });
+        } 
+        this.setData({
+          id: this.data.lockInfoList[this.data.deviceIndex].id
+        })
       }
     }
     // clearInterval(interval); // 清除setInterval
     // time = 0;
   },
   /**
+   * 添加设备事件
+   */
+  addLock: function(){
+    console.log('添加设备');
+    wx.navigateTo({
+      url: '../steps/steps'
+    })
+  },
+  /**
    * 跳转至设备管理界面
    */
   toLockSet: function(e){
-    // console.log('去设备管理界面');
-    // console.log(e.currentTarget.dataset.lockName);
+    console.log('去设备管理界面');
+    // console.log(e.currentTarget.dataset);
+    console.log(this.data.id);
     wx.navigateTo({
-      url: '../lockSet/lockSet?deviceId=' + e.currentTarget.dataset.deviceId
+      url: '../lockSet/lockSet?deviceId=' + this.data.id
     })
   },
   /**
@@ -180,10 +200,10 @@ Page({
    */
   toLockUsers: function(e){
     console.log('去用户管理界面');
-    console.log(e.currentTarget.dataset);
+    // console.log(e.currentTarget);
     // 将锁id传给下一页
     wx.navigateTo({
-      url: '../lockUsers/lockUsers?deviceId=' + e.currentTarget.dataset.deviceId
+      url: '../lockUsers/lockUsers?deviceId=' + this.data.id
     })
   },
 

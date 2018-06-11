@@ -209,7 +209,7 @@ Page({
   /**
    * 用户称呼选择事件
    */
-  choice: function(e){
+  choiceName: function(e){
     console.log(e);
     var tapIndex = e.currentTarget.dataset.index;
     // 如果tap的是默认样式
@@ -250,6 +250,7 @@ Page({
       })
     }
   },
+  
   /**
    * tap键盘图片实现称呼自定义
    */
@@ -262,6 +263,13 @@ Page({
       showChoice: false
     });
   },
+  toChoice: function(){
+    this.setData({
+      showChoice: true,
+      name: '宝贝',
+      popUpTitle: '为用户选择称呼'
+    })
+  },
   /**
    * 监听input框输入，获取自定义名称
    */
@@ -269,6 +277,17 @@ Page({
     // console.log(e.detail.value);
     // console.log(e.detail.cursor);
     this.setData({ tempData: e.detail.value });
+  },
+  /**
+   * 自定义（编辑）称呼确认事件
+   */
+  inputName: function () {
+    // 4.将更改通过数据this.data.name同步到视图
+    this.setData({ name: this.data.tempData });
+    // 5.跳转至用户编辑页面
+    wx.navigateTo({
+      url: '../editorUser/editorUser?name=' + this.data.name,
+    })
   },
   /**
    * tap用户列表去用户编辑页面

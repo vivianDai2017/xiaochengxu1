@@ -1,61 +1,59 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="lockInfo" catchtouchstart="touchStart" catchtouchend="touchEnd">
-    <!-- <image src="../../images/lock{{lockNum}}.jpg" class="backgroundImage"></image>  -->
+  <view class="lockInfo" bindtouchstart="touchStart" bindtouchend="touchEnd">
     <view class="dynamicInfo">
       <!--顶部导航 begin-->
-    <view class="headerNav">
-      <!--锁列表 begin-->
-      <view class="lockList">
-        <block wx:for="{{lockInfoList}}">
-          <view class="wrap" wx:if="{{index == changeNum || index == changeNum+1 || index == changeNum+2}}">
-            <view wx:if="{{!item.deviceName}}" class="common {{index == deviceIndex ? 'active' : 'normal'}}">
-              {{nickName}}的锁{{index+1}}
+      <view class="headerNav">
+        <!--锁列表 begin-->
+        <view class="lockList">
+          <block wx:for="{{lockInfoList}}">
+            <view class="wrap" wx:if="{{index == changeNum || index == changeNum+1 || index == changeNum+2}}">
+              <view wx:if="{{!item.devicename}}" class="common {{index == deviceIndex ? 'active' : 'normal'}}">
+                {{nickName}}的锁{{index+1}}
+              </view>
+              <view wx:if="{{item.devicename}}" class="common {{index == deviceIndex ? 'active' : 'normal'}}">
+                {{item.devicename}}              
+              </view>
+              <view class="messNode" wx:if="{{item.isread}}"></view>
             </view>
-            <view wx:if="{{item.deviceName}}" class="common {{index == deviceIndex ? 'active' : 'normal'}}">
-              {{item.deviceName}}              
-            </view>
-            <view class="messNode" wx:if="{{mess}}"></view>
-          </view>
-        </block>       
-      </view>
-      <!--锁列表 end-->
-      <!--添加锁 begin-->
-      <view class="addLock">
-        <image src="../../images/add.png" class="addImg"></image>
-      </view>
-      <!--添加锁 end-->
-    </view>
-    <!--顶部导航 end-->
-    
-    <!--锁详情 begin-->
-    <view class="date">
-      已守护 {{lockInfoList[deviceIndex].protectTime}}天
-    </view>
-    <image src="../../images/lockSet-lock.png" class="lockImg"></image>
-    <view class="detail">
-      <view class="onOff">{{lockInfoList[deviceIndex].onOff}}</view>
-      <view class="energy warn">(电量{{lockInfoList[deviceIndex].electric}})</view>
-    </view>
-    <view class="mess" bindtap="details">
-      <!-- <block wx:for="{{lockInfoList[deviceIndex].messages}}">
-        <view class="messItem">
-          <view>{{item.openmessage}}</view>
-          <view>{{item.opentime}}</view>
+          </block>       
         </view>
-      </block> -->
-      <view class="messItem">
-          <view>{{lockInfoList[deviceIndex].messages[0].openmessage}}</view>
-          <view>{{lockInfoList[deviceIndex].messages[0].opentime}}</view>
+        <!--锁列表 end-->
+        <!--添加锁 begin-->
+        <view class="addLock" catchtap="addLock">
+          <image src="../../images/add.png" class="addImg"></image>
+        </view>
+        <!--添加锁 end-->
       </view>
-      <view class="messItem">
-          <view>{{lockInfoList[deviceIndex].messages[1].openmessage}}</view>
-          <view>{{lockInfoList[deviceIndex].messages[1].opentime}}</view>
-      </view>
-    </view>
-    <!--锁详情 edn-->
-    </view> 
+      <!--顶部导航 end-->
     
+      <!--锁详情 begin-->
+      <view class="date">
+        已守护 {{lockInfoList[deviceIndex].protecttime}}天
+      </view>
+      <image src="../../images/lockSet-lock.png" class="lockImg"></image>
+      <view class="detail">
+        <view class="onOff">{{lockInfoList[deviceIndex].nowstatus}}</view>
+        <view class="energy warn">(电量{{lockInfoList[deviceIndex].electric}})</view>
+      </view>
+      <view class="mess" bindtap="details">
+        <!-- <block wx:for="{{lockInfoList[deviceIndex].messages}}">
+          <view class="messItem">
+            <view>{{item.openmessage}}</view>
+            <view>{{item.opentime}}</view>
+          </view>
+        </block> -->
+        <view class="messItem">
+            <view>{{lockInfoList[deviceIndex].messages[0].openmessage}}</view>
+            <view>{{lockInfoList[deviceIndex].messages[0].opentime}}</view>
+        </view>
+        <view class="messItem">
+            <view>{{lockInfoList[deviceIndex].messages[1].openmessage}}</view>
+            <view>{{lockInfoList[deviceIndex].messages[1].opentime}}</view>
+        </view>
+      </view>
+      <!--锁详情 end-->
+    </view>   
   </view>
   <!--底部设备管理、用户管理 begin-->
   <view class="manage">

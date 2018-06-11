@@ -19,8 +19,25 @@ Page({
    */
   onLoad: function (options) {
     // 获取到锁编号，开锁秘密
-    this.setData({lockNum: options.num});
+    this.setData({lockNum: options.deviceId});
     //根据锁编号去后台查询开锁密码，更新数据password
+    wx.request({
+      url: "http://6844ea95.ngrok.io/v1/devices/:" + options.deviceId,
+      method: 'PATCH',
+      header: {
+          "Content-Type": "application/json",
+          "token": app.globalData.userData.token,
+          "apptype": 1001
+      },
+      data: {
+        
+      },
+      success: function(res){
+        console.log('访问成功');
+
+      },
+      fail: function(res){}
+    })
   },
 
   /**

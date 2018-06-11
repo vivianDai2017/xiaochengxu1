@@ -16,6 +16,9 @@
   justify-content: space-around;
   margin-top: 48rpx;
 }
+.icon-xie:before{
+  font-size: 36rpx;
+}
 .img{
   width: 247rpx;
   height: 512rpx;
@@ -33,6 +36,10 @@
 }
 .temp{
   margin: 173rpx 0 60rpx 0;
+}
+.start{
+  border-color: #46ceff !important;
+  color: #46ceff;
 }
 .pass{
   border-color: #fafbfb;

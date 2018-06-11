@@ -1,0 +1,16 @@
+/* pages/addSucc/addSucc.wxss */
+.succ{
+  margin: auto;
+  text-align: center;
+  margin-top: 322rpx;
+}
+.img{
+  width: 163rpx;
+  height: 163rpx;
+}
+.txt{
+  color: #fff;
+  text-align: center;
+  margin-top: 126rpx;
+  margin-bottom: 195rpx;
+}
