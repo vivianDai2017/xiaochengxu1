@@ -5,61 +5,61 @@ const app = getApp()
 Page({
   data: {
     lockInfoList: [
-      { 
-        deviceName: '1家Alex的锁2', 
-        nowstatus: '已锁定', 
-        electric: '10%', 
-        protectTime: 32, 
-        messages: [
-          { openmessage: '云巢智能锁1号用普通密码开锁', opentime: '3小时前', messagetype: '' },
-          { openmessage: '云巢智能锁1号用普通密码开锁', opentime: '3小时前', messagetype: '' }
-        ] ,
-        id: 30
-      },
-      { 
-        deviceName: '2Alex的锁2', 
-        nowstatus: '已开启', 
-        electric: '20%', 
-        protectTime: 64,
-        messages: [
-          { openmessage: '云巢智能锁2号用普通密码开锁', opentime: '3小时前', messagetype: '' },
-          { openmessage: '云巢智能锁2号用普通密码开锁', opentime: '3小时前', messagetype: '' }
-        ] ,
-        id: 32
-      },
-      { 
-        deviceName: '3Alex的锁3', 
-        nowstatus: '休眠中', 
-        electric: '59%', 
-        protectTime: 168,
-        messages: [
-          { openmessage: '云巢智能锁3号用普通密码开锁', opentime: '3小时前', messagetype: '' },
-          { openmessage: '云巢智能锁3号用普通密码开锁', opentime: '3小时前', messagetype: '' }
-        ] ,
-        id: 33
-      },
-      {
-        deviceName: '4家Alex的锁2',
-        onOff: '已锁定',
-        electric: '10%',
-        protectTime: 32,
-        messages: [
-          { openmessage: '云巢智能锁4号用普通密码开锁', opentime: '4小时前', messagetype: '' },
-          { openmessage: '云巢智能锁4号用普通密码开锁', opentime: '4小时前', messagetype: '' }
-        ],
-        id: 34
-      },
-      {
-        deviceName: '5家',
-        onOff: '已锁定',
-        electric: '10%',
-        protectTime: 32,
-        messages: [
-          { openmessage: '云巢智能锁5号用普通密码开锁', opentime: '5小时前', messagetype: '' },
-          { openmessage: '云巢智能锁5号用普通密码开锁', opentime: '5小时前', messagetype: '' }
-        ],
-        id: 36
-      }
+      // { 
+      //   deviceName: '1家Alex的锁2', 
+      //   nowstatus: '已锁定', 
+      //   electric: '10%', 
+      //   protectTime: 32, 
+      //   messages: [
+      //     { openmessage: '云巢智能锁1号用普通密码开锁', opentimeMsg: '3小时前', messagetype: '' },
+      //     { openmessage: '云巢智能锁1号用普通密码', opentimeMsg: '123小时前', messagetype: '' }
+      //   ] ,
+      //   id: 30
+      // },
+      // { 
+      //   deviceName: '2Alex的锁2', 
+      //   nowstatus: '已开启', 
+      //   electric: '20%', 
+      //   protectTime: 64,
+      //   messages: [
+      //     { openmessage: '云巢智能锁', opentimeMsg: '3小时前', messagetype: '' },
+      //     { openmessage: '云巢智能锁2号用普通密码开锁开锁', opentimeMsg: '3小时前', messagetype: '' }
+      //   ] ,
+      //   id: 32
+      // },
+      // { 
+      //   deviceName: '3Alex的锁3', 
+      //   nowstatus: '休眠中', 
+      //   electric: '59%', 
+      //   protectTime: 168,
+      //   messages: [
+      //     { openmessage: '云巢智能锁3号用普通密码开锁', opentimeMsg: '3小时前', messagetype: '' },
+      //     { openmessage: '云巢智能锁3号用普通密码开锁', opentimeMsg: '3小时前', messagetype: '' }
+      //   ] ,
+      //   id: 33
+      // },
+      // {
+      //   deviceName: '4家Alex的锁2',
+      //   onOff: '已锁定',
+      //   electric: '10%',
+      //   protectTime: 32,
+      //   messages: [
+      //     { openmessage: '云巢智能锁4号用普通密码开锁', opentimeMsg: '4小时前', messagetype: '' },
+      //     { openmessage: '云巢智能锁4号用普通密码开锁', opentimeMsg: '4小时前', messagetype: '' }
+      //   ],
+      //   id: 34
+      // },
+      // {
+      //   deviceName: '5家',
+      //   onOff: '已锁定',
+      //   electric: '10%',
+      //   protectTime: 32,
+      //   messages: [
+      //     { openmessage: '云巢智能锁5号用普通密码开锁', opentimeMsg: '5小时前', messagetype: '' },
+      //     { openmessage: '云巢智能锁5号用普通密码开锁', opentimeMsg: '5小时前', messagetype: '' }
+      //   ],
+      //   id: 36
+      // }
     ],
     nickName: '',
     isOpen: false,
@@ -90,33 +90,37 @@ Page({
         }
       }
     }
-    console.log(app.globalData.userData.token);
-    console.log(app.globalData.userData.user.account);
+    console.log('开始');
+    // console.log(app.globalData.userData.token);
+    // console.log(app.globalData.userData.user.account);
     // 请求用户设备信息  列表
-    // wx.request({
-    //   url: 'http://6844ea95.ngrok.io/v1/devices/',
-    //   method: 'GET',
-    //   header: {
-    //     'token': app.globalData.userData.token,
-    //     'apptype': 1001
-    //     // 'Content-Type': 'application/x-www-form-urlencoded'
-    //   },
-    //   data: {
-    //     offset: 0,
-    //     limit: 100,
-    //     account: app.globalData.userData.user.account
-    //   },
-    //   success: res => {
-    //     console.log('列表信息请求成功');
-    //     console.log(res);
-    //     // lockInfoList换成从服务器请求回来的数据
-        //  this.setData({ 
-        //    lockInfoList: res.data.data.devices ,
-        //    id: res.data.data.devices[0].id
-        //  })
+    wx.request({
+      // url: 'http://6844ea95.ngrok.io/v1/devices/',
+      url: 'http://dc946cf7.ngrok.io/v1/devices/',
+      method: 'GET',
+      header: {
+        // 'token': app.globalData.userData.token,
+        "token": 'oC2hc5TUP6U_2stTgxMqZGLQUdqEtoken',
+        'apptype': 1001
+        // 'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      data: {
+        offset: 0,
+        limit: 100,
+        // account: app.globalData.userData.user.account
+        account: "yc66084551"
+      },
+      success: res => {
+        console.log('列表信息请求成功');
+        console.log(res);
+        // lockInfoList换成从服务器请求回来的数据
+         this.setData({ 
+           lockInfoList: res.data.data.devices ,
+           id: res.data.data.devices[0].id
+         })
 
-    //   }
-    // });
+      }
+    });
 
   },
   // 滑动触摸开始事件

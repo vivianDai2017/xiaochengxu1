@@ -53,6 +53,11 @@
   border: 2rpx solid #68b3ff;
   margin: 15rpx 0;
 }
+.img{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
 .name{
   margin-left: 53rpx;
   color: #d8d8d8;

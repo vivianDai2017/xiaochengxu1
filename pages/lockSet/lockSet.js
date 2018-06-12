@@ -6,13 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    lockName: 'Alex的锁3',
+    lockList: {},
     deviceNameTemp: '',
-    lockType: 'CNYT-1',
-    lockVer: 'Ver1.2',
-    lockOnOff: '已锁定',
-    lockEnergy: '80%',
-    lockDate: '236天',
     enable: 0,     //临时密码是否启用（1为启用0为未启用）
     isStart: 0,    //普通密码是否启用（1为启用0为未启用）
     showPopUp: false,
@@ -23,23 +18,27 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      // console.log(options.deviceId);
-      this.setData({devicesid: options.deviceId});
+      console.log(options.deviceId);
+      this.setData({deviceId: options.deviceId});
       /**
        * 获取锁编号，向服务器请求锁数据
        */
+      var url = 'https://dc946cf7.ngrok.io/v1/devices/' + this.data.deviceId ;
+      console.log(url);
+      console.log(typeof url);
       wx.request({
-        url: 'https://yapi.nesticloud.com:3888/mock/29/v1/devices/:devicesid',
+        url: url,
         method: 'GET',
         header: {
-          'token': app.globalData.userData.token,
+          // 'token': app.globalData.userData.token,
+          "token": 'oC2hc5TUP6U_2stTgxMqZGLQUdqEtoken',
           'apptype': 1001
         },
-        data: {
-          devicesid:options.deviceId
+        success: res => {
+          console.log(res);
+          this.setData({ lockList: res.data.data.device})
         },
-        success: function(data){},
-        fail: function(res){
+        fail: res => {
           console.log('接口调用失败');
           console.log(res.errMsg)
         }
@@ -76,7 +75,7 @@ Page({
 
   
   /**
-   * 修改用户名{点击修改图标，弹出修改用户名弹框}
+   * 修改设备名称{点击修改图标，弹出修改用户名弹框}
    */
   modifyName: function(){
     console.log('修改用户名');
@@ -88,7 +87,7 @@ Page({
   deviceNameInput: function (e) {
     console.log(e.detail.value);
     this.setData({ deviceNameTemp: e.detail.value });
-    console.log(this.data.deviceName);
+    // console.log(this.data.deviceName);
   },
   /**
    * 修改名称弹框取消事件
@@ -104,14 +103,20 @@ Page({
     // 弹出框(showPopUp)隐藏，页面更新为修改后的设备名称
     this.setData({
       showPopUp: false,
-      lockName: this.data.deviceNameTemp
+      ["lockList.devicename"]: this.data.deviceNameTemp
     });
-    var lockName = this.data.lockName;
+    console.log(this.data.lockList.devicename);
     wx.request({
-      url: '',
-      data: { lockName },
+      url: 'https://dc946cf7.ngrok.io/v1/devices/' + this.data.deviceId,
       method: 'POST',
-      success: function (data) {
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        // 'token': app.globalData.userData.token,
+        "token": 'oC2hc5TUP6U_2stTgxMqZGLQUdqEtoken',
+        "apptype": 1001
+      },
+      data: { deviceName: this.data.lockList.devicename },
+      success: res => {
         console.log('开发者服务器返回数据');
       },
       fail: function () {

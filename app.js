@@ -95,6 +95,8 @@ App({
   },
   globalData: {
     userInfo: null,
+    encrypteData: null,
+    iv: null,
     wechatid: null,
     token: null,
     userData: null,

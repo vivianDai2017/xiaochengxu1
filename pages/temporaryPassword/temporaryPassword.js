@@ -168,7 +168,7 @@ Page({
       console.log('112');
       console.log(this.data.timeArray[0][this.data.startTimeIndex[0]]);
       console.log(startTime);
-      var pathUrl = '/pages/share/share?temp=' + this.data.shortPassword + '&&starTime=' + this.data.startTime + '&&endTim=' + this.data.endTime
+      var pathUrl = '/pages/share/share?temp=' + this.data.shortPassword + '&&startTime=' + this.data.startTime + '&&endTim=' + this.data.endTime
     }
     // 通过object.getTime()获取时间差值
     return {

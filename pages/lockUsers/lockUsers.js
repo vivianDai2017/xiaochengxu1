@@ -59,16 +59,16 @@ Page({
     name: '宝贝',   // 称呼选择名称（新添加成员的称呼）
     tempName: '',   // 新添加成员称呼-自定义监听称呼
     usersList:[
-        {
-          'wallwapperUrl': '../../images/lock2.jpg',
-          'name': '默认称呼',
-          'fingerNum': 3
-        },
-        {
-          'wallwapperUrl': '../../images/lock2.jpg',
-          'name': '妈妈',
-          'fingerNum': 2
-        }
+        // {
+        //   'wallwapperUrl': '../../images/lock2.jpg',
+        //   'name': '默认称呼',
+        //   'fingerNum': 3
+        // },
+        // {
+        //   'wallwapperUrl': '../../images/lock2.jpg',
+        //   'name': '妈妈',
+        //   'fingerNum': 2
+        // }
     ],
     touchDot: 0, //触摸时的原点
     time: 0,
@@ -89,20 +89,24 @@ Page({
    */
   onLoad: function (options) {
     // 根据设备id获取设备用户信息
-    var deviceId = options.deviceId;
+    console.log(options.deviceId);
+    this.setData({ deviceId: options.deviceId });
     wx.request({
-      url: '',
+      url: 'http://dc946cf7.ngrok.io/v1/lockusers/',
       method: 'GET',
       header: {
-        apptype: 1001,
-        token: ''
+        // 'token': app.globalData.userData.token,
+        "token": 'oC2hc5TUP6U_2stTgxMqZGLQUdqEtoken',
+        'apptype': 1001
       },
       data: {
-        deviceid: deviceId
+        deviceid: options.deviceId
       },
       success: res => {
-        // console.log(res.data.devices);
+        console.log(res);
+        console.log(res.data.data.lockusers);
         // 1.将请求回来的数据放到data中的usersList中，通过this.setData({})
+        this.setData({ usersList: res.data.data.lockusers})
         // 2.判断用户数，达到24时，添加新成员按钮失效
         if (this.data.usersList.length >= 24) {
           // 按钮失效
@@ -110,17 +114,17 @@ Page({
         }
       },
       fail: (res) => {
+        console.log(res);
         // 开发测试用
         // 2.判断用户数，达到24时，添加新成员按钮失效
-        if (this.data.usersList.length >= 24) {
-          // 按钮失效
-          this.setData({ disabled: true })
-          console.log(1);
-        }
-      },
-      complete: function(){}
-    });
-  
+        // if (this.data.usersList.length >= 24) {
+        //   // 按钮失效
+        //   this.setData({ disabled: true })
+        //   console.log(1);
+        // }
+      }
+      
+    })
 
   },
   // 滑动触摸开始事件
@@ -294,13 +298,19 @@ Page({
    */
   toUserEditor: function(e){
     // 数组下标
+    console.log('编辑用户');
+    console.log(e);
+    console.log(e.currentTarget.dataset.lockuserid);
     console.log(e.currentTarget.dataset.index);
-    var index = e.currentTarget.dataset.index;
+    var lockUserId = e.currentTarget.dataset.lockuserid;
+    var userList = this.data.usersList[e.currentTarget.dataset.index];
+    console.log(lockUserId);
+    console.log(userList);
     wx.navigateTo({
       // 携带壁纸地址
       // url: '../editorUser/editorUser?url=' + this.data.usersList[index].wallwapperUrl
       // 携带锁用户id（lockusersId）/下标
-      url: '../editorUser/editorUser?index=' + e.currentTarget.dataset.index
+      url: '../editorUser/editorUser?lockUserId=' + lockUserId + '&&userList=' + JSON.stringify(userList)
     })
   },
   /**

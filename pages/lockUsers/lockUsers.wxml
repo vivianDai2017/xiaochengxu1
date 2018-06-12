@@ -4,14 +4,16 @@
   <block wx:for="{{usersList}}">
     <view class="wrap">
     <view class="usersList {{touchName == item.name && moveL ? 'move' : ''}} {{touchName == item.name && moveR && moveL ? 'moveBack' : ''}}" bindtouchstart="touchStart" bindtouchend="touchEnd" data-name="{{item.name}}">
-      <view class="l" bindtap="toUserEditor" data-index="{{index}}">
+      <view class="l" bindtap="toUserEditor" data-lockUserId="{{item.id}}" data-index="{{index}}">
         <view class="ll">
-          <view class="wallwapperId"></view>
+          <view class="wallwapperId">
+            <image src="../../images/48.png" class="img"></image>
+          </view>
           <view class="name medium">{{item.name}}</view>
         </view>
         <view class="lr">
           <view><i class="iconfont icon-zhiwen"></i></view>
-          <view class="fingerNum medium">x{{item.fingerNum}}</view>
+          <view class="fingerNum medium">x{{item.fingernumber}}</view>
         </view>
       </view>
       <view class="r">

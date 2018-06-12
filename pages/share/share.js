@@ -17,6 +17,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options.temp);
+    console.log(options.startTime);
+    console.log(options.endTime);
+    // 判断临时密码是不是单次有效
+    if(options.startTime){
+      var effect = options.startTime + '-' + options.endTime
+      this.setData({ effectTime: effect })
+    }else{
+      this.setData({ effectTiem: '单次有效' })
+    }
     this.setData({ 
       tempPassword: options.temp,
       nickName: app.globalData.userInfo.nickName

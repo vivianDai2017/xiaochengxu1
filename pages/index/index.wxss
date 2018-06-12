@@ -101,7 +101,15 @@
   font-size: 30rpx;
   font-family: PingFang-SC-Bold;
 }
-
+.l{
+  width: 414rpx;
+  /* overflow: hidden; */
+  text-overflow: hidden;
+  white-space: nowrap;
+}
+.r{
+  width: 152rpx;
+}
 .warn{
   color: #fb2121;
 }
@@ -110,8 +118,7 @@
   justify-content: space-around;
   font-size: 30rpx;
   font-family: PingFang-SC-Regular;
-  /* font-weight: normal; */
-  margin-top: 27rpx;
+  margin: 27rpx 40rpx 0 40rpx;
 }
 .manage{
   width: 90%;

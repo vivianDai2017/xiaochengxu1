@@ -29,27 +29,27 @@
     
       <!--锁详情 begin-->
       <view class="date">
-        已守护 {{lockInfoList[deviceIndex].protecttime}}天
+        已保护{{lockInfoList[deviceIndex].binddateMsg}}天
       </view>
       <image src="../../images/lockSet-lock.png" class="lockImg"></image>
       <view class="detail">
-        <view class="onOff">{{lockInfoList[deviceIndex].nowstatus}}</view>
-        <view class="energy warn">(电量{{lockInfoList[deviceIndex].electric}})</view>
+        <view class="onOff">{{lockInfoList[deviceIndex].nowstatusMsg}}</view>
+        <view class="energy {{lockInfoList[deviceIndex].electric <= 20 ? 'warn' : ''}}">(电量{{lockInfoList[deviceIndex].electric}}%)</view>
       </view>
       <view class="mess" bindtap="details">
-        <!-- <block wx:for="{{lockInfoList[deviceIndex].messages}}">
+        <!-- <block wx:for="{{lockInfoList[deviceIndex].messages}}"s>
           <view class="messItem">
             <view>{{item.openmessage}}</view>
             <view>{{item.opentime}}</view>
           </view>
         </block> -->
         <view class="messItem">
-            <view>{{lockInfoList[deviceIndex].messages[0].openmessage}}</view>
-            <view>{{lockInfoList[deviceIndex].messages[0].opentime}}</view>
+            <view class="l">{{lockInfoList[deviceIndex].messages[0].openmessage}}</view>
+            <view class="r">{{lockInfoList[deviceIndex].messages[0].opentimeMsg}}</view>
         </view>
         <view class="messItem">
-            <view>{{lockInfoList[deviceIndex].messages[1].openmessage}}</view>
-            <view>{{lockInfoList[deviceIndex].messages[1].opentime}}</view>
+            <view class="l">{{lockInfoList[deviceIndex].messages[1].openmessage}}</view>
+            <view class="r">{{lockInfoList[deviceIndex].messages[1].opentimeMsg}}</view>
         </view>
       </view>
       <!--锁详情 end-->

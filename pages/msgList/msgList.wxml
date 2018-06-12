@@ -6,9 +6,13 @@
       <!--设备icon begin-->
       <view class="msgType">
         <view class="icon {{item.warn == 0 ? 'warn' : ''}}"> 
-          <i class="iconfont {{item.lockIcon}}"></i>
+          <!--消息类型-->
+          <!-- <i class="iconfont icon-jinggao"></i> -->
+          <!-- <i class="iconfont icon-youjian"></i> -->
+          <!-- <image src="../../images/lowPower.png" class="power"></image> -->
+           <image src="../../images/lowPower-read.png" class="power"></image> 
         </view>
-        <view class="{{!item.isReady && !allReady ? 'msgNode' : 'msgNo'}}"></view>
+        <view class="{{!item.isready && !allReady ? 'msgNode' : 'msgNo'}}"></view>
       </view>
       <!--设备icon end-->
       <!--消息 begin-->
@@ -16,7 +20,11 @@
         <!--消息概要-->
         <view class="general">
           <view class="bold {{item.warn == 0 ? 'warn' : ''}}">{{idx}}.{{item.general}}</view>
-          <view class="bold time {{item.warn == 0 ? 'warn' : ''}}">{{item.general}}</view>
+          <view class="bold time {{item.warn == 0 ? 'warn' : ''}}">
+            {{item.general}}
+            <i class="iconfont .icon-icon {{item.warn == 0 ? 'iconWarn' : ''}}" wx:if="{{!pullDown}}"></i>
+            <i class="iconfont icon-icon-copy {{item.warn == 0 ? 'iconWarn' : ''}}" wx:if="{{pullDown}}"></i>
+          </view>
         </view>
         <!--消息详情-->
         <view class="details medium {{item.warn == 0 ? 'warn' : ''}}">{{item.details}}</view>

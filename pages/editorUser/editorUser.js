@@ -16,20 +16,23 @@ Page({
     showDeletePopUp: false,
     oneAdd: true,
     twoAdd: false,
-    threeAdd: false
+    threeAdd: false,
+    deviceId: null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(this.data.imgUrl);
-    if(!options.index){
-      // 若无所用户id/下标index(还未添加，或者添加中)
+    console.log(options.lockUserId);
+    console.log(options.userList);
+    if (!options.lockUserId){
+      // 若无锁用户id/下标index(还未添加，或者添加中)
       var name = options.name;
       this.setData({ name: options.name });
     }else{
       // 1.获取锁用户id,对应锁的id
+      
       // 2.
       // console.log(options);
       this.setData({ imgUrl: options.url });

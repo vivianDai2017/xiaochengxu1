@@ -6,9 +6,6 @@
   justify-content: center; 
   width: 100%; 
   padding: 20rpx 0;
-  /*test*/
-  /* border: 1px solid red; */
-  /* box-sizing: border-box;  */
   color: #e43a3a;
 }
 .icon{
@@ -19,9 +16,13 @@
   border: 2rpx solid #fff;
   text-align: center;
 }
-.icon-shezhi:before{
-  font-size: 64rpx;
-  color: #fff;
+.iconWarn::before{
+  color: #e43a3a;
+}
+.power{
+  width: 28rpx;
+  height: 44rpx;
+  margin-top: 18rpx;
 }
 .msgType{
   padding: 0 22rpx;
@@ -44,7 +45,7 @@
   white-space: nowrap;
   /* text-overflow: ellipsis;  */
   width: 500rpx;
-  /* color: red; */
+   color: yellow !important; 
 }
 .general{
   display: flex;

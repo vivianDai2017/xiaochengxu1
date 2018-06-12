@@ -1,7 +1,7 @@
 <!--pages/lockSet/lockSet.wxml-->
 <view class="container">
   <view class="lockName">
-    <view class="name">{{lockName}}</view>
+    <view class="name">{{lockList.devicename}}</view>
     <view bindtap="modifyName">
       <i class="iconfont icon-xie"></i>
     </view>
@@ -15,16 +15,16 @@
     <!-- <image src="../../images/284-592.png"></image> -->
     <view class="list">
       <ul>
-        <li class="item">{{lockType}}</li>
-        <li class="item">{{lockVer}}</li>
-        <li class="item">{{lockOnOff}}</li>
-        <li class="item">{{lockEnergy}}</li>
-        <li class="item">{{lockDate}}</li>
+        <li class="item">{{lockList.devicetype}}</li>
+        <li class="item">{{lockList.sortversion}}</li>
+        <li class="item">{{lockList.nowstatusMsg}}</li>
+        <li class="item">{{lockList.electric}}%</li>
+        <li class="item">{{lockList.binddateMsg}}天</li>
       </ul>
     </view>
   </view>
-  <view class="btn pass regular temp {{enable ? 'start' : ''}}" bindtap="passwordTemp">临时密码({{enable ? '已开启' : '未开启'}})</view>
-  <view class="btn pass regular {{isStart ? 'start' : ''}}" bindtap="password">开锁密码({{isStart ? '已开启' : '未开启'}})</view>
+  <view class="btn pass regular temp {{lockList.enable ? 'start' : ''}}" bindtap="passwordTemp">临时密码({{lockList.enable ? '已开启' : '未开启'}})</view>
+  <view class="btn pass regular {{lockList.isStart ? 'start' : ''}}" bindtap="password">开锁密码({{lockList.isstart ? '已开启' : '未开启'}})</view>
 </view>
 <!--弹框-->
 <view class="popUp" wx:if="{{showPopUp}}">

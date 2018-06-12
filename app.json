@@ -2,9 +2,15 @@
   "pages": [
     "pages/index/index",
     "pages/loading/loading",
+    "pages/msgList/msgList",
+   
+    
+    
+    "pages/lockSet/lockSet",
+    
     
     "pages/temporaryPassword/temporaryPassword",
-   
+  
     
     "pages/lockUsers/lockUsers",
     "pages/editorUser/editorUser",
@@ -12,12 +18,12 @@
     "pages/addSucc/addSucc",
     "pages/addFinger/addFinger",
     "pages/password/password",
-    "pages/lockSet/lockSet",
+    
    
     "pages/bindPhone/bindPhone",
     "pages/steps/steps",
     
-    "pages/msgList/msgList",
+    
     "pages/wallpaper/wallpaper",
     "pages/share/share",
     "pages/modal/modal",
