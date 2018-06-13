@@ -1,9 +1,7 @@
 /**app.wxss**/
 page{
-  /* background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527574459954&di=b669c53f427dd4bd781e5c0193be24ae&imgtype=0&src=http%3A%2F%2Fp1.wmpic.me%2Farticle%2F2016%2F07%2F29%2F1469781945_LplPyMeA.jpg 
-  ); */
-  background-color: #000;
-  /*  */
+  background-image: url(http://192.168.1.178/v1/background.jpg);  
+  /* background-color: #000;  */
   font-family: PingFang-SC-Regular;
 }
 .container {
@@ -32,6 +30,7 @@ page{
 	border: solid 2rpx #68d3ff;
   text-align: center;
   margin: auto;
+  background-color: transparent !important;
 }
 /*字体 PingFang-SC-Regulat  */
 .regular{

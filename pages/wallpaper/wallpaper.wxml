@@ -1,6 +1,6 @@
 <!--pages/wallpaper/wallpaper.wxml-->
 <view class="container">
-  <navigator class="imgs" wx:for="{{imgList}}" url="/pages/wallPaperConfiger/wallPaperConfiger?imgUrl={{item}}" >
+  <navigator class="imgs" wx:for="{{imgList}}" url="/pages/wallPaperConfiger/wallPaperConfiger?imgUrl={{item}}&&lockUserId={{lockUserId}}" >
     <image class="img " src="{{item}}"></image>
   </navigator>
   <view>懒加载 下拉下载接下来的图片</view>

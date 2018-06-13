@@ -92,7 +92,7 @@ Page({
     console.log(options.deviceId);
     this.setData({ deviceId: options.deviceId });
     wx.request({
-      url: 'http://dc946cf7.ngrok.io/v1/lockusers/',
+      url: 'http://c98008c9.ngrok.io/v1/lockusers/',
       method: 'GET',
       header: {
         // 'token': app.globalData.userData.token,
@@ -180,9 +180,27 @@ Page({
   /**
    * 删除用户确认事件
    */
-  deleteConfirm: function(){
+  deleteConfirm: function(e){
     // console.log('确认删除吗');
     this.setData({ showPopUp: true });
+    var lockUserId = e.currentTarget.dataset.lockuserid;
+    wx.request({
+      url: 'http://c98008c9.ngrok.io/v1/lockusers/' + lockUserId,
+      method: "DELETE",
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        // 'token': app.globalData.userData.token,
+        "token": 'oC2hc5TUP6U_2stTgxMqZGLQUdqEtoken',
+        "apptype": 1001
+      },
+      success: res => {
+        console.log(res);
+        
+      },
+      fail: res => {
+        console.log(res);
+      }
+    })
   },
   /**
    * 删除用户弹框取消事件：弹框隐藏
@@ -218,7 +236,11 @@ Page({
     var tapIndex = e.currentTarget.dataset.index;
     // 如果tap的是默认样式
     if(tapIndex == 6 && this.data.index == 6){
-      return;
+      // return;
+      // 5.跳转至用户编辑页面
+      wx.navigateTo({
+        url: '../editorUser/editorUser?name=' + this.data.name,
+      })
     }else{
       // 1.将之前选中的称呼的样式改为正常
       var before = 'choiceList[' + this.data.index + '].src';
@@ -290,7 +312,7 @@ Page({
     this.setData({ name: this.data.tempData });
     // 5.跳转至用户编辑页面
     wx.navigateTo({
-      url: '../editorUser/editorUser?name=' + this.data.name,
+      url: '../editorUser/editorUser?name=' + this.data.name ,
     })
   },
   /**

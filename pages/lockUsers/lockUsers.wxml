@@ -7,7 +7,7 @@
       <view class="l" bindtap="toUserEditor" data-lockUserId="{{item.id}}" data-index="{{index}}">
         <view class="ll">
           <view class="wallwapperId">
-            <image src="../../images/48.png" class="img"></image>
+             <image src="{{wallwapperid}}" class="img"></image> 
           </view>
           <view class="name medium">{{item.name}}</view>
         </view>
@@ -17,7 +17,7 @@
         </view>
       </view>
       <view class="r">
-        <view class="delete" bindtap="deleteConfirm">删除</view>
+        <view class="delete" bindtap="deleteConfirm" data-lockUserId="{{item.id}}">删除</view>
       </view>
     </view>
     </view>

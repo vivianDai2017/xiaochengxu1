@@ -1,28 +1,13 @@
 // pages/temporaryPassword/temporaryPassword.js
-// const date = new Date()
-// const years = []
-// const months = []
-// const days = []
-
-// for (let i = 1990; i <= date.getFullYear(); i++) {
-//   years.push(i)
-// }
-
-// for (let i = 1; i <= 12; i++) {
-//   months.push(i)
-// }
-
-// for (let i = 1; i <= 31; i++) {
-//   days.push(i)
-// }
-
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    time: '',
+    devicceId: null,      //设备id
+    // time: '',
     shortPassword: '',
     onlyOne: true,
     show: false,
@@ -42,7 +27,8 @@ Page({
     endTimeIndex: [0, 0, 0, 0, 0, 0, 0, 0],
     startTime: null,
     endTime: null,
-    again: false
+    again: false,
+    nickName: null    //微信昵称
   },
 
   
@@ -52,6 +38,14 @@ Page({
    */
   onLoad: function (options) {
     this.createShortPassword();
+    // 获取到锁id
+    this.setData({ 
+      deviceId: options.deviceId,
+      nickName: app.globalData.userInfo.nickName
+    });
+    var nickName = app.globalData.userInfo.nickName;
+    console.log(nickName);
+    
   },
 
   /**
@@ -104,10 +98,12 @@ Page({
     var yearIndex = year-2018;
     var dateIndex = date-1;
     var timeIndex = [yearIndex,0,month,0,dateIndex,0,hour,0];
+    var startTime = this.data.timeArray[0][yearIndex] + '/' + this.data.timeArray[2][month] + '/' + this.data.timeArray[4][dateIndex] + ' ' + this.data.timeArray[6][hour] + ':00:00';
     console.log(timeIndex);
     this.setData({
       startTimeIndex: timeIndex,
-      endTimeIndex: timeIndex
+      endTimeIndex: timeIndex,
+      startTime: startTime
     })
   },
   // share: function (event) {
@@ -127,11 +123,19 @@ Page({
     console.log('value事件改变');
     this.setData({ startTimeIndex: e.detail.value});
     console.log(this.data.startTimeIndex);
+    var startTime = this.data.timeArray[0][this.data.startTimeIndex[0]] + '/' + this.data.timeArray[2][this.data.startTimeIndex[2]] + '/' + this.data.timeArray[4][this.data.startTimeIndex[4]] + ' ' + this.data.timeArray[6][this.data.startTimeIndex[6]] + '：00:00';
+    console.log(startTime);
+    console.log(typeof startTime);
+    this.setData({ startTime: startTime })
   },
   bindEndTimeChange: function (e) {
     console.log('value事件改变');
     this.setData({ endTimeIndex: e.detail.value });
     console.log(this.data.endTimeIndex);
+    var endTime = this.data.timeArray[0][this.data.endTimeIndex[0]] + '/' + this.data.timeArray[2][this.data.endTimeIndex[2]] + '/' + this.data.timeArray[4][this.data.endTimeIndex[4]] + ' ' + this.data.timeArray[6][this.data.endTimeIndex[6]] + ':00:00';
+    console.log(endTime);
+    console.log(typeof endTime);
+    this.setData({ endTime: endTime })
   },
   /**
    * 页面相关事件处理函数--监听用户下拉动作
@@ -155,24 +159,47 @@ Page({
       // 来自页面内转发按钮
       console.log(res.target);
       console.log('页面内');
-      
     } else {
       console.log('no button');
     }
+    // 点击启动并分享密码即启用临时密码
+    wx.request({
+      url: 'https://c98008c9.ngrok.io/v1/devices/' + this.data.deviceId,
+      method: 'POST',
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        // 'token': app.globalData.userData.token,
+        "token": 'oC2hc5TUP6U_2stTgxMqZGLQUdqEtoken',
+        "apptype": 1001
+      },
+      data: { 
+        shortPassword: this.data.shortPassword,
+        startTime: this.data.startTime,
+        endTime: this.data.endTime
+      },
+      success: res => {
+        console.log(res)
+        console.log('开发者服务器返回数据');
+        
+      },
+      fail: function () {
+        console.log('接口调用失败');
+      },
+    });
     // 判断密码是单次有效还是时间段有效
     if (this.data.onlyOne) {
       // 单次有效
-      var pathUrl = '/pages/share/share?temp=' + this.data.shortPassword
+      var pathUrl = '/pages/share/share?temp=' + this.data.shortPassword + '&&nickName=' + this.data.nickName
     } else {
-      var startTime = this.data.timeArray[0][this.data.startTimeIndex[0]] + '/' + this.data.timeArray[2][this.data.startTimeIndex[2]]+  '/' + this.data.timeArray[4][this.data.startTimeIndex[4]] + ' ' + this.data.timeArray[6][this.data.startTimeIndex[6]] + '/00/00';
+      // var startTime = this.data.timeArray[0][this.data.startTimeIndex[0]] + '/' + this.data.timeArray[2][this.data.startTimeIndex[2]]+  '/' + this.data.timeArray[4][this.data.startTimeIndex[4]] + ' ' + this.data.timeArray[6][this.data.startTimeIndex[6]] + '/00/00';
       console.log('112');
-      console.log(this.data.timeArray[0][this.data.startTimeIndex[0]]);
-      console.log(startTime);
-      var pathUrl = '/pages/share/share?temp=' + this.data.shortPassword + '&&startTime=' + this.data.startTime + '&&endTim=' + this.data.endTime
+      // console.log(this.data.timeArray[0][this.data.startTimeIndex[0]]);
+      // console.log(startTime);
+      var pathUrl = '/pages/share/share?temp=' + this.data.shortPassword + '&&startTime=' + this.data.startTime + '&&endTim=' + this.data.endTime + '&&nickName=' + this.data.nickName
     }
     // 通过object.getTime()获取时间差值
     return {
-      title: '转发消息',
+      title: '临时密码分享',
       path: pathUrl,
       imageUrl: '../../images/logo-temp.png',
       success: (res) => {
@@ -187,6 +214,7 @@ Page({
         console.log("转发失败", res);
       }
     }
+    
   },
   /**
    * 
@@ -195,12 +223,22 @@ Page({
   stop: function(){
     // 通知后台此设备的临时密码停用
     wx.request({
-      url: '',
-      data: {enable: 0},
+      url: 'https://c98008c9.ngrok.io/v1/devices/' + this.data.deviceId,
+      method: 'POST',
       header: {
-        'content-type': 'application/json', // 默认值
-        'token': '',
-        'apptype': ''
+        'Content-Type': 'application/x-www-form-urlencoded',
+        // 'token': app.globalData.userData.token,
+        "token": 'oC2hc5TUP6U_2stTgxMqZGLQUdqEtoken',
+        "apptype": 1001
+      },
+      data: { shortPasswrod: "" },
+      success: res => {
+        console.log(res)
+        console.log('开发者服务器返回数据');
+        this.setData({ again: false });
+      },
+      fail: function () {
+        console.log('接口调用失败');
       }
     })
   }

@@ -50,7 +50,7 @@
   width: 80rpx;
   height: 80rpx;
   border-radius: 50%;
-  border: 2rpx solid #68b3ff;
+  /* border: 2rpx solid #68b3ff; */
   margin: 15rpx 0;
 }
 .img{
@@ -83,7 +83,7 @@
   font-family: PingFang-SC-Medium;
 }
 .add{
-  position: fixed;
+  position: fixed; 
   margin-top: 1026rpx;
   background-color: transparent;
   border-color: #03abe8;

@@ -6,6 +6,10 @@
 .icon-zhiwen{
   font-size: 148rpx;
 }
+.call{
+  width: 134rpx;
+  height: 171rpx;
+}
 .guide{
   color: #fff;
   margin-top: 145rpx;

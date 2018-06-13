@@ -1,7 +1,8 @@
 <!--pages/addFinger/addFinger.wxml-->
 <view class="container">
   <view class="icon">
-    <i class="iconfont icon-zhiwen"></i>
+    <i class="iconfont icon-zhiwen" wx:if="{{!call}}"></i>
+    <image src="../../images/call-big.png" class="call" wx:if="{{call}}"></image>
   </view>
   <view class="guide medium">
     <view>按下锁具上的设置键</view>

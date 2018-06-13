@@ -171,7 +171,7 @@ Page({
   /**
    * 请求消息函数
    */
-  getMsgs: function (page, limit) {
+  getMsgs: function (page) {
     wx.request({
       // url: 'http://6844ea95.ngrok.io/v1/messages/',
       url: 'http://192.168.1.178/v1/messages/',
@@ -182,7 +182,7 @@ Page({
       },
       data: {
         offset: (page-1)*limit+1,
-        limit: limit,
+        limit: this.data.limit,
         account: account
       },
       success: res => {
@@ -205,13 +205,34 @@ Page({
     console.log(app.globalData.userData.user.account);
     var account = app.globalData.userData.user.account;
     // 发送请求消息列表请求
-    var msgs = getMsgs(this.data.page,this.data.limit);
-    var pages = Math.ceil(msgs.total/this.data.limit);
-    this.setData({ 
-      totalMsg: msgs.total ,
-      msgList: msgs.messsages,
-      pages: pages
+    wx.request({
+      // url: 'http://6844ea95.ngrok.io/v1/messages/',
+      url: 'http://192.168.1.178/v1/messages/',
+      method: 'GET',
+      header: {
+        "token": app.globalData.userData.token,
+        "apptype": 1001
+      },
+      data: {
+        offset: (page - 1) * limit + 1,
+        limit: this.data.limit,
+        account: account
+      },
+      success: res => {
+        console.log('请求成功');
+        console.log(res);
+        var pages = Math.ceil(msgs.total / this.data.limit);
+        this.setData({
+          totalMsg: res.data.data.total,
+          msgList: res.data.data.messsages,
+          pages: pages
+        })
+      },
+      fail: res => {
+        console.log('请求失败');
+      }
     })
+    
   },
   
   /**
@@ -277,12 +298,33 @@ Page({
       this.setData({
         page: this.data.page + 1
       });
-      var msgs = getMsgs(this.data.page, this.data.limit);
-      var temp = this.data.msgList;
-      for(var i = 0; i< msgs.messages.length; i++){
-        temp.push(msgs.messages[0])
-      }
-      this.setData({ msgList: temp });
+      wx.request({
+        // url: 'http://6844ea95.ngrok.io/v1/messages/',
+        url: 'http://192.168.1.178/v1/messages/',
+        method: 'GET',
+        header: {
+          "token": app.globalData.userData.token,
+          "apptype": 1001
+        },
+        data: {
+          offset: (page - 1) * limit + 1,
+          limit: this.data.limit,
+          account: account
+        },
+        success: res => {
+          console.log('请求成功');
+          console.log(res);
+          var temp = this.data.msgList;
+          for (var i = 0; i < res.data.data.messages.length; i++) {
+            temp.push(res.data.data.messages[0])
+          }
+          this.setData({ msgList: temp });
+        },
+        fail: res => {
+          console.log('请求失败');
+        }
+      })     
+      
       wx.hideLoading();
     }
   },

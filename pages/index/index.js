@@ -96,7 +96,7 @@ Page({
     // 请求用户设备信息  列表
     wx.request({
       // url: 'http://6844ea95.ngrok.io/v1/devices/',
-      url: 'http://dc946cf7.ngrok.io/v1/devices/',
+      url: 'http://c98008c9.ngrok.io/v1/devices/',
       method: 'GET',
       header: {
         // 'token': app.globalData.userData.token,

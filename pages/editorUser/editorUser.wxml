@@ -12,16 +12,19 @@
   <view class="medium tap">点击切换解锁壁纸</view>
   <!--指纹-->
   <view class="fingerPrint">
-    <view class="f finger" bindtap="{{oneAdd ? 'delete' : 'add'}}" data-status="oneAdd">
-      <i class="iconfont icon-zhiwen"></i>
+    <view class="f {{finger1 ? 'finger' : ''}}" bindtap="{{finger1 ? 'delete' : 'add'}}" data-finger="finger1">
+      <i class="iconfont icon-zhiwen" wx:if="{{finger1}}"></i>
+      <image class="img" src="../../images/add-0.png" wx:if="{{!finger1}}"></image>
     </view>
-    <view class="f" bindtap="{{twoAdd ? 'delete' : 'add'}}" data-status="twoAdd">
-      <image class="img" src="../../images/add-0.png"></image>
+    <view class="f {{finger2 ? 'finger' : ''}}" bindtap="{{finger2 ? 'delete' : 'add'}}" data-finger="finger2">
+      <i class="iconfont icon-zhiwen" wx:if="{{finger2}}"></i>
+      <image class="img" src="../../images/add-0.png" wx:if="{{!finger2}}"></image>
     </view>
-    <view class="f" bindtap="{{threeAdd ? 'delete' : 'add'}}" data-status="threeAdd">
-      <image class="img" src="../../images/add-0.png"></image>
+    <view class="f {{finger3 ? 'finger' : ''}}" bindtap="{{finger3 ? 'delete' : 'add'}}" data-finger="finger3">
+      <i class="iconfont icon-zhiwen" wx:if="{{finger3}}"></i>
+      <image class="img" src="../../images/add-0.png" wx:if="{{!finger3}}"></image>
     </view>
-    <view class="f" bindtap="call">
+    <view class="f {{callfinger ? 'finger' : ''}}" bindtap="{{callfinger ? 'delete' : 'call'}}" data-finger="callfinger">
       <image class="img" src="../../images/call.png"></image>
     </view>
   </view>
@@ -30,7 +33,7 @@
     <!--主标题-->
     <view class="title medium">称谓及欢迎语</view>
     <!--称谓输入框-->
-    <input type="text" placeholder="请输入0-6位称谓" bindinput="wifiPassInput" maxlength='6' bindinput="nameInput" class="input"></input>
+    <input type="text" placeholder="请输入0-6位称谓" bindinput="wifiPassInput" maxlength='6' bindinput="nameInput" class="input" value="{{choiceName}}"></input>
     <!--欢迎语输入框-->
     <input type="text" placeholder="请输入0-14位的欢迎语" bindinput="wifiPassInput" maxlength='14' bindinput="welcomeInput" class="input"></input>
     <!--取消、确认按钮-->

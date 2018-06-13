@@ -4,5 +4,5 @@
     <image src="../../images/add-succ.png" class="img"></image>
   </view>
   <view class="txt medium">录入成功</view>
-  <view class="btn">确定</view>
+  <view class="btn" bindtap="succ">确定</view>
 </view>

@@ -11,7 +11,7 @@ Page({
     enable: 0,     //临时密码是否启用（1为启用0为未启用）
     isStart: 0,    //普通密码是否启用（1为启用0为未启用）
     showPopUp: false,
-    deviceId: null     //设备id
+    deviceId: null     //设备id      //
   },
 
   /**
@@ -23,9 +23,9 @@ Page({
       /**
        * 获取锁编号，向服务器请求锁数据
        */
-      var url = 'https://dc946cf7.ngrok.io/v1/devices/' + this.data.deviceId ;
-      console.log(url);
-      console.log(typeof url);
+      var url = 'https://c98008c9.ngrok.io/v1/devices/' + this.data.deviceId ;
+      // console.log(url);
+      // console.log(typeof url);
       wx.request({
         url: url,
         method: 'GET',
@@ -37,6 +37,7 @@ Page({
         success: res => {
           console.log(res);
           this.setData({ lockList: res.data.data.device})
+          console.log(this.data.lockList)
         },
         fail: res => {
           console.log('接口调用失败');
@@ -107,7 +108,7 @@ Page({
     });
     console.log(this.data.lockList.devicename);
     wx.request({
-      url: 'https://dc946cf7.ngrok.io/v1/devices/' + this.data.deviceId,
+      url: 'https://c98008c9.ngrok.io/v1/devices/' + this.data.deviceId,
       method: 'POST',
       header: {
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -117,6 +118,7 @@ Page({
       },
       data: { deviceName: this.data.lockList.devicename },
       success: res => {
+        console.log()
         console.log('开发者服务器返回数据');
       },
       fail: function () {
@@ -130,7 +132,7 @@ Page({
   password: function(){
     console.log('去开锁密码页');
     wx.navigateTo({
-      url: '../password/password?deviceId=' + this.data.deviceId,
+      url: '../password/password?deviceId=' + this.data.deviceId + '&&password=' + this.data.lockList.commonpasswrod,
     })
   },
   /**
@@ -140,7 +142,7 @@ Page({
     console.log('去临时密码设置页面');
     // 跳转(带参数锁编号devicesid)至临时密码页面
     wx.navigateTo({
-      url: '../temporaryPassword/temporaryPassword',
+      url: '../temporaryPassword/temporaryPassword?deviceId=' + this.data.deviceId,
     })
   },
   /**

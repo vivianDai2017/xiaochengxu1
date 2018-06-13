@@ -1,4 +1,5 @@
 // pages/password/password.js
+const app = getApp();
 Page({
 
   /**
@@ -6,7 +7,7 @@ Page({
    */
   data: {
     showPopUp: false,
-    lockNum: null,
+    deviceId: null,         //设备id
     password: '000000',
     passwordTemp: null,
     open: true,
@@ -18,26 +19,30 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // 获取到锁编号，开锁秘密
-    this.setData({lockNum: options.deviceId});
+    //判断有无旧的开锁密码
+    if(options.password){
+      this.setData({ password: options.password })
+    }
+    // 获取到锁id，开锁秘密
+    this.setData({deviceId: options.deviceId});
     //根据锁编号去后台查询开锁密码，更新数据password
-    wx.request({
-      url: "http://6844ea95.ngrok.io/v1/devices/:" + options.deviceId,
-      method: 'PATCH',
-      header: {
-          "Content-Type": "application/json",
-          "token": app.globalData.userData.token,
-          "apptype": 1001
-      },
-      data: {
+    // wx.request({
+    //   url: "http://6844ea95.ngrok.io/v1/devices/:" + options.deviceId,
+    //   method: 'PATCH',
+    //   header: {
+    //       "Content-Type": "application/json",
+    //       "token": app.globalData.userData.token,
+    //       "apptype": 1001
+    //   },
+    //   data: {
         
-      },
-      success: function(res){
-        console.log('访问成功');
+    //   },
+    //   success: function(res){
+    //     console.log('访问成功');
 
-      },
-      fail: function(res){}
-    })
+    //   },
+    //   fail: function(res){}
+    // })
   },
 
   /**
@@ -99,43 +104,74 @@ Page({
       showPopUp: false,
       password: this.data.passwordTemp
     });
-    var password = this.data.password;
+    // var password = this.data.password;
+    
+    
+  },
+  /**
+   * 密码启用事件
+   */
+  open: function(e){
+    var formId = e.detail.formId;
+    console.log(e);
+    console.log('formId' + formId);
+    //1.将开锁密码（password）和锁编号（deviceId）？ 传给后台
     wx.request({
-      url: '',
-      data: { password },
+      url: 'https://c98008c9.ngrok.io/v1/devices/' + this.data.deviceId,
       method: 'POST',
-      success: function (data) {
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        // 'token': app.globalData.userData.token,
+        "token": 'oC2hc5TUP6U_2stTgxMqZGLQUdqEtoken',
+        "apptype": 1001
+      },
+      data: { commonPasswrod: this.data.password },
+      success: res => {
+        console.log()
         console.log('开发者服务器返回数据');
+        //2.隐藏修改图标和开启按钮，停用按钮出现
+        this.setData({
+          open: false,
+          stop: true,
+          modify: false
+        })
       },
       fail: function () {
         console.log('接口调用失败');
       },
     })
-  },
-  /**
-   * 密码启用事件
-   */
-  open: function(){
-    //1.将开锁密码（password）和锁编号（lockNum）？ 传给后台
-
-    //2.隐藏修改图标和开启按钮，停用按钮出现
-    this.setData({
-      open: false,
-      stop: true,
-      modify: false
-    })
+    
   },
   /**
    * 密码停用事件
    */
   stop: function(){
     //1.告诉后台未设置密码
-    //2.隐藏停用按钮，修改图标和开始按钮出现
-    this.setData({
-      open: true,
-      stop: false,
-      modify: true
+    wx.request({
+      url: 'https://c98008c9.ngrok.io/v1/devices/' + this.data.deviceId,
+      method: 'POST',
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        // 'token': app.globalData.userData.token,
+        "token": 'oC2hc5TUP6U_2stTgxMqZGLQUdqEtoken',
+        "apptype": 1001
+      },
+      data: { commonPasswrod: "" },
+      success: res => {
+        console.log()
+        console.log('开发者服务器返回数据');
+        //2.隐藏停用按钮，修改图标和开始按钮出现
+        this.setData({
+          open: true,
+          stop: false,
+          modify: true
+        })
+      },
+      fail: function () {
+        console.log('接口调用失败');
+      },
     })
+    
   },
   /**
    * 页面相关事件处理函数--监听用户下拉动作

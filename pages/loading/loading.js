@@ -31,7 +31,7 @@ Page({
                     // app.globalData.testInfo = res;
                     app.globalData.encrypteData = res.encryptedData;
                     app.globalData.iv = res.iv
-                    console.log(res);
+                    // console.log(res);
                   
                     // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
                     // 所以此处加入 callback 以防止这种情况
@@ -44,12 +44,12 @@ Page({
                     // console.log(app.globalData.wechatid);
                     // 发送消息到后台
                     wx.request({
-                      url: 'http://dc946cf7.ngrok.io/v1/users/login',
+                      url: 'http://df5a1228.ngrok.io/v1/users/login',
                       // url: "http://99c0f9fb.ngrok.io/v1/users/login",
                       method: "POST",
                       header: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                        'apptype': 1001
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        "apptype": 1001
                       },
                       data: {
                         wechatname: app.globalData.userInfo.nickName,
@@ -63,9 +63,9 @@ Page({
                         console.log(res.data.data);
                         app.globalData.userData = res.data.data;
                         // console.log(app.globalData.userData);
-                        wx.navigateTo({
-                          url: '../index/index',
-                        });
+                        // wx.redirectTo({
+                        //   url: '../index/index',
+                        // });
                       },
                       fail: function (res) {
                         console.log('失败');
@@ -75,9 +75,9 @@ Page({
                   }
                 })
               } else {
-                wx.navigateTo({
-                  url: '../unbindIndex/unbindIndex',
-                })
+                // wx.redirectTo({
+                //   url: '../unbindIndex/unbindIndex',
+                // })
               }
             }
           })
